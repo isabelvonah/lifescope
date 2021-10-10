@@ -1,18 +1,4 @@
-body { font: 12px Arial;}
-
-path {
-  stroke: steelblue;
-  stroke-width: 2;
-  fill: none;
-}
-
-.axis path,
-.axis line {
-	fill: none;
-	stroke: grey;
-	stroke-width: 1;
-	shape-rendering: crispEdges;
-}
+body { font: 12px Arial; }
 
 .tooltip {
 	background: #eee;
@@ -27,8 +13,4 @@ path {
 	z-index: 10;
 	display: block;
 	opacity: 0;
-}
-
-.title{
-font-size:16px;
 }
