@@ -28,7 +28,6 @@ function DotMatrixChart( dataset, options ) {
 
   height = numOfLines * (dotRadius*2 + dotPaddingBottom + dotPaddingTop);
   width = (dotRadius*2 + dotPaddingLeft + dotPaddingRight) * numOfCirclesInARow;
-  console.log(height);
 
   /**
    * Sets the ranges.
@@ -74,7 +73,6 @@ function DotMatrixChart( dataset, options ) {
       globalLineSize += 1;
 
     }
-    console.log(arr);
     return arr;
   }
 
@@ -133,31 +131,33 @@ function DotMatrixChart( dataset, options ) {
   /**
    * Adds tooltip.
    */
-  var tooltip = d3.select("body")
-    .append('div')
-    .attr('class', 'tooltip');
+	if (options.tooltip) {
+		var tooltip = d3.select("body")
+			.append('div')
+			.attr('class', 'tooltip');
 
-  tooltip.append('div')
-    .attr('class', 'group');
-  tooltip.append('div')
-    .attr('class', 'category');
+		tooltip.append('div')
+			.attr('class', 'group');
+		tooltip.append('div')
+			.attr('class', 'category');
 
-  svg.selectAll(".circleArray > circle")
-    .on('mouseover', function(d,i) {
+		svg.selectAll(".circleArray > circle")
+			.on('mouseover', function(d,i) {
 
-      tooltip.select('.group').html("<b>Group: " + d.group+ "</b>");
-      tooltip.select('.category').html("<b>Category: " + d.category+ "</b>");
+				tooltip.select('.group').html("<b>Group: " + d.group+ "</b>");
+				tooltip.select('.category').html("<b>Category: " + d.category+ "</b>");
 
-      tooltip.style('display', 'block');
-      tooltip.style('opacity',2);
+				tooltip.style('display', 'block');
+				tooltip.style('opacity',2);
 
-    })
-    .on('mousemove', function(d) {
-      tooltip.style('top', (d3.event.layerY + 10) + 'px')
-      .style('left', (d3.event.layerX - 25) + 'px');
-    })
-    .on('mouseout', function() {
-      tooltip.style('display', 'none');
-      tooltip.style('opacity',0);
-    });
-}
+			})
+			.on('mousemove', function(d) {
+				tooltip.style('top', (d3.event.layerY + 10) + 'px')
+				.style('left', (d3.event.layerX - 25) + 'px');
+			})
+			.on('mouseout', function() {
+				tooltip.style('display', 'none');
+				tooltip.style('opacity',0);
+			});
+	}
+
