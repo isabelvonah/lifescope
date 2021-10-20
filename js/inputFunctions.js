@@ -14,7 +14,7 @@ function constructWaffle() {
     // TODO: else {print "Congratulations, your reached a very nice age."} 
 }
 
-function addFiftyDots() {
+function add500Dots() {
     dataset[dataset.length -1].count += 500;
     DotMatrixChart( dataset, chart_options );
   }
