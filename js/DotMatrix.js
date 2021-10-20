@@ -89,16 +89,17 @@ function DotMatrixChart( dataset, options ) {
   var circleArray = groups.selectAll("g.circleArray")
     .data( function(d) { return generate_array(d); } );
 
-  let color = d3.scale.category20();
+	let color = d3.scale.ordinal()
+  	.range(options.colors);
 
   circleArray.enter()
-  .append('g')
-  .attr("class", "circleArray")
-  .append("circle")
-  .style("fill",function(d){ return color(d.category); })
-  .attr("r", dotRadius)
-  .attr("cx", function(d) { return xScale(d.x); })
-  .attr("cy", function(d) { return yScale(d.y); });
+		.append('g')
+		.attr("class", "circleArray")
+		.append("circle")
+		.style("fill",function(d){ return color(d.category); })
+		.attr("r", dotRadius)
+		.attr("cx", function(d) { return xScale(d.x); })
+		.attr("cy", function(d) { return yScale(d.y); });
 
   /**
    * Adds legend.
