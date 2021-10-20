@@ -23,10 +23,7 @@
 
 <script>
 
-  var dataset = [
-    { category: "already over", count: 2270},
-    { category: "ready to live", count: 1200},
-  ];
+  var dataset = [ ];
 
   var chart_options = {
     dot_radius : 5,
@@ -38,9 +35,14 @@
     div_selector: '#DotMatrixChart'
   }
 
-  DotMatrixChart( dataset, chart_options );
-
 </script>
+
+<!--constructWaffle-->
+<p>
+  Enter your age
+  <input typche="number" id="age" value="Some number...">
+  <button onclick="constructWaffle()">Enter</button>
+</p>
 
 <!--addFiftyDots-->
 <button onclick="addFiftyDots()">Add 500 dots</button>
