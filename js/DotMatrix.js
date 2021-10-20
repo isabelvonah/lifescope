@@ -129,7 +129,7 @@ function DotMatrixChart( dataset, options ) {
     .text(function(d){return d});
 
   /**
-   * Adds tooltip.
+   * Adds tooltip (optional).
    */
 	if (options.tooltip) {
 		var tooltip = d3.select("body")
@@ -160,4 +160,6 @@ function DotMatrixChart( dataset, options ) {
 				tooltip.style('opacity',0);
 			});
 	}
+
+}
 
