@@ -28,10 +28,13 @@ function add500Dots() {
   }
 
 //add a category without changing the number of dots
-  function splitLastCategory() {
-    sleepyWeeks = (document.getElementById("sleep").value / 24) * dataset[dataset.length - 1].count;
-    sleepyWeeks = parseInt(sleepyWeeks);
-    dataset[dataset.length -1].count -= sleepyWeeks;
-    dataset.push({category: "sleep", count: sleepyWeeks});
+function splitWeeksToLive(category) {
+    WeeksToLive = 0
+    for (let i = 1; i < dataset.length; i++) {
+        WeeksToLive += dataset[i].count;
+    }
+    lostWeeks = parseInt(document.getElementById(category).value / 24 * WeeksToLive);
+    dataset[dataset.length - 1].count -= lostWeeks;
+    dataset.splice(1, 0, {category: category, count: lostWeeks});
     DotMatrixChart( dataset, chart_options);
   }
