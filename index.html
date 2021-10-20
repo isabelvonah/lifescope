@@ -19,13 +19,13 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
 <link rel="stylesheet" type="text/css" href="./css/DotMatrix.css"/>
 <script type="text/javascript" src="./js/DotMatrix.js"></script>
+<script type="text/javascript" src="./js/inputFunctions.js"></script>
 
 <script>
 
   var dataset = [
-    { category: "Test", count: 2270},
-    { category: "Foo", count: 313},
-    { category: "Bar", count: 645},
+    { category: "already over", count: 2270},
+    { category: "ready to live", count: 1200},
   ];
 
   var chart_options = {
@@ -40,13 +40,22 @@
 
   DotMatrixChart( dataset, chart_options );
 
-  function addFiftyDots() {
-    dataset[2].count += 500;
-    DotMatrixChart( dataset, chart_options );
-  }
-
 </script>
 
+<!--addFiftyDots-->
 <button onclick="addFiftyDots()">Add 500 dots</button>
+
+<!--addCategory-->
+<p>
+  <input type="text" id="category" value="Category...">
+  <input type="number" id="myNumber" value="Some number...">
+  <button onclick="addCategory()">Add category</button>
+</p>
+
+<!--splitLastCateogry-->
+<p>
+  I usually get <input type="number" id="sleep" value="6"> hours of sleep a day. 
+  <button onclick="splitLastCategory()">Show sleep category</button>
+</p>
 
 </html>
