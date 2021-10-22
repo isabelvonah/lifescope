@@ -26,8 +26,8 @@ function DotMatrixChart( dataset, options ) {
    */ 
   var	margin = {top: dotRadius*10, right: dotRadius*15, bottom: dotRadius*10, left: dotRadius*15};
 
-  height = numOfLines * (dotRadius*2 + dotPaddingBottom + dotPaddingTop);
-  width = (dotRadius*2 + dotPaddingLeft + dotPaddingRight) * numOfCirclesInARow;
+  let height = numOfLines * (dotRadius*2 + dotPaddingBottom + dotPaddingTop);
+  let width = (dotRadius*2 + dotPaddingLeft + dotPaddingRight) * numOfCirclesInARow;
 
   /**
    * Sets the ranges.
@@ -40,7 +40,7 @@ function DotMatrixChart( dataset, options ) {
   /**
    * Creates SVG element.
    */
-  div = document.querySelector(divSelector);
+  let div = document.querySelector(divSelector);
   div.innerHTML = '';
 
   var svg = d3.select(divSelector)
