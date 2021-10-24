@@ -7,10 +7,6 @@ body {
     width: calc(100vw - 1000px);
 }
 
-#page2 {
-    background-color: darkcyan;
-}
-
 .container-dotChart {
     width: 1000px;
     height: 100vh;
@@ -21,6 +17,32 @@ body {
 }
 
 .page {
+    position: relative;
     height: 100vh;
     border: 1px solid chartreuse;
+}
+
+#page2 {
+    background-color: darkcyan;
+}
+
+.scroll{
+     margin: 20px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 50%;
+
+}
+
+.down {
+    position:absolute;
+    bottom:0;
+    left:0;
 }

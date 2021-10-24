@@ -11,10 +11,15 @@
 <body>
     <div class="container-text">
         <div id="page1" class="page">
-            <button onclick="jumpToID('page3')">jump</button>
+            <button class="scroll down" onclick="jumpToID('page2')">jump down</button>
         </div>
-        <div id="page2" class="page"></div>
-        <div id="page3" class="page"></div>
+        <div id="page2" class="page">
+            <button class="scroll down" onclick="jumpToID('page3')">jump down</button>
+            <button class="scroll" onclick="jumpToID('page1')">jump up</button>
+        </div>
+        <div id="page3" class="page">
+            <button class="scroll" onclick="jumpToID('page2')">jump up</button>
+        </div>
     </div>
     <div class="container-dotChart"></div>
 
