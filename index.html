@@ -6,20 +6,66 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" type="image/png" href="assets/favicon.png"/>
+  <link rel="stylesheet" href="css/style.css">
 
   <title>lifeScope</title>
 </head>
 
 <body>
 
-  <div id="DotMatrixChart"></div>    
+  <body>
+    <div class="container-text">
+        <div id="page1" class="page">
+            <button class="scroll down" onclick="jumpToID('page2')">jump down</button>
+        </div>
+        <div id="page2" class="page">
+            <button class="scroll down" onclick="jumpToID('page3')">jump down</button>
+            <button class="scroll" onclick="jumpToID('page1')">jump up</button>
+        </div>
+        <div id="page3" class="page">
+            <button class="scroll" onclick="jumpToID('page2')">jump up</button>
+        </div>
+    </div>
+    <div class="container-dotChart">
+
+      <div id="DotMatrixChart"></div> 
+
+      <!--constructWaffle-->
+      <p>
+        Enter your age
+        <input typche="number" id="age" placeholder="Some number...">
+        <button onclick="constructWaffle()">Enter</button>
+      </p>
+
+      <!--add500Dots-->
+      <button onclick="add500Dots()">Add 500 dots</button>
+
+      <!--addCategory-->
+      <p>
+        <input type="text" id="category" placeholder="Category...">
+        <input type="number" id="myNumber" placeholder="Some number...">
+        <button onclick="addCategory()">Add category</button>
+      </p>
+
+      <!--splitWeeksToLive-->
+      <p>
+        I usually get <input type="number" id="sleep" placeholder="6"> hours of sleep a day. 
+        <button onclick="splitWeeksToLive('sleep')">Show new category</button>
+      </p>
+      <p>
+        I usually spend <input type="number" id="travelling" placeholder="1"> hours travelling a day. 
+        <button onclick="splitWeeksToLive('travelling')">Show new category</button>
+      </p>
+            
+          </div>
+    
 
 </body>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
 <link rel="stylesheet" type="text/css" href="./css/DotMatrix.css"/>
 <script type="text/javascript" src="./js/DotMatrix.js"></script>
-<script type="text/javascript" src="./js/inputFunctions.js"></script>
+<script type="text/javascript" src="./js/script.js"></script>
 
 <script>
 
@@ -39,32 +85,5 @@ var dataset = [ ];
   }
 
 </script>
-
-<!--constructWaffle-->
-<p>
-  Enter your age
-  <input typche="number" id="age" placeholder="Some number...">
-  <button onclick="constructWaffle()">Enter</button>
-</p>
-
-<!--add500Dots-->
-<button onclick="add500Dots()">Add 500 dots</button>
-
-<!--addCategory-->
-<p>
-  <input type="text" id="category" placeholder="Category...">
-  <input type="number" id="myNumber" placeholder="Some number...">
-  <button onclick="addCategory()">Add category</button>
-</p>
-
-<!--splitWeeksToLive-->
-<p>
-  I usually get <input type="number" id="sleep" placeholder="6"> hours of sleep a day. 
-  <button onclick="splitWeeksToLive('sleep')">Show new category</button>
-</p>
-<p>
-  I usually spend <input type="number" id="travelling" placeholder="1"> hours travelling a day. 
-  <button onclick="splitWeeksToLive('travelling')">Show new category</button>
-</p>
 
 </html>

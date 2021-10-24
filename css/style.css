@@ -1,3 +1,7 @@
+:root {
+    --chartWidth: 1300px;
+}
+
 body {
     margin: 0;
     background-color: #F8F1E5;
@@ -5,11 +9,11 @@ body {
 }
 
 .container-text {
-    width: calc(100vw - 1000px);
+    width: calc(100vw - var(--chartWidth));
 }
 
 .container-dotChart {
-    width: 1000px;
+    width: var(--chartWidth);
     height: 100vh;
     position: fixed;
     z-index: 99;
