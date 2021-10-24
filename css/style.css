@@ -4,13 +4,14 @@ body {
 }
 
 .container-text {
-    background-color: blue;
-    width: 500px;
-    height: 200vh;
+    width: calc(100vw - 1000px);
+}
+
+#page2 {
+    background-color: darkcyan;
 }
 
 .container-dotChart {
-    background-color: red;
     width: 1000px;
     height: 100vh;
     position: fixed;
@@ -21,4 +22,5 @@ body {
 
 .page {
     height: 100vh;
+    border: 1px solid chartreuse;
 }

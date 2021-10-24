@@ -38,3 +38,12 @@ function splitWeeksToLive(category) {
     dataset.splice(1, 0, {category: category, count: lostWeeks});
     DotMatrixChart( dataset, chart_options);
   }
+
+
+  /**
+   * SCROLL
+   */
+
+   function jumpToID(id) {
+    document.getElementById(id).scrollIntoView({behavior: "smooth"});
+}
