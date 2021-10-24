@@ -1,6 +1,7 @@
 body {
     margin: 0;
     background-color: #F8F1E5;
+    overflow: hidden; /* to disable scrolling */
 }
 
 .container-text {
