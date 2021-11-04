@@ -18,10 +18,10 @@
         <p>
           Enter your age
           <input typche="number" id="age" placeholder="Some number...">
-          <button onclick="constructWaffle()">Enter</button>
+          <button onclick="constructWaffle(); showButton('page1-down')">Enter</button>
         </p>
 
-        <button class="scroll down" onclick="jumpToID('page2')">jump down</button>
+        <button class="hidden scroll down" id="page1-down" onclick="jumpToID('page2')">jump down</button>
       </div>
 
       <div id="page2" class="page">

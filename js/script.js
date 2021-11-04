@@ -52,6 +52,11 @@ function splitWeeksToLive(category, placeholder) {
    * SCROLL
    */
 
-   function jumpToID(id) {
-    document.getElementById(id).scrollIntoView({behavior: "smooth"});
+function jumpToID(id) {
+  document.getElementById(id).scrollIntoView({behavior: "smooth"});
+}
+
+function showButton(id) {
+  let element = document.getElementById(id);
+  element.classList.remove("hidden");
 }
