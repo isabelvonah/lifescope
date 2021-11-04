@@ -30,12 +30,18 @@ function add500Dots() {
 //add a category without changing the number of dots
 function splitWeeksToLive(category, placeholder) {
     WeeksToLive = 0;
+    //counts the weeks of all categories except the first ("lived")
     for (let i = 1; i < dataset.length; i++) {
         WeeksToLive += dataset[i].count;
     };
+    
     hoursOfActivity = document.getElementById(category).value;
+    // let hoursOfActivity be placeholder, when the input is empty
     if (hoursOfActivity == 0) {hoursOfActivity = placeholder};
-    lostWeeks = parseInt(hoursOfActivity / 24 * dataset[dataset.length - 1].count);
+
+    lostWeeks = parseInt(hoursOfActivity / 24 * WeeksToLive);
+
+    //reduces free time in last category and adds new category
     dataset[dataset.length - 1].count -= lostWeeks;
     dataset.splice(1, 0, {category: category, count: lostWeeks});
     DotMatrixChart( dataset, chart_options );
