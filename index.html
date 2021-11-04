@@ -12,54 +12,55 @@
 </head>
 
 <body>
+  <div class="container-text">
+      <div id="page1" class="page">
+        <!--constructWaffle-->
+        <p>
+          Enter your age
+          <input typche="number" id="age" placeholder="Some number...">
+          <button onclick="constructWaffle()">Enter</button>
+        </p>
 
-  <body>
-    <div class="container-text">
-        <div id="page1" class="page">
-            <button class="scroll down" onclick="jumpToID('page2')">jump down</button>
-        </div>
-        <div id="page2" class="page">
-            <button class="scroll down" onclick="jumpToID('page3')">jump down</button>
-            <button class="scroll" onclick="jumpToID('page1')">jump up</button>
-        </div>
-        <div id="page3" class="page">
-            <button class="scroll" onclick="jumpToID('page2')">jump up</button>
-        </div>
-    </div>
-    <div class="container-dotChart">
+        <button class="scroll down" onclick="jumpToID('page2')">jump down</button>
+      </div>
 
-      <div id="DotMatrixChart"></div> 
+      <div id="page2" class="page">
+        <button class="scroll" onclick="jumpToID('page1')">jump up</button>
 
-      <!--constructWaffle-->
-      <p>
-        Enter your age
-        <input typche="number" id="age" placeholder="Some number...">
-        <button onclick="constructWaffle()">Enter</button>
-      </p>
+        <!--add500Dots-->
+        <button onclick="add500Dots()">Add 500 dots</button>
 
-      <!--add500Dots-->
-      <button onclick="add500Dots()">Add 500 dots</button>
+        <!--addCategory-->
+        <p>
+          <input type="text" id="category" placeholder="Category...">
+          <input type="number" id="myNumber" placeholder="Some number...">
+          <button onclick="addCategory()">Add category</button>
+        </p>
 
-      <!--addCategory-->
-      <p>
-        <input type="text" id="category" placeholder="Category...">
-        <input type="number" id="myNumber" placeholder="Some number...">
-        <button onclick="addCategory()">Add category</button>
-      </p>
+        <button class="scroll down" onclick="jumpToID('page3')">jump down</button>
+      </div>
 
-      <!--splitWeeksToLive-->
-      <p>
-        I usually get <input type="number" id="sleep" placeholder="6"> hours of sleep a day. 
-        <button onclick="splitWeeksToLive('sleep',6)">Show new category</button>
-      </p>
-      <p>
-        I usually spend <input type="number" id="travelling" placeholder="1"> hours travelling a day. 
-        <button onclick="splitWeeksToLive('travelling',1)">Show new category</button>
-      </p>
-            
-          </div>
+      <div id="page3" class="page">
+        <button class="scroll" onclick="jumpToID('page2')">jump up</button>
+
+        <!--splitWeeksToLive-->
+        <p>
+          I usually get <input type="number" id="sleep" placeholder="6"> hours of sleep a day. 
+          <button onclick="splitWeeksToLive('sleep',6)">Show new category</button>
+        </p>
+        <p>
+          I usually spend <input type="number" id="travelling" placeholder="1"> hours travelling a day. 
+          <button onclick="splitWeeksToLive('travelling',1)">Show new category</button>
+        </p>
+      </div>
+  </div>
+
+  <div class="container-dotChart">
+
+    <div id="DotMatrixChart"></div> 
+
+  </div>
     
-
 </body>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
