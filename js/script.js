@@ -1,3 +1,7 @@
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+}
+
 function constructWaffle() {
     age = document.getElementById("age").value;
 
