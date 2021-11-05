@@ -18,11 +18,11 @@
   <div class="container-text">
       <div id="page1" class="page">
         <!--constructWaffle-->
-        <p>
+        <div>
           Enter your age
           <input typche="number" id="age" placeholder="Some number...">
-          <button onclick="constructWaffle(); showButton('page1-down')">Enter</button>
-        </p>
+          <img class="enter-button" src="img/inputArrow.svg" alt="Enter" onclick="constructWaffle(); showButton('page1-down')">
+        </div>
 
         <button class="hidden scroll down" id="page1-down" onclick="jumpToID('page2')">jump down</button>
       </div>
@@ -47,13 +47,13 @@
         <button class="scroll" onclick="jumpToID('page2')">jump up</button>
 
         <!--splitWeeksToLive-->
-        <p>
+        <div>
           I usually get <input type="number" id="sleep" placeholder="6"> hours of sleep a day. 
-          <button onclick="splitWeeksToLive('sleep',6)">Show new category</button>
-        </p>
-        <p>
+          <img class="enter-button" src="img/inputArrow.svg" alt="Show new category"onclick="splitWeeksToLive('sleep',6)">
+        </div>
+        <div>
           I usually spend <input type="number" id="travelling" placeholder="1"> hours travelling a day. 
-          <button onclick="splitWeeksToLive('travelling',1)">Show new category</button>
+          <img class="enter-button" src="img/inputArrow.svg" alt="Show new category"onclick="splitWeeksToLive('travelling',1)"></button>
         </p>
       </div>
   </div>

@@ -18,12 +18,9 @@ input {
     padding: 2px 0px 8px 10px;
     margin-left: 15px;
     margin-right: 10px;
+    border: 1px solid black;
     border-radius: 0;
-    border-width: 1px;
-    border-color: black;
-    border-style: solid;
     font-size: 20px;
-}
 }
 
 .container-text {
@@ -45,6 +42,10 @@ input {
     position: relative;
     height: 100vh;
     border: 1px solid chartreuse;
+}
+
+.enter-button {
+    margin-left: 15px;
 }
 
 .scroll{
