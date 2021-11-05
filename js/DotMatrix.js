@@ -13,11 +13,21 @@ function DotMatrixChart( dataset, options ) {
   
   let totalNumOfCircles = 0;
   let uniqueCategories = [];
+  let colors = [];
 
   for( let i=0; i<dataset.length; i++ ) {
     uniqueCategories.push( dataset[i].category );
+    colors.push( dataset[i].color);
     totalNumOfCircles += dataset[i]['count'];
   }
+
+	let catcol = [];
+	uniqueCategories.forEach(function(cat, i){
+		let obj = {};
+		obj.cat = cat;
+		obj.col = colors[i];
+		catcol.push(obj);
+	});
 
   let numOfLines = Math.ceil( totalNumOfCircles/numOfCirclesInARow );
 
@@ -69,10 +79,11 @@ function DotMatrixChart( dataset, options ) {
         globalDotXPosition+=1;
       }
 
-      arr[i] = { y:globalLineNo, x: globalDotXPosition-1, category:d.category };
+      arr[i] = { y:globalLineNo, x: globalDotXPosition-1, category:d.category, color: d.color };
       globalLineSize += 1;
 
     }
+		console.log(d);
     return arr;
   }
 
@@ -89,14 +100,11 @@ function DotMatrixChart( dataset, options ) {
   var circleArray = groups.selectAll("g.circleArray")
     .data( function(d) { return generate_array(d); } );
 
-	let color = d3.scale.ordinal()
-  	.range(options.colors);
-
   circleArray.enter()
 		.append('g')
 		.attr("class", "circleArray")
 		.append("circle")
-		.style("fill",function(d){ return color(d.category); })
+		.style("fill",function(d){ return d.color; })
 		.attr("r", dotRadius)
 		.attr("cx", function(d) { return xScale(d.x); })
 		.attr("cy", function(d) { return yScale(d.y); });
@@ -106,7 +114,7 @@ function DotMatrixChart( dataset, options ) {
    */
   var legend = svg
     .selectAll(".legend")
-    .data(uniqueCategories)
+    .data(catcol)
     .enter()
     .append("g")
     .attr("class", "legend")
@@ -117,9 +125,7 @@ function DotMatrixChart( dataset, options ) {
     .attr("cx", width + dotRadius*4)
     .attr("cy", function(d,i){return i*dotRadius*4;})
     .attr("r", dotRadius)
-    .style("fill", function(d) {
-      return color(d);
-    })
+		.style("fill", function(d){ return d['col']; })
 
   legend
     .append("text")
@@ -127,7 +133,7 @@ function DotMatrixChart( dataset, options ) {
     .attr("text-anchor",'start')
     .attr("y", function(d,i){return i*dotRadius*4 + dotRadius;})
     .style("font-size", dotRadius*3 + "px")
-    .text(function(d){return d});
+    .text(function(d){return d['cat']});
 
   /**
    * Adds tooltip (optional).
