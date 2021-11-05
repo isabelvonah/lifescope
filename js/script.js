@@ -1,3 +1,7 @@
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+}
+
 function constructWaffle() {
     age = document.getElementById("age").value;
 
@@ -28,22 +32,34 @@ function add500Dots() {
   }
 
 //add a category without changing the number of dots
-function splitWeeksToLive(category) {
-    WeeksToLive = 0
+function splitWeeksToLive(category, placeholder) {
+    WeeksToLive = 0;
+    //counts the weeks of all categories except the first ("lived")
     for (let i = 1; i < dataset.length; i++) {
         WeeksToLive += dataset[i].count;
-    }
-    lostWeeks = parseInt(document.getElementById(category).value / 24 * WeeksToLive);
+    };
+    
+    hoursOfActivity = document.getElementById(category).value;
+    // let hoursOfActivity be placeholder, when the input is empty
+    if (hoursOfActivity == 0) {hoursOfActivity = placeholder};
+
+    lostWeeks = parseInt(hoursOfActivity / 24 * WeeksToLive);
+
+    //reduces free time in last category and adds new category
     dataset[dataset.length - 1].count -= lostWeeks;
     dataset.splice(1, 0, {category: category, count: lostWeeks});
-    DotMatrixChart( dataset, chart_options);
+    DotMatrixChart( dataset, chart_options );
   }
 
 
-  /**
-   * SCROLL
-   */
+/**
+ * SCROLL
+ */
+function jumpToID(id) {
+  document.getElementById(id).scrollIntoView({behavior: "smooth"});
+}
 
-   function jumpToID(id) {
-    document.getElementById(id).scrollIntoView({behavior: "smooth"});
+function showButton(id) {
+  let element = document.getElementById(id);
+  element.classList.remove("hidden");
 }
