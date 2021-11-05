@@ -1,15 +1,19 @@
 :root {
     --chartWidth: 1300px;
+    --font: 'Playfair Display'
 }
 
 body {
     margin: 0;
     background-color: #F8F1E5;
     overflow: hidden; /* to disable scrolling */
+    font-family: var(--font);
 }
 
 .container-text {
     width: calc(100vw - var(--chartWidth));
+    /*font-family: var(--font);*/
+    font-size: 22px;
 }
 
 .container-dotChart {
@@ -27,12 +31,8 @@ body {
     border: 1px solid chartreuse;
 }
 
-#page2 {
-    background-color: darkcyan;
-}
-
 .scroll{
-     margin: 20px;
+    margin: 20px;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
@@ -54,4 +54,19 @@ body {
 
 .hidden {
     display: none;
+}
+
+.tooltip {
+	background: #eee;
+	box-shadow: 0 0 5px #999999;
+	color: #333;
+	font-size: 12px;
+	left: 130px;
+	padding: 10px;
+	position: absolute;
+	text-align: center;
+	top: 95px;
+	z-index: 10;
+	display: block;
+	opacity: 0;
 }

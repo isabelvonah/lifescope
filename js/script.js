@@ -1,3 +1,4 @@
+//set the reload position to top
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 }
