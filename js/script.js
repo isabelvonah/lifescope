@@ -3,6 +3,10 @@ window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 }
 
+function delay(time) {
+  return new Promise(resolve => setTimeout(resolve, time));
+}
+
 function constructWaffle() {
     age = document.getElementById("age").value;
 
@@ -13,7 +17,9 @@ function constructWaffle() {
         //https://www.worldometers.info/demographics/life-expectancy/
         dataset.push({category: "to live", count: (75 - parseInt(age)) * 52, color: "#000"});
 
-        DotMatrixChart( dataset, chart_options );
+				delay(500).then(() => 
+        	DotMatrixChart( dataset, chart_options )
+				);
     }
 
     // TODO: else {print "Congratulations, your reached a very nice age."} 

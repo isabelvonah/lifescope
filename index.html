@@ -12,20 +12,22 @@
 </head>
 
 <body>
+	
+	<div id="landing-page"  class="landing-page page">
+		<div class="landing-title">
+			<p>life</p>	
+			<p>Scope</p>	
+		</div>
+		<div class="dot1"></div>
+		<div class="dot2"></div>
+		<input typche="number" id="age" placeholder="Some number...">
+
+		<button onclick="jumpToID('page1'); constructWaffle();">Enter</button>
+	</div>
+
   <div class="container-text">
+
       <div id="page1" class="page">
-        <!--constructWaffle-->
-        <p>
-          Enter your age
-          <input typche="number" id="age" placeholder="Some number...">
-          <button onclick="constructWaffle(); showButton('page1-down')">Enter</button>
-        </p>
-
-        <button class="hidden scroll down" id="page1-down" onclick="jumpToID('page2')">jump down</button>
-      </div>
-
-      <div id="page2" class="page">
-        <button class="scroll" onclick="jumpToID('page1')">jump up</button>
 
         <!--add500Dots-->
         <button onclick="add500Dots()">Add 500 dots</button>
@@ -37,11 +39,11 @@
           <button onclick="addCategory()">Add category</button>
         </p>
 
-        <button class="scroll down" onclick="jumpToID('page3')">jump down</button>
+        <button class="scroll down" onclick="jumpToID('page2')">jump down</button>
       </div>
 
-      <div id="page3" class="page">
-        <button class="scroll" onclick="jumpToID('page2')">jump up</button>
+      <div id="page2" class="page">
+        <button class="scroll" onclick="jumpToID('page1')">jump up</button>
 
         <!--splitWeeksToLive-->
         <p>
@@ -53,6 +55,7 @@
           <button onclick="splitWeeksToLive('travelling',1)">Show new category</button>
         </p>
       </div>
+
   </div>
 
   <div class="container-dotChart">
@@ -67,6 +70,7 @@
 <script type="text/javascript" src="./js/DotMatrix.js"></script>
 <script type="text/javascript" src="./js/script.js"></script>
 
+	<script>jumpToID('landing-page')</script>
 <script>
 
  //array must contain: {category: string, count: int} 
