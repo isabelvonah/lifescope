@@ -7,6 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" type="image/png" href="assets/favicon.png"/>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet"> 
 
   <title>lifeScope</title>
 </head>
@@ -20,9 +23,8 @@
 		</div>
 		<div class="dot1"></div>
 		<div class="dot2"></div>
-		<input typche="number" id="age" placeholder="Some number...">
-
-		<button onclick="jumpToID('page1'); constructWaffle();">Enter</button>
+		Enter your age: <input typche="number" id="age" placeholder="Some number...">
+    <img class="enter-button" src="img/inputArrow.svg" alt="Enter" onclick="constructWaffle(); jumpToID('page1')">
 	</div>
 
   <div class="container-text">
@@ -46,13 +48,13 @@
         <button class="scroll" onclick="jumpToID('page1')">jump up</button>
 
         <!--splitWeeksToLive-->
-        <p>
+        <div>
           I usually get <input type="number" id="sleep" placeholder="6"> hours of sleep a day. 
-          <button onclick="splitWeeksToLive('sleep',6)">Show new category</button>
-        </p>
-        <p>
+          <img class="enter-button" src="img/inputArrow.svg" alt="Show new category"onclick="splitWeeksToLive('sleep',6)">
+        </div>
+        <div>
           I usually spend <input type="number" id="travelling" placeholder="1"> hours travelling a day. 
-          <button onclick="splitWeeksToLive('travelling',1)">Show new category</button>
+          <img class="enter-button" src="img/inputArrow.svg" alt="Show new category"onclick="splitWeeksToLive('travelling',1)"></button>
         </p>
       </div>
 
@@ -70,7 +72,6 @@
 <script type="text/javascript" src="./js/DotMatrix.js"></script>
 <script type="text/javascript" src="./js/script.js"></script>
 
-	<script>jumpToID('landing-page')</script>
 <script>
 
  //array must contain: {category: string, count: int} 
@@ -83,7 +84,6 @@
     dot_padding_right : 2,
     dot_padding_top : 2,
     dot_padding_bottom : 2,
-		colors: ['#69c242', '#64bbe3', '#ffcc00', '#ff7300', '#cf2030'],
     div_selector: '#DotMatrixChart',
 		tooltip: false 
   }

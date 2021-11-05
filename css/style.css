@@ -1,7 +1,7 @@
 :root {
     --chartWidth: 1300px;
-    --font: 'Playfair Display';
 		--color-black: #333;
+    --font: 'Playfair Display', serif;
 }
 
 body {
@@ -9,6 +9,19 @@ body {
     background-color: #F8F1E5;
 		/* overflow: hidden; /* to disable scrolling */
     font-family: var(--font);
+}
+
+input, button {font-family: inherit;}
+
+input {
+    width: 30px;
+    height: 30px;
+    padding: 2px 0px 8px 10px;
+    margin-left: 15px;
+    margin-right: 10px;
+    border: 1px solid black;
+    border-radius: 0;
+    font-size: 20px;
 }
 
 .container-text {
@@ -32,7 +45,11 @@ body {
     border: 1px solid chartreuse;
 }
 
-.scroll {
+.enter-button {
+    margin-left: 15px;
+}
+
+.scroll{
     margin: 20px;
     padding: 15px 32px;
     text-align: center;
@@ -44,7 +61,6 @@ body {
     color: white;
     font-size: 16px;
     border-radius: 50%;
-
 }
 
 .down {
