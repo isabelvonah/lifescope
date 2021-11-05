@@ -10,6 +10,8 @@ body {
     font-family: var(--font);
 }
 
+input, button {font-family:inherit;}
+
 .container-text {
     width: calc(100vw - var(--chartWidth));
     /*font-family: var(--font);*/
