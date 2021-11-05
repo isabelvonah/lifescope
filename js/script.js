@@ -3,10 +3,10 @@ function constructWaffle() {
 
     if (age < 75) {
 
-        dataset.push({category: "lived", count: parseInt(age) * 52});
+        dataset.push({category: "lived", count: parseInt(age) * 52, color: "#fff"});
 
         //https://www.worldometers.info/demographics/life-expectancy/
-        dataset.push({category: "to live", count: (75 - parseInt(age)) * 52});
+        dataset.push({category: "to live", count: (75 - parseInt(age)) * 52, color: "#000"});
 
         DotMatrixChart( dataset, chart_options );
     }
