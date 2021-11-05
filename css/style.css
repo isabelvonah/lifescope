@@ -1,6 +1,6 @@
 :root {
     --chartWidth: 1300px;
-    --font: 'Playfair Display'
+    --font: 'Playfair Display', serif;
 }
 
 body {
