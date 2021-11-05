@@ -32,6 +32,8 @@ function add500Dots() {
     DotMatrixChart( dataset, chart_options );
   }
 
+let colors = ['#69c242', '#64bbe3', '#ffcc00', '#ff7300', '#cf2030'];
+
 //add a category without changing the number of dots
 function splitWeeksToLive(category, placeholder) {
     WeeksToLive = 0;
@@ -46,9 +48,11 @@ function splitWeeksToLive(category, placeholder) {
 
     lostWeeks = parseInt(hoursOfActivity / 24 * WeeksToLive);
 
+    //let colors = ['#69c242', '#64bbe3', '#ffcc00', '#ff7300', '#cf2030'];
+
     //reduces free time in last category and adds new category
     dataset[dataset.length - 1].count -= lostWeeks;
-    dataset.splice(1, 0, {category: category, count: lostWeeks});
+    dataset.splice(dataset.length - 1, 0, {category: category, count: lostWeeks, color: colors.pop()});
     DotMatrixChart( dataset, chart_options );
   }
 
