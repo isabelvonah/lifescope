@@ -15,20 +15,21 @@
 </head>
 
 <body>
+	
+	<div id="landing-page"  class="landing-page page">
+		<div class="landing-title">
+			<p>life</p>	
+			<p>Scope</p>	
+		</div>
+		<div class="dot1"></div>
+		<div class="dot2"></div>
+		Enter your age: <input type="text" id="age" placeholder="Some number...">
+    <img class="enter-button" src="img/inputArrow.svg" alt="Enter" onclick="constructWaffle(); jumpToID('page1')">
+	</div>
+
   <div class="container-text">
+
       <div id="page1" class="page">
-        <!--constructWaffle-->
-        <div>
-          Enter your age
-          <input type="text" id="age" placeholder="Some number...">
-          <img class="enter-button" src="img/inputArrow.svg" alt="Enter" onclick="constructWaffle(); showButton('page1-down')">
-        </div>
-
-        <button class="hidden scroll down" id="page1-down" onclick="jumpToID('page2')">jump down</button>
-      </div>
-
-      <div id="page2" class="page">
-        <button class="scroll" onclick="jumpToID('page1')">jump up</button>
 
         <!--add500Dots-->
         <button onclick="add500Dots()">Add 500 dots</button>
@@ -40,11 +41,11 @@
           <button onclick="addCategory()">Add category</button>
         </p>
 
-        <button class="scroll down" onclick="jumpToID('page3')">jump down</button>
+        <button class="scroll down" onclick="jumpToID('page2')">jump down</button>
       </div>
 
-      <div id="page3" class="page">
-        <button class="scroll" onclick="jumpToID('page2')">jump up</button>
+      <div id="page2" class="page">
+        <button class="scroll" onclick="jumpToID('page1')">jump up</button>
 
         <!--splitWeeksToLive-->
         <div>
@@ -56,6 +57,7 @@
           <img class="enter-button" src="img/inputArrow.svg" alt="Show new category"onclick="splitWeeksToLive('travelling',1)"></button>
         </p>
       </div>
+
   </div>
 
   <div class="container-dotChart">
