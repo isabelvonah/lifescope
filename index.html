@@ -23,38 +23,25 @@
 		</div>
 		<div class="dot1"></div>
 		<div class="dot2"></div>
-		Enter your age: <input type="text" id="age" placeholder="Some number...">
+		Enter your age: <input type="text" id="age">
     <img class="enter-button" src="img/inputArrow.svg" alt="Enter" onclick="constructWaffle(); jumpToID('page1')">
 	</div>
 
   <div class="container-text">
 
-      <div id="page1" class="page">
-
-        <!--add500Dots-->
-        <button onclick="add500Dots()">Add 500 dots</button>
-
-        <!--addCategory-->
-        <p>
-          <input type="text" id="category" placeholder="Category...">
-          <input type="number" id="myNumber" placeholder="Some number...">
-          <button onclick="addCategory()">Add category</button>
-        </p>
-
-        <button class="scroll down" onclick="jumpToID('page2')">jump down</button>
-      </div>
+      <div id="page1" class="page"></div>
 
       <div id="page2" class="page">
         <button class="scroll" onclick="jumpToID('page1')">jump up</button>
 
         <!--splitWeeksToLive-->
         <div>
-          I usually get <input type="text" id="sleep" placeholder="6"> hours of sleep a day. 
-          <img class="enter-button" src="img/inputArrow.svg" alt="Show new category"onclick="splitWeeksToLive('sleep',6)">
+          I usually get <input type="text" id="sleep"> hours of sleep a day. 
+          <img class="enter-button" src="img/inputArrow.svg" alt="Show new category"onclick="splitWeeksToLive('sleep', 'blue')">
         </div>
         <div>
-          I usually spend <input type="text" id="travelling" placeholder="1"> hours travelling a day. 
-          <img class="enter-button" src="img/inputArrow.svg" alt="Show new category"onclick="splitWeeksToLive('travelling',1)"></button>
+          I usually spend <input type="text" id="travelling"> hours travelling a day. 
+          <img class="enter-button" src="img/inputArrow.svg" alt="Show new category"onclick="splitWeeksToLive('travelling', 'green')"></button>
         </p>
       </div>
 
