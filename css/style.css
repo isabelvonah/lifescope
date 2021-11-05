@@ -10,7 +10,21 @@ body {
     font-family: var(--font);
 }
 
-input, button {font-family:inherit;}
+input, button {font-family: inherit;}
+
+input {
+    width: 30px;
+    height: 30px;
+    padding: 2px 0px 8px 10px;
+    margin-left: 15px;
+    margin-right: 10px;
+    border-radius: 0;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    font-size: 20px;
+}
+}
 
 .container-text {
     width: calc(100vw - var(--chartWidth));
