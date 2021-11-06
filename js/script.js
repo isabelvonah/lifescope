@@ -1,4 +1,6 @@
-//delays execution of a function
+/**
+ * Delays execution of a function.
+ */
 function delay(time) {
   return new Promise(resolve => setTimeout(resolve, time));
 }
@@ -22,8 +24,8 @@ function weeksToYears(weeks) {
 
 
 /**
-* sets the reload position to top
-*/
+ * sets the reload position to top
+ */
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 }
