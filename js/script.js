@@ -5,8 +5,19 @@ function delay(time) {
   return new Promise(resolve => setTimeout(resolve, time));
 }
 
-function jumpToID(id) {
-  document.getElementById(id).scrollIntoView({behavior: "smooth"});
+function debounce(func){
+  let timer;
+  return function(event){
+    if(timer) clearTimeout(timer);
+    timer = setTimeout(func,50,event);
+  };
+}
+
+function changePage(from, to) {
+	nextPage = document.getElementById(to);
+  nextPage.scrollIntoView({behavior: "smooth"});
+	nextPage.classList.add('active');
+	document.getElementById(from).classList.remove('active');
 }
 
 function showButton(id) {
@@ -29,6 +40,11 @@ function weeksToYears(weeks) {
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 }
+
+
+window.addEventListener("resize",debounce(function(e){
+  document.getElementsByClassName('active')[0].scrollIntoView({behavior: "smooth"});
+}));
 
 let weeksToLive = 0;
 
