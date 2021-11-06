@@ -23,8 +23,10 @@
 		</div>
 		<div class="dot1"></div>
 		<div class="dot2"></div>
-		Enter your age: <input type="text" id="age">
-    <img class="enter-button" src="img/inputArrow.svg" alt="Enter" onclick="constructWaffle(); jumpToID('page1')">
+		<div class="inputRow enterAge" >
+      Enter your age: <input type="text" id="age">
+      <img class="enter-button" src="img/inputArrow.svg" alt="Enter" onclick="constructWaffle(); jumpToID('page1')">
+    </div>
 	</div>
 
   <div class="container-text">
@@ -35,11 +37,11 @@
         <button class="scroll" onclick="jumpToID('page1')">jump up</button>
 
         <!--splitWeeksToLive-->
-        <div>
+        <div class="inputRow">
           I usually get <input type="text" id="sleep"> hours of sleep a day. 
           <img class="enter-button" src="img/inputArrow.svg" alt="Show new category"onclick="splitWeeksToLive('sleep', 'blue')">
         </div>
-        <div>
+        <div class="inputRow">
           I usually spend <input type="text" id="travelling"> hours travelling a day. 
           <img class="enter-button" src="img/inputArrow.svg" alt="Show new category"onclick="splitWeeksToLive('travelling', 'green')"></button>
         </p>
@@ -65,8 +67,8 @@
 	var dataset = [ ];
 
   var chart_options = {
-    dot_radius : 5,
-    no_of_circles_in_a_row: 80,
+    dot_radius : 4.5,
+    no_of_circles_in_a_row: 70,
     dot_padding_left : 2,
     dot_padding_right : 2,
     dot_padding_top : 2,
