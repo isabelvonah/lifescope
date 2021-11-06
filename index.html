@@ -31,10 +31,12 @@
 
   <div class="container-text">
 
-      <div id="page1" class="page"></div>
+      <div id="page1" class="page">
+        <img class="scroll down" src="img/arrowDown.svg" onclick="jumpToID('page2')">
+      </div>
 
       <div id="page2" class="page">
-        <button class="scroll" onclick="jumpToID('page1')">jump up</button>
+        <img class="scroll" src="img/arrowUp.svg" onclick="jumpToID('page1')">
 
         <!--splitWeeksToLive-->
         <div class="inputRow">
