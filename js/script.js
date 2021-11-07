@@ -9,7 +9,7 @@ function debounce(func){
   let timer;
   return function(event){
     if(timer) clearTimeout(timer);
-    timer = setTimeout(func,50,event);
+    timer = setTimeout(func,200,event);
   };
 }
 
@@ -41,11 +41,28 @@ window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 }
 
-
+/**
+ * Listens to resize event and changes scrolling position and
+ * chart setup accordingly.
+ */
 window.addEventListener("resize",debounce(function(e){
   document.getElementsByClassName('active')[0].scrollIntoView({behavior: "smooth"});
+
+	let viewportWidth = window.innerWidth;
+	console.log(viewportWidth);
 }));
 
+let dataset = [];
+let chart_options = {
+	dot_radius : 4.5,
+	no_of_circles_in_a_row: 70,
+	dot_padding_left : 2,
+	dot_padding_right : 2,
+	dot_padding_top : 2,
+	dot_padding_bottom : 2,
+	div_selector: '#dotmatrix',
+	tooltip: false 
+ }
 let weeksToLive = 0;
 
 /**
@@ -70,9 +87,10 @@ function constructWaffle() {
 }
 
 /** 
- * add a category without changing the number of dots
- * */
-function splitWeeksToLive(category, color) { 
+ * Updates waffle chart. 
+ * Adds a category without changing the total number of dots.
+ */
+function updateWaffle(category, color) { 
 	let hoursOfActivity = document.getElementById(category).value;
 	let lostWeeks = parseInt(hoursOfActivity / 24 * weeksToLive);
 

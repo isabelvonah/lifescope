@@ -41,11 +41,11 @@
         <!--splitWeeksToLive-->
         <div class="inputRow">
           I usually get <input type="text" id="sleep"> hours of sleep a day. 
-          <img class="enter-button" src="img/inputArrow.svg" alt="Show new category"onclick="splitWeeksToLive('sleep', 'blue')">
+          <img class="enter-button" src="img/inputArrow.svg" alt="Show new category"onclick="updateWaffle('sleep', 'blue')">
         </div>
         <div class="inputRow">
           I usually spend <input type="text" id="travelling"> hours travelling a day. 
-          <img class="enter-button" src="img/inputArrow.svg" alt="Show new category"onclick="splitWeeksToLive('travelling', 'green')"></button>
+          <img class="enter-button" src="img/inputArrow.svg" alt="Show new category"onclick="updateWaffle('travelling', 'green')"></button>
         </p>
       </div>
 
@@ -62,23 +62,5 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
 <script type="text/javascript" src="./js/DotMatrix.js"></script>
 <script type="text/javascript" src="./js/script.js"></script>
-
-<script>
-
- // Array must contain: { category: string, count: int, color: string } 
-	var dataset = [ ];
-
-  var chart_options = {
-    dot_radius : 4.5,
-    no_of_circles_in_a_row: 70,
-    dot_padding_left : 2,
-    dot_padding_right : 2,
-    dot_padding_top : 2,
-    dot_padding_bottom : 2,
-    div_selector: '#dotmatrix',
-		tooltip: false 
-  }
-
-</script>
 
 </html>
