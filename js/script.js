@@ -1,4 +1,10 @@
 /**
+ * variables
+ */
+
+const lifeExpectancy = 75 // years
+
+/**
  * Delays execution of a function.
  */
 function delay(time) {
@@ -33,6 +39,10 @@ function weeksToYears(weeks) {
 	return (weeks / 52).toFixed(1)
 }
 
+function weeksToPercentage(weeks) {
+	return (weeks / yearsToWeeks(lifeExpectancy) * 100).toFixed(1)
+}
+
 
 /**
  * sets the reload position to top
@@ -54,7 +64,7 @@ let weeksToLive = 0;
 function constructWaffle() {
 	let age = document.getElementById("age").value;
 	let ageInWeeks = yearsToWeeks(age);
-	weeksToLive = yearsToWeeks(75 - parseInt(age));
+	weeksToLive = yearsToWeeks(lifeExpectancy - parseInt(age));
 
 	if (age < 75) {
 		dataset.push({category: "lived", count: ageInWeeks, color: "#fb8d46"});

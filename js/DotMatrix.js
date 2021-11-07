@@ -143,24 +143,23 @@ function DotMatrixChart( dataset, options ) {
 			.append('div')
 			.attr('class', 'tooltip');
 
-		tooltip.append('div')
-			.attr('class', 'group');
+      
 		tooltip.append('div')
 			.attr('class', 'category');
 
 		svg.selectAll(".circleArray > circle")
 			.on('mouseover', function(d,i) {
 
-				tooltip.select('.group').html("<b>Group: " + d.group+ "</b>");
-				tooltip.select('.category').html("<b>Category: " + d.category+ "</b>");
+				tooltip.select('.category').html(`${d.category}<br>${weeksToPercentage(d.count)} % of your lifetime`);
 
 				tooltip.style('display', 'block');
 				tooltip.style('opacity',2);
+        tooltip.style("font-size", dotRadius*3 + "px")
 
 			})
 			.on('mousemove', function(d) {
 				tooltip.style('top', (d3.event.layerY + 10) + 'px')
-				.style('left', (d3.event.layerX - 25) + 'px');
+				.style('left', (d3.event.layerX + 550) + 'px');
 			})
 			.on('mouseout', function() {
 				tooltip.style('display', 'none');
@@ -169,4 +168,3 @@ function DotMatrixChart( dataset, options ) {
 	}
 
 }
-
