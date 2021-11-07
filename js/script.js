@@ -93,6 +93,9 @@ function constructWaffle() {
 		);
 	}
 
+	document.getElementById("introduction1").innerHTML = `According to ~~Quelle~~ your life expectancy is ${lifeExpectancy} years.`
+	document.getElementById("introduction2").innerHTML = `So <b>${weeksToPercentage(ageInWeeks)} %</b> of your life are already over!`
+
 	// TODO: else {print "Congratulations, your reached a very nice age."} 
 }
 

@@ -10,6 +10,7 @@ body {
 	background-color: var(--bg-color);
 	/* overflow: hidden; /* to disable scrolling */
 	font-family: var(--font);
+	font-variant-numeric: lining-nums;
 }
 
 input, button {font-family: inherit;}
@@ -23,6 +24,11 @@ input {
 	border: 1px solid var(--color-black);
 	border-radius: 0;
 	font-size: 20px;
+}
+
+b {
+	font-size: 40px;
+	font-style: italic;
 }
 
 /*
@@ -59,6 +65,19 @@ input {
 
 .enterAge {
 	padding: 0;
+}
+
+/*
+ * text
+ */
+
+ .text {
+	font-size: 22px;
+	padding: 25px 100px;
+}
+
+.small {
+	font-size: 16px;
 }
 
 /*
