@@ -41,16 +41,6 @@ window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 }
 
-/**
- * Listens to resize event and changes scrolling position and
- * chart setup accordingly.
- */
-window.addEventListener("resize",debounce(function(e){
-  document.getElementsByClassName('active')[0].scrollIntoView({behavior: "smooth"});
-
-	let viewportWidth = window.innerWidth;
-	console.log(viewportWidth);
-}));
 
 let dataset = [];
 let chart_options = {
@@ -64,6 +54,39 @@ let chart_options = {
 	tooltip: false 
  }
 let weeksToLive = 0;
+let viewportWidth = window.innerWidth;
+
+/**
+ * Updates waffle chart options based on viewport width.
+ */
+function updateWaffleOptions(viewportWidth) {
+	if (viewportWidth < 1550) {
+		chart_options.dot_radius = 3.5;
+		chart_options.dot_padding_left = 1;
+		chart_options.dot_padding_right = 1;
+		chart_options.dot_padding_top = 1;
+		chart_options.dot_padding_bottom = 1;
+	} else {
+		chart_options.dot_radius = 5;
+		chart_options.dot_padding_left = 1.5;
+		chart_options.dot_padding_right = 1.5;
+		chart_options.dot_padding_top = 1.5;
+		chart_options.dot_padding_bottom = 1.5;
+	}
+}
+
+
+/**
+ * Listens to resize event and changes scrolling position and
+ * chart setup accordingly.
+ */
+window.addEventListener("resize",debounce(function(e){
+	viewportWidth = window.innerWidth;
+	document.getElementsByClassName('active')[0].scrollIntoView({behavior: "smooth"});
+	updateWaffleOptions(viewportWidth);
+	DotMatrixChart( dataset, chart_options )
+}));
+
 
 /**
  * constructs waffle chart after age input
@@ -73,6 +96,7 @@ function constructWaffle() {
 	let ageInWeeks = yearsToWeeks(age);
 	weeksToLive = yearsToWeeks(75 - parseInt(age));
 
+	updateWaffleOptions(viewportWidth);
 	if (age < 75) {
 		dataset.push({category: "lived", count: ageInWeeks, color: "#fb8d46"});
 		dataset.push({category: "to live", count: weeksToLive, color: "#0c5374"});
@@ -85,6 +109,7 @@ function constructWaffle() {
 
 	// TODO: else {print "Congratulations, your reached a very nice age."} 
 }
+
 
 /** 
  * Updates waffle chart. 
