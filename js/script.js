@@ -57,8 +57,8 @@ function constructWaffle() {
 	weeksToLive = yearsToWeeks(75 - parseInt(age));
 
 	if (age < 75) {
-		dataset.push({category: "lived", count: ageInWeeks, color: "#fff"});
-		dataset.push({category: "to live", count: weeksToLive, color: "#000"});
+		dataset.push({category: "lived", count: ageInWeeks, color: "#fb8d46"});
+		dataset.push({category: "to live", count: weeksToLive, color: "#0c5374"});
 		
 		// delays chart load to wait for scrolling to next position
 		delay(500).then(() => 
