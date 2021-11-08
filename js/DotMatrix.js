@@ -83,7 +83,7 @@ function DotMatrixChart( dataset, options ) {
       globalLineSize += 1;
 
     }
-		console.log(d);
+		//console.log(d);
     return arr;
   }
 

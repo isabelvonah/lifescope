@@ -93,7 +93,7 @@ window.addEventListener("resize",debounce(function(e){
 function constructWaffle() {
 	let age = document.getElementById("age").value;
 	let ageInWeeks = yearsToWeeks(age);
-	let weeksToLive = yearsToWeeks(lifeExpectancy - parseInt(age));
+	weeksToLive = yearsToWeeks(lifeExpectancy - parseInt(age));
 
 	updateWaffleOptions(viewportWidth);
 	if (age < 75) {
