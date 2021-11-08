@@ -1,7 +1,3 @@
-/**
- * variables
- */
-
 const lifeExpectancy = 75 // years
 
 /**
@@ -20,7 +16,7 @@ function debounce(func){
 }
 
 function changePage(from, to) {
-	nextPage = document.getElementById(to);
+	let nextPage = document.getElementById(to);
   nextPage.scrollIntoView({behavior: "smooth"});
 	nextPage.classList.add('active');
 	document.getElementById(from).classList.remove('active');
@@ -31,17 +27,10 @@ function showButton(id) {
   element.classList.remove("hidden");
 }
 
-function yearsToWeeks(years) {
-	return parseInt(years) * 52
-}
+const yearsToWeeks = (years) => parseInt(years) * 52;
+const weeksToYears = (weeks) => (weeks / 52).toFixed(1);
+const weeksToPercentage = (weeks) => (weeks / yearsToWeeks(lifeExpectancy) * 100).toFixed(1)
 
-function weeksToYears(weeks) {
-	return (weeks / 52).toFixed(1)
-}
-
-function weeksToPercentage(weeks) {
-	return (weeks / yearsToWeeks(lifeExpectancy) * 100).toFixed(1)
-}
 
 
 /**
@@ -61,7 +50,7 @@ let chart_options = {
 	dot_padding_top : 2,
 	dot_padding_bottom : 2,
 	div_selector: '#dotmatrix',
-	tooltip: false 
+	tooltip: true 
  }
 let weeksToLive = 0;
 let viewportWidth = window.innerWidth;
@@ -91,7 +80,7 @@ function updateWaffleOptions(viewportWidth) {
  * chart setup accordingly.
  */
 window.addEventListener("resize",debounce(function(e){
-	viewportWidth = window.innerWidth;
+	let viewportWidth = window.innerWidth;
 	document.getElementsByClassName('active')[0].scrollIntoView({behavior: "smooth"});
 	updateWaffleOptions(viewportWidth);
 	DotMatrixChart( dataset, chart_options )
@@ -104,7 +93,7 @@ window.addEventListener("resize",debounce(function(e){
 function constructWaffle() {
 	let age = document.getElementById("age").value;
 	let ageInWeeks = yearsToWeeks(age);
-	weeksToLive = yearsToWeeks(lifeExpectancy - parseInt(age));
+	let weeksToLive = yearsToWeeks(lifeExpectancy - parseInt(age));
 
 	updateWaffleOptions(viewportWidth);
 	if (age < 75) {
