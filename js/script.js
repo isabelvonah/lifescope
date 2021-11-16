@@ -115,14 +115,26 @@ function constructWaffle() {
 
 /** 
  * Updates waffle chart. 
- * Adds a category without changing the total number of dots.
+ * Adds or updates given category without changing the total number of dots.
  */
 function updateWaffle(category, color) { 
-	let hoursOfActivity = document.getElementById(category).value;
-	let lostWeeks = parseInt(hoursOfActivity / 24 * weeksToLive);
+	let numOfHours = document.getElementById(category).value;
+	let numOfWeeks = parseInt(numOfHours / 24 * weeksToLive);
 
-	//reduces free time in last category and adds new category
-	dataset[dataset.length - 1].count -= lostWeeks;
-	dataset.splice(dataset.length - 1, 0, {category: category, count: lostWeeks, color: color});
+	// checks if category is part of dataset
+	if ( JSON.stringify(dataset).indexOf(category) > -1 ) {
+		for ( let i=0; i<dataset.length; i++ ) {
+			if ( dataset[i].category == category ) {
+				// calcs diff from given input and existing value
+				diff = dataset[i].count - numOfWeeks;
+				dataset[dataset.length - 1].count += diff;
+				dataset[i].count = numOfWeeks;
+			}
+		}
+	} else {
+		// adds new category at index n-1
+		dataset.splice( dataset.length - 1, 0, {category: category, count: numOfWeeks, color: color} );
+		dataset[dataset.length - 1].count -= numOfWeeks;
+	}
 	DotMatrixChart( dataset, chart_options );
 }
