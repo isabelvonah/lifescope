@@ -178,14 +178,12 @@ b {
 }
 
 .tooltip {
-	background: var(--bg-color);
+	background: rgba(255,255,255,95%);
 	/*color: var(--color-black);*/
 	left: 130px;
 	padding: 10px;
-	border: 1px solid var(--color-black);
-	border-radius: 15px;
 	position: fixed;
-	text-align: center;
+	text-align: left;
 	top: 95px;
 	z-index: 100;
 	display: block;

@@ -150,7 +150,7 @@ function DotMatrixChart( dataset, options ) {
 		svg.selectAll(".circleArray > circle")
 			.on('mouseover', function(d,i) {
 
-				tooltip.select('.category').html(`${d.category}<br>${weeksToPercentage(d.count)} % of your lifetime`);
+				tooltip.select('.category').html(`${d.category}: ${weeksToPercentage(d.count)} % of your lifetime`);
 
 				tooltip.style('display', 'block');
 				tooltip.style('opacity',2);
