@@ -44,12 +44,14 @@
         <!--splitWeeksToLive-->
         <div class="inputRow">
           I usually get <input type="text" id="sleep"> hours of sleep a day. 
-          <img class="enter-button" src="img/inputArrow.svg" alt="Show new category"onclick="updateWaffle('sleep', 'blue')">
+          <img class="enter-button" src="img/inputArrow.svg" alt="Show new category"onclick="updateWaffle('sleep', 'blue', 'error-sleep')">
         </div>
+        <p class="text input-error" id="error-sleep"></p>
         <div class="inputRow">
           I usually spend <input type="text" id="travelling"> hours travelling a day. 
-          <img class="enter-button" src="img/inputArrow.svg" alt="Show new category"onclick="updateWaffle('travelling', 'green')"></button>
+          <img class="enter-button" src="img/inputArrow.svg" alt="Show new category"onclick="updateWaffle('travelling', 'green', 'error-travelling')"></button>
         </p>
+        <p class="text input-error" id="error-travelling"></p>
       </div>
 
   </div>

@@ -46,6 +46,19 @@ function validateInt(text, errorId) {
 }
 
 /**
+ * checks if the input is an integer and edits the chosen error statement accordingly
+ */
+ function validateFloat(text, errorId) {
+    if (isNaN(parseFloat(text))) {
+        document.getElementById(errorId).innerHTML = `Please enter a number!`;
+        return false;
+    }
+    else { 
+        document.getElementById(errorId).innerHTML = ``;
+        return true;}
+}
+
+/**
  * sets the reload position to top
  */
 window.onbeforeunload = function () {
@@ -107,7 +120,7 @@ function constructWaffle() {
 	let age = document.getElementById("age").value;
     
     // only constructs the waffle chart (and changes the page) if input is an ineger
-    if (validateInt(age, 'error-landing-page') == true) {
+    if (validateInt(age, 'error-landing-page')) {
         let ageInWeeks = yearsToWeeks(age);
         weeksToLive = yearsToWeeks(lifeExpectancy - parseInt(age));
 
@@ -136,24 +149,28 @@ function constructWaffle() {
  * Updates waffle chart. 
  * Adds or updates given category without changing the total number of dots.
  */
-function updateWaffle(category, color) { 
-	let numOfHours = document.getElementById(category).value;
-	let numOfWeeks = parseInt(numOfHours / 24 * weeksToLive);
+function updateWaffle(category, color, errorId) { 
+    let numOfHours = document.getElementById(category).value;
 
-	// checks if category is part of dataset
-	if ( JSON.stringify(dataset).indexOf(category) > -1 ) {
-		for ( let i=0; i<dataset.length; i++ ) {
-			if ( dataset[i].category == category ) {
-				// calcs diff from given input and existing value
-				diff = dataset[i].count - numOfWeeks;
-				dataset[dataset.length - 1].count += diff;
-				dataset[i].count = numOfWeeks;
-			}
-		}
-	} else {
-		// adds new category at index n-1
-		dataset.splice( dataset.length - 1, 0, {category: category, count: numOfWeeks, color: color} );
-		dataset[dataset.length - 1].count -= numOfWeeks;
-	}
-	DotMatrixChart( dataset, chart_options );
+    // only updates the waffle chart if input has the type float
+    if (validateFloat(numOfHours, errorId)) {        
+        let numOfWeeks = parseInt(numOfHours / 24 * weeksToLive);
+
+        // checks if category is part of dataset
+        if ( JSON.stringify(dataset).indexOf(category) > -1 ) {
+            for ( let i=0; i<dataset.length; i++ ) {
+                if ( dataset[i].category == category ) {
+                    // calcs diff from given input and existing value
+                    diff = dataset[i].count - numOfWeeks;
+                    dataset[dataset.length - 1].count += diff;
+                    dataset[i].count = numOfWeeks;
+                }
+            }
+        } else {
+            // adds new category at index n-1
+            dataset.splice( dataset.length - 1, 0, {category: category, count: numOfWeeks, color: color} );
+            dataset[dataset.length - 1].count -= numOfWeeks;
+        }
+        DotMatrixChart( dataset, chart_options );
+    }
 }
