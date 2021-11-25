@@ -32,6 +32,18 @@ const weeksToYears = (weeks) => (weeks / 52).toFixed(1);
 const weeksToPercentage = (weeks) => (weeks / yearsToWeeks(lifeExpectancy) * 100).toFixed(1)
 
 
+/**
+ * checks if the input is an integer and edits the chosen error statement accordingly
+ */
+function validateInt(text, errorId) {
+    if (isNaN(parseInt(text))) {
+        document.getElementById(errorId).innerHTML = `Please enter an integer!`;
+        return false;
+    }
+    else { 
+        document.getElementById(errorId).innerHTML = ``;
+        return true;}
+}
 
 /**
  * sets the reload position to top
@@ -89,27 +101,34 @@ window.addEventListener("resize",debounce(function(e){
 
 /**
  * constructs waffle chart after age input
+ * This function is considered to be called exclusively on the landing page (because of the hard-coded changePage()).
  */
 function constructWaffle() {
 	let age = document.getElementById("age").value;
-	let ageInWeeks = yearsToWeeks(age);
-	weeksToLive = yearsToWeeks(lifeExpectancy - parseInt(age));
+    
+    // only constructs the waffle chart (and changes the page) if input is an ineger
+    if (validateInt(age, 'error-landing-page') == true) {
+        let ageInWeeks = yearsToWeeks(age);
+        weeksToLive = yearsToWeeks(lifeExpectancy - parseInt(age));
 
-	updateWaffleOptions(viewportWidth);
-	if (age < 75) {
-		dataset.push({category: "lived", count: ageInWeeks, color: "#fb8d46"});
-		dataset.push({category: "to live", count: weeksToLive, color: "#0c5374"});
-		
-		// delays chart load to wait for scrolling to next position
-		delay(500).then(() => 
-			DotMatrixChart( dataset, chart_options )
-		);
-	}
+        updateWaffleOptions(viewportWidth);
+        if (age < 75) {
+            dataset.push({category: "lived", count: ageInWeeks, color: "#fb8d46"});
+            dataset.push({category: "to live", count: weeksToLive, color: "#0c5374"});
+            
+            // delays chart load to wait for scrolling to next position
+            delay(500).then(() => 
+                DotMatrixChart( dataset, chart_options )
+            );
+        }
 
-	document.getElementById("introduction1").innerHTML = `According to ~~Quelle~~ your life expectancy is ${lifeExpectancy} years.`
-	document.getElementById("introduction2").innerHTML = `So <b>${weeksToPercentage(ageInWeeks)} %</b> of your life are already over!`
+        changePage('landing-page', 'page1');
 
-	// TODO: else {print "Congratulations, your reached a very nice age."} 
+        document.getElementById("introduction1").innerHTML = `According to ~~Quelle~~ your life expectancy is ${lifeExpectancy} years.`
+        document.getElementById("introduction2").innerHTML = `So <b>${weeksToPercentage(ageInWeeks)} %</b> of your life are already over!`
+
+        // TODO: else {print "Congratulations, your reached a very nice age."} 
+    }
 }
 
 
