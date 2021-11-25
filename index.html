@@ -24,7 +24,7 @@
 		<div class="dot1"></div>
 		<div class="dot2"></div>
 		<div class="inputRow enterAge" >
-      Enter your age: <input type="text" id="age">
+      Enter your age: <input type="text" id="age" onClick="this.select();">
       <img class="enter-button" id="ageButton" src="img/inputArrow.svg" alt="Enter" onclick="constructWaffle()">
       <p class="text input-error" id="error-landing-page"></p>
     </div>
@@ -43,12 +43,12 @@
 
         <!--splitWeeksToLive-->
         <div class="inputRow">
-          I usually get <input type="text" id="sleep"> hours of sleep a day. 
+          I usually get <input type="text" id="sleep" onClick="this.select();"> hours of sleep a day. 
           <img class="enter-button" id="sleepButton" src="img/inputArrow.svg" alt="Show new category"onclick="updateWaffle('sleep', 'blue', 'error-sleep')">
         </div>
         <p class="text input-error" id="error-sleep"></p>
         <div class="inputRow">
-          I usually spend <input type="text" id="travelling"> hours travelling a day. 
+          I usually spend <input type="text" id="travelling" onClick="this.select();"> hours travelling a day. 
           <img class="enter-button" id="travellingButton" src="img/inputArrow.svg" alt="Show new category"onclick="updateWaffle('travelling', 'green', 'error-travelling')"></button>
         </p>
         <p class="text input-error" id="error-travelling"></p>
