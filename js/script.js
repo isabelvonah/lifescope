@@ -111,6 +111,26 @@ window.addEventListener("resize",debounce(function(e){
 	DotMatrixChart( dataset, chart_options )
 }));
 
+/**
+ * connects input and belonging button so that enter key triggers a click
+ */
+function enableEnterKey (inputId, buttonId) {
+    var input = document.getElementById(inputId);
+
+    // Execute a function when the user releases a key on the keyboard
+    input.addEventListener("keyup", function(event) {
+    if (event.key == 'Enter') {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        // Trigger the button element with a click
+        document.getElementById(buttonId).click();
+    }    }); 
+}
+
+//connecting all inputs and buttons
+enableEnterKey("age", "ageButton");
+enableEnterKey("sleep", "sleepButton");
+enableEnterKey("travelling", "travellingButton");
 
 /**
  * constructs waffle chart after age input
