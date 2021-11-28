@@ -42,11 +42,12 @@ function validateInt(text, errorId) {
     }
     else { 
         document.getElementById(errorId).innerHTML = ``;
-        return true;}
+        return true;
+    }
 }
 
 /**
- * checks if the input is an integer and edits the chosen error statement accordingly
+ * checks if the input is a float and edits the chosen error statement accordingly
  */
  function validateFloat(text, errorId) {
     if (isNaN(parseFloat(text))) {
@@ -55,7 +56,8 @@ function validateInt(text, errorId) {
     }
     else { 
         document.getElementById(errorId).innerHTML = ``;
-        return true;}
+        return true;
+    }
 }
 
 /**
@@ -77,7 +79,12 @@ let chart_options = {
 	div_selector: '#dotmatrix',
 	tooltip: true 
  }
+
+//global variables
 let weeksToLive = 0;
+let age = 0;
+let ageOfRetirement = 0;
+
 let viewportWidth = window.innerWidth;
 
 /**
@@ -131,6 +138,8 @@ function enableEnterKey (inputId, buttonId) {
 enableEnterKey("age", "ageButton");
 enableEnterKey("sleep", "sleepButton");
 enableEnterKey("travelling", "travellingButton");
+enableEnterKey("working", "workingButton");
+enableEnterKey("aor", "workingButton");
 
 /**
  * constructs waffle chart after age input
@@ -146,7 +155,7 @@ function constructWaffle() {
 
         updateWaffleOptions(viewportWidth);
         if (age < 75) {
-            dataset.push({category: "lived", count: ageInWeeks, color: "#fb8d46"});
+            dataset.push({category: "lived", count: ageInWeeks, color: "#fd6041"});
             dataset.push({category: "to live", count: weeksToLive, color: "#0c5374"});
             
             // delays chart load to wait for scrolling to next position
@@ -173,7 +182,8 @@ function updateWaffle(category, color, errorId) {
     let numOfHours = document.getElementById(category).value;
 
     // only updates the waffle chart if input has the type float
-    if (validateFloat(numOfHours, errorId)) {        
+    if (validateFloat(numOfHours, errorId)) {    
+            
         let numOfWeeks = parseInt(numOfHours / 24 * weeksToLive);
 
         // checks if category is part of dataset
@@ -194,3 +204,37 @@ function updateWaffle(category, color, errorId) {
         DotMatrixChart( dataset, chart_options );
     }
 }
+
+function updateWorkWaffle(category, color, errorId) {
+    let workingPerWeek = document.getElementById("working").value;
+
+    if (validateFloat(workingPerWeek, errorId)) {
+        let numOfWeeks = parseInt(workingPerWeek / 168 * 47 * (ageOfRetirement - age));
+        console.log(numOfWeeks);
+
+        // checks if category is part of dataset
+        if ( JSON.stringify(dataset).indexOf(category) > -1 ) {
+            for ( let i=0; i<dataset.length; i++ ) {
+                if ( dataset[i].category == category ) {
+                    // calcs diff from given input and existing value
+                    diff = dataset[i].count - numOfWeeks;
+                    dataset[dataset.length - 1].count += diff;
+                    dataset[i].count = numOfWeeks;
+                }
+            }
+        } else {
+            // adds new category at index n-1
+            dataset.splice( dataset.length - 1, 0, {category: category, count: numOfWeeks, color: color} );
+            dataset[dataset.length - 1].count -= numOfWeeks;
+        }
+        DotMatrixChart( dataset, chart_options );
+    }
+}
+
+function setAOR() {
+    let aor = document.getElementById("ageOfRetirement").value;
+
+    if (validateInt(aor, "error-aor")) {
+        ageOfRetirement = parseInt(aor);
+    }
+}   

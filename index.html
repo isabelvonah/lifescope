@@ -5,7 +5,6 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" type="image/png" href="assets/favicon.png"/>
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,17 +40,21 @@
       <div id="page2" class="page">
         <img class="scroll" src="img/arrowUp.svg" onclick="changePage('page2', 'page1')">
 
-        <!--splitWeeksToLive-->
         <div class="inputRow">
           I usually get <input type="text" id="sleep" onClick="this.select();"> hours of sleep a day. 
-          <img class="enter-button" id="sleepButton" src="img/inputArrow.svg" alt="Show new category"onclick="updateWaffle('sleep', 'blue', 'error-sleep')">
+          <img class="enter-button" id="sleepButton" src="img/inputArrow.svg" alt="Show new category"onclick="updateWaffle('sleep', '#fea744', 'error-sleep')">
         </div>
         <p class="text input-error" id="error-sleep"></p>
         <div class="inputRow">
           I usually spend <input type="text" id="travelling" onClick="this.select();"> hours travelling a day. 
-          <img class="enter-button" id="travellingButton" src="img/inputArrow.svg" alt="Show new category"onclick="updateWaffle('travelling', 'green', 'error-travelling')"></button>
+          <img class="enter-button" id="travellingButton" src="img/inputArrow.svg" alt="Show new category"onclick="updateWaffle('travelling', '#7fcaa3', 'error-travelling')"></button>
         </p>
         <p class="text input-error" id="error-travelling"></p>
+        I usually work <input type="text" id="working" onClick="this.select();"> hours a week and I will be retired at the age of  <input type="text" id="ageOfRetirement" onClick="this.select();">.
+          <img class="enter-button" id="workingButton" src="img/inputArrow.svg" alt="Show new category"onclick="setAOR(); updateWorkWaffle('working', '#27ae61', 'error-working')"></button>
+        </p>
+        <p class="text input-error" id="error-working"></p>
+        <p class="text input-error" id="error-aor"></p>
       </div>
 
   </div>
