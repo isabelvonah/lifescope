@@ -139,7 +139,7 @@ enableEnterKey("age", "ageButton");
 enableEnterKey("sleep", "sleepButton");
 enableEnterKey("travelling", "travellingButton");
 enableEnterKey("working", "workingButton");
-enableEnterKey("aor", "workingButton");
+enableEnterKey("ageOfRetirement", "workingButton");
 
 /**
  * constructs waffle chart after age input
