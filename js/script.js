@@ -173,66 +173,47 @@ function constructWaffle() {
     }
 }
 
-/**
- * adds or updates given category without changing the total number of dots
- */
-function updateCategory(numOfWeeks, category, color) {
-    // checks if category is part of dataset
-    if ( JSON.stringify(dataset).indexOf(category) > -1 ) {
-        for ( let i=0; i<dataset.length; i++ ) {
-            if ( dataset[i].category == category ) {
-                // calcs diff from given input and existing value
-                diff = dataset[i].count - numOfWeeks;
-                dataset[dataset.length - 1].count += diff;
-                dataset[i].count = numOfWeeks;
-            }
-        }
-    } else {
-        // adds new category at index n-1
-        dataset.splice( dataset.length - 1, 0, {category: category, count: numOfWeeks, color: color} );
-        dataset[dataset.length - 1].count -= numOfWeeks;
-    }
-    DotMatrixChart( dataset, chart_options );
-}
-
 
 /** 
  * updates waffle chart
  */
 function updateWaffle(category, color, errorId) { 
-    let numOfHours = document.getElementById(category).value;
+    let input = document.getElementById(category).value;
 
     // only updates the waffle chart if input has the type float
-    if (validateFloat(numOfHours, errorId)) {    
+    if (validateFloat(input, errorId)) {    
+        let numOfWeeks = 0;
         
-        // proportion: numOfHours / 24 = numOfWeeks / weeksToLive
-        let numOfWeeks = parseInt(numOfHours / 24 * weeksToLive);
+        // mostly input is hours per day (see else)... exception: working (hours per week):
+        if (category === "working") {
+            // sets (global variable) ageOfRetirement
+            let aor = document.getElementById("ageOfRetirement").value;
+            if (validateInt(aor, "error-aor")) {ageOfRetirement = parseInt(aor);}
 
-        updateCategory(numOfWeeks, category, color);
+            // proportion: input (working hours per week) / 168 (hours per week) = numOfWeeks / working weeks until retirement (47 * (ageOfRetirement - age))
+            numOfWeeks = parseInt(input / 168 * 47 * (ageOfRetirement - age));
+        } else {
+            // proportion: numOfHours / 24 = numOfWeeks / weeksToLive
+            numOfWeeks = parseInt(input / 24 * weeksToLive);
+        }
+
+        // checks if category is part of dataset
+        if ( JSON.stringify(dataset).indexOf(category) > -1 ) {
+            for ( let i=0; i<dataset.length; i++ ) {
+                if ( dataset[i].category == category ) {
+                    // calcs diff from given input and existing value
+                    diff = dataset[i].count - numOfWeeks;
+                    dataset[dataset.length - 1].count += diff;
+                    dataset[i].count = numOfWeeks;
+                }
+            }
+        } else {
+            // adds new category at index n-1
+            dataset.splice( dataset.length - 1, 0, {category: category, count: numOfWeeks, color: color} );
+            dataset[dataset.length - 1].count -= numOfWeeks;
+        }
+        DotMatrixChart( dataset, chart_options );
     }
 }
 
-/**
- * variation of function above (input is hours per week and not per day)
- */
-function updateWorkWaffle(category, color, errorId) {
-    let workingHoursPerWeek = document.getElementById(category).value;
 
-    if (validateFloat(workingHoursPerWeek, errorId)) {
-        // proportion: workingHoursPerWeek / 168 (hours per week) = numOfWeeks / working weeks until retirement (47 * (ageOfRetirement - age))
-        let numOfWeeks = parseInt(workingHoursPerWeek / 168 * 47 * (ageOfRetirement - age));
-
-        updateCategory(numOfWeeks, category, color);
-    }
-}
-
-/**
- * sets the (global variable) ageOfRetirement 
- */
-function setAOR() {
-    let aor = document.getElementById("ageOfRetirement").value;
-
-    if (validateInt(aor, "error-aor")) {
-        ageOfRetirement = parseInt(aor);
-    }
-}   
