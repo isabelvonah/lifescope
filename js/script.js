@@ -78,6 +78,9 @@ function validate24(inputNumber, errorId) {
     }
 }
 
+/**
+ * checks if the input is not too big
+ */
 function validateRange(mode, numOfWeeks, category, errorId) {
     if (mode === 'insert') {
         if (numOfWeeks >= dataset[dataset.length - 1].count) {
@@ -264,4 +267,27 @@ function updateWaffle(category, color, errorId) {
     }
 }
 
+let finalDataset = [];
+let finalChartOptions = chart_options;
 
+/**
+ * constructs a new chart containing just the last category when navigating to final page
+ */
+function constructFinalWaffle () {
+    finalDataset.push({category: "to live", count: dataset[dataset.length -1], color: "#0c5374"});
+
+    finalChartOptions = chart_options;
+    finalChartOptions.dot_radius += 1.5;
+    finalChartOptions.no_of_circles_in_a_row -= 10;
+
+    DotMatrixChart( finalDataset, chart_options );
+
+    //TODO: Make it work ;)
+}
+
+/**
+ * constructs the main chart again when navigating back from final page
+ */
+function constructWaffleAgain () {
+    DotMatrixChart( dataset, chart_options );
+}

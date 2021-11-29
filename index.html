@@ -66,8 +66,15 @@
         <img class="enter-button" id="travellingButton" src="img/inputArrow.svg" alt="Show new category"onclick="updateWaffle('travelling', '#7fcaa3', 'error-travelling')">  
       </div> 
       <p class="text input-error" id="error-travelling"></p>
+      <img class="scroll down" src="img/arrowDown.svg" onclick="changePage('page4', 'finalPage'); constructFinalWaffle()">
     </div>
-    
+
+    <div id="finalPage" class="page">
+      <img class="scroll" src="img/arrowUp.svg" onclick="changePage('finalPage', 'page4'); constructWaffleAgain()">
+      <div class="inputRow">
+        
+      </div> 
+    </div>
 
   </div>
 
