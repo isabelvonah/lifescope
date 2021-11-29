@@ -188,7 +188,7 @@ enableEnterKey("ageOfRetirement", "workingButton");
  * This function is considered to be called exclusively on the landing page (because of the hard-coded changePage()).
  */
 function constructWaffle() {
-	let age = document.getElementById("age").value;
+	age = document.getElementById("age").value;
     
     // only constructs the waffle chart (and changes the page) if input is an ineger
     if (validateInt(age, 'error-landing-page')) {
@@ -234,8 +234,13 @@ function updateWaffle(category, color, errorId) {
             let aor = document.getElementById("ageOfRetirement").value;
             if (validateInt(aor, "error-aor")) {ageOfRetirement = parseInt(aor);}
 
-            // proportion: input (working hours per week) / 168 (hours per week) = numOfWeeks / working weeks until retirement (47 * (ageOfRetirement - age))
-            numOfWeeks = parseInt(input / 168 * 47 * (ageOfRetirement - age));
+            console.log(age, ageOfRetirement);
+
+            if (ageOfRetirement > age) {
+                // proportion: input (working hours per week) / 168 (hours per week) = numOfWeeks / working weeks until retirement (47 * (ageOfRetirement - age))
+                numOfWeeks = parseInt(input / 168 * 47 * (ageOfRetirement - age));
+                console.log(numOfWeeks);
+            } else { return }
         } else {
             if ( validate24(input, errorId)) {
                 // proportion: numOfHours / 24 = numOfWeeks / weeksToLive

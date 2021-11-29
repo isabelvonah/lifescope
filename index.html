@@ -41,10 +41,10 @@
       <img class="scroll" src="img/arrowUp.svg" onclick="changePage('page2', 'page1')">
       <div class="inputRow">
         I usually get <input type="text" id="sleep" onClick="this.select();"> hours of sleep a day. 
-        <img class="enter-button" id="sleepButton" src="img/inputArrow.svg" alt="Show new category"onclick="updateWaffle('sleep', '#fea744', 'error-sleep')">
+        <img class="enter-button" id="sleepButton" src="img/inputArrow.svg" alt="Show new category"onclick="updateWaffle('sleep', '#fea744', 'error-sleep'); showButton('sleepArrow')">
       </div>
       <p class="text input-error" id="error-sleep"></p>
-      <img class="scroll down" src="img/arrowDown.svg" onclick="changePage('page2', 'page3')">
+      <img id="sleepArrow" class="scroll down hidden" src="img/arrowDown.svg" onclick="changePage('page2', 'page3')">
     </div>
 
     <div id="page3" class="page">
