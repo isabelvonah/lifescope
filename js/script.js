@@ -1,5 +1,11 @@
 const lifeExpectancy = 75 // years
 
+let weeksToLive = 0;
+let age = 0;
+let ageOfRetirement = 0;
+
+let viewportWidth = window.innerWidth;
+
 /**
  * Delays execution of a function.
  */
@@ -53,11 +59,51 @@ function validateInt(text, errorId) {
     if (isNaN(parseFloat(text))) {
         document.getElementById(errorId).innerHTML = `Please enter a number!`;
         return false;
-    }
-    else { 
+    } else {
         document.getElementById(errorId).innerHTML = ``;
         return true;
     }
+}
+
+/**
+ * checks if the input is between 0 and 24 and edits the chosen error statement accordingly
+ */
+function validate24(inputNumber, errorId) {
+    if (parseFloat(inputNumber) > 0 && parseFloat(inputNumber) < 24.00) {
+        document.getElementById(errorId).innerHTML = ``;
+        return true;
+    } else {
+        document.getElementById(errorId).innerHTML = `Please enter a number between 0 and 24!`;
+        return false;
+    }
+}
+
+function validateRange(mode, numOfWeeks, category, errorId) {
+    if (mode === 'insert') {
+        if (numOfWeeks >= dataset[dataset.length - 1].count) {
+            document.getElementById(errorId).innerHTML = `Please enter a smaller number! You don't have that much time ;)`;
+            return false;
+        } else {
+            document.getElementById(errorId).innerHTML = ``;
+            return true;
+        }
+    }
+    if (mode === 'update') {
+        existingDots = 0;
+        for ( let i=0; i<dataset.length; i++ ) {
+            if ( dataset[i].category == category ) {
+                existingDots = dataset[i].count
+            }
+        }
+        if (numOfWeeks >= dataset[dataset.length - 1].count + existingDots) {
+            document.getElementById(errorId).innerHTML = `Please enter a smaller number! You don't have that much time ;)`;
+            return false;
+        } else {
+            document.getElementById(errorId).innerHTML = ``;
+            return true;
+        }
+    }
+    
 }
 
 /**
@@ -79,13 +125,6 @@ let chart_options = {
 	div_selector: '#dotmatrix',
 	tooltip: true 
  }
-
-//global variables
-let weeksToLive = 0;
-let age = 0;
-let ageOfRetirement = 0;
-
-let viewportWidth = window.innerWidth;
 
 /**
  * Updates waffle chart options based on viewport width.
@@ -150,6 +189,7 @@ function constructWaffle() {
     
     // only constructs the waffle chart (and changes the page) if input is an ineger
     if (validateInt(age, 'error-landing-page')) {
+        document.getElementById('error-landing-page').innerHTML = ``;
         let ageInWeeks = yearsToWeeks(age);
         weeksToLive = yearsToWeeks(lifeExpectancy - parseInt(age));
 
@@ -181,7 +221,8 @@ function updateWaffle(category, color, errorId) {
     let input = document.getElementById(category).value;
 
     // only updates the waffle chart if input has the type float
-    if (validateFloat(input, errorId)) {    
+    if (validateFloat(input, errorId)) { 
+        document.getElementById(errorId).innerHTML = ``;   
         let numOfWeeks = 0;
         
         // mostly input is hours per day (see else)... exception: working (hours per week):
@@ -193,24 +234,31 @@ function updateWaffle(category, color, errorId) {
             // proportion: input (working hours per week) / 168 (hours per week) = numOfWeeks / working weeks until retirement (47 * (ageOfRetirement - age))
             numOfWeeks = parseInt(input / 168 * 47 * (ageOfRetirement - age));
         } else {
-            // proportion: numOfHours / 24 = numOfWeeks / weeksToLive
-            numOfWeeks = parseInt(input / 24 * weeksToLive);
+            if ( validate24(input, errorId)) {
+                // proportion: numOfHours / 24 = numOfWeeks / weeksToLive
+                numOfWeeks = parseInt(input / 24 * weeksToLive);
+            } else { return }
         }
 
         // checks if category is part of dataset
         if ( JSON.stringify(dataset).indexOf(category) > -1 ) {
-            for ( let i=0; i<dataset.length; i++ ) {
-                if ( dataset[i].category == category ) {
-                    // calcs diff from given input and existing value
-                    diff = dataset[i].count - numOfWeeks;
-                    dataset[dataset.length - 1].count += diff;
-                    dataset[i].count = numOfWeeks;
+            if (validateRange("update", numOfWeeks, category, errorId)) {
+                for ( let i=0; i<dataset.length; i++ ) {
+                    if ( dataset[i].category == category ) {
+                        // calcs diff from given input and existing value
+                        diff = dataset[i].count - numOfWeeks;
+                        dataset[dataset.length - 1].count += diff;
+                        dataset[i].count = numOfWeeks;
+                    }
                 }
             }
         } else {
-            // adds new category at index n-1
-            dataset.splice( dataset.length - 1, 0, {category: category, count: numOfWeeks, color: color} );
-            dataset[dataset.length - 1].count -= numOfWeeks;
+            if (validateRange("insert", numOfWeeks, category, errorId)) {
+                // adds new category at index n-1
+                dataset.splice( dataset.length - 1, 0, {category: category, count: numOfWeeks, color: color} );
+                dataset[dataset.length - 1].count -= numOfWeeks;
+            }
+
         }
         DotMatrixChart( dataset, chart_options );
     }
