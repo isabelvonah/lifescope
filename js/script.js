@@ -288,11 +288,16 @@ function constructFinalWaffle () {
     DotMatrixChart( finalDataset, chart_options );
 
     //TODO: Make it work ;)
+    //TODO: hide legend...?
 }
 
 /**
  * constructs the main chart again when navigating back from final page
  */
 function constructWaffleAgain () {
+
+    finalChartOptions.dot_radius -= 1.5;
+    finalChartOptions.no_of_circles_in_a_row += 10;
+
     DotMatrixChart( dataset, chart_options );
 }
