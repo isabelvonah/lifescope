@@ -24,8 +24,8 @@
 		<div class="dot2"></div>
 		<div class="inputRow enterAge" >
       Enter your age: <input type="text" id="age" onClick="this.select();">
-      <img class="enter-button" id="ageButton" src="img/inputArrow.svg" alt="Enter" onclick="constructWaffle()">
-      <p class="text input-error" id="error-landing-page"></p>
+      <img class="enter-button" id="ageButton" src="img/inputArrow.svg" alt="Enter" onclick="constructWaffle();">
+      <p class="text input-error" id="error-start"></p>
     </div>
 	</div>
 
@@ -41,9 +41,9 @@
       <img class="scroll" src="img/arrowUp.svg" onclick="changePage('page2', 'page1')">
       <div class="inputRow">
         I usually get <input type="text" id="sleep" onClick="this.select();"> hours of sleep a day. 
-        <img class="enter-button" id="sleepButton" src="img/inputArrow.svg" alt="Show new category"onclick="updateWaffle('sleep', '#fea744', 'error-sleep'); showButton('sleepArrow')">
-      </div>
+        <img class="enter-button" id="sleepButton" src="img/inputArrow.svg" alt="Show new category"onclick="updateWaffle('sleep', '#fea744', 'error-sleep'); showButton('sleepArrow');">
       <p class="text input-error" id="error-sleep"></p>
+      </div>
       <img id="sleepArrow" class="scroll down hidden" src="img/arrowDown.svg" onclick="changePage('page2', 'page3')">
     </div>
 
@@ -53,7 +53,6 @@
         I usually work <input type="text" id="working" onClick="this.select();"> hours a week and I will be retired at the age of  <input type="text" id="ageOfRetirement" onClick="this.select();">. 
         <img class="enter-button" id="workingButton" src="img/inputArrow.svg" alt="Show new category"onclick="updateWaffle('working', '#27ae61', 'error-working')">
       </div>
-      </p>
       <p class="text input-error" id="error-working"></p>
       <p class="text input-error" id="error-aor"></p>     
       <img class="scroll down" src="img/arrowDown.svg" onclick="changePage('page3', 'page4')">
