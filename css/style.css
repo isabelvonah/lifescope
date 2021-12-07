@@ -37,18 +37,22 @@ b {
 
 .enter-button {
 	margin-left: 15px;
+	transform: translateY(8px);
 }
 
 
-.scroll {
-	margin: 80px;	
+.arrow {
+	position: absolute;
+	margin-left: -10px;
 }
 
-	.down {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-	}
+.arrow.down {
+	bottom: 48px;
+}
+
+.arrow.up {
+	top: 44px;
+}
 
 .hidden {
 	display: none;
@@ -129,7 +133,23 @@ b {
  * pages
  */
 
-.container-text {
+.page {
+	position: relative;
+	height: 100vh;
+	border: 1px solid chartreuse;
+}
+
+.content {
+	height: 100vh;
+	display: grid;
+	align-items: center;
+	margin-left: 55px;
+}
+
+.content>div {
+}
+
+.pages {
 	width: 30vw;
 	/*font-family: var(--font);*/
 }
@@ -143,11 +163,6 @@ b {
 	top: 0;
 }
 
-.page {
-	position: relative;
-	height: 100vh;
-	border: 1px solid chartreuse;
-}
 
 /*
  * Dotmatrix

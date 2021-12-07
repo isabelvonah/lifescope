@@ -33,18 +33,23 @@
     </div>
 	</div>
 
-  <div class="container-text">
+  <div class="pages">
 
     <!-- ----------------------------------------------------------------------- -->
     <!--                            introduction-page                            -->
     <!-- ----------------------------------------------------------------------- -->
 
     <div id="introduction-page" class="page">
-      <p class="fact">
-        <span id="fact-category"></span>
-      </p>
-      <p class="infobox"></p>
-      <img class="scroll down" src="img/arrowDown.svg" onclick="changePage('introduction-page', 'page1')">
+			<div class="content">
+
+				<div>
+					<p id="fact-intro" class="fact hidden"></p>
+      		<p class="infobox">
+						Infotext
+					</p>
+				</div>
+
+      <img class="arrow down" src="img/arrowDown.svg" onclick="changePage('introduction-page', 'page1')">
     </div>
 
     <!-- ----------------------------------------------------------------------- -->
@@ -52,64 +57,114 @@
     <!-- ----------------------------------------------------------------------- -->
 
     <!-- ---------------------------- page1 (sleep) ---------------------------- -->
+
     <div id="page1" class="page">
-      <img class="scroll" src="img/arrowUp.svg" onclick="changePage('page1', 'introduction-page')">
-      <p id="fact-sleep" class="fact hidden"></p>
-      <div class="inputRow">
-        <p>I usually get <input type="text" id="sleep" onClick="this.select();"> hours of sleep a day. 
-        <img class="enter-button" id="sleepButton" src="img/inputArrow.svg" alt="Show new category"onclick="updateWaffle('sleep', '#fea744', 'error-sleep'); showButton('sleepArrow');"> </p>
-        <p class="text input-error" id="error-sleep"></p>
-      </div>
-      <p class="infobox"></p>
-      <img id="sleepArrow" class="scroll down hidden" src="img/arrowDown.svg" onclick="changePage('page1', 'page2')">
+			<div class="content">
+				<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('page1', 'introduction-page')">
+
+				<div>
+					<p id="fact-sleep" class="fact hidden"></p>
+					<p>
+						I usually get <input type="text" id="sleep" onClick="this.select();"> hours of sleep a day. 
+						<img class="enter-button" id="sleepButton" src="img/inputArrow.svg" alt="Show new category" 
+						onclick="updateWaffle('sleep', '#fea744', 'error-sleep'); showButton('sleepArrow');">
+					</p>
+					<p class="text input-error" id="error-sleep"></p>
+					<p class="infobox">
+						Entwurf... was zur durchschnittlichen/gesunden Schlafdauer. 
+						Sleep duration is important, but it’s not the end-all, be-all. 
+						Sleep quality is another critical factor to consider, and it is 
+						closely connected with sleep continuity and avoiding sleep disruptions.
+					</p>
+				</div>
+
+				<img id="sleepArrow" class="arrow down hidden" src="img/arrowDown.svg" onclick="changePage('page1', 'page2')">
+    	</div>
     </div>
 
     <!-- ---------------------------- page2 (work) ----------------------------- -->
+
     <div id="page2" class="page">
-      <img class="scroll" src="img/arrowUp.svg" onclick="changePage('page2', 'page1')">
-      <p id="fact-work" class="fact"></p>
-      <div class ="inputRow">
-        <p>I usually work <input type="text" id="working" onClick="this.select();"> hours a week and I will be retired at the age of  <input type="text" id="ageOfRetirement" onClick="this.select();">.
-        <img class="enter-button" id="workingButton" src="img/inputArrow.svg" alt="Show new category"onclick="updateWaffle('working', '#27ae61', 'error-working')"></p>
-        <p class="text input-error" id="error-working"></p>
-        <p class="text input-error" id="error-aor"></p> 
-      </div>
-      <p class="infobox"></p>
-      <img class="scroll down" src="img/arrowDown.svg" onclick="changePage('page2', 'page3')">
+			<div class="content">
+      	<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('page2', 'page1')">
+
+				<div>
+					<p id="fact-work" class="fact"></p>
+					<p>
+						I usually work <input type="text" id="working" onClick="this.select();"> 
+						hours a week and I will be retired at the age of  
+						<input type="text" id="ageOfRetirement" onClick="this.select();">.
+						<img class="enter-button" id="workingButton" src="img/inputArrow.svg" alt="Show new category" 
+						onclick="updateWaffle('working', '#27ae61', 'error-working')">
+					</p>
+					<p class="text input-error" id="error-working"></p>
+					<p class="infobox">
+						Infotext
+					</p>
+				</div>
+
+      	<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('page2', 'page3')">
+    	</div>
     </div>
 
     <!-- ---------------------------- page3 (media) ---------------------------- -->
+
     <div id="page3" class="page">
-      <img class="scroll" src="img/arrowUp.svg" onclick="changePage('page3', 'page2')">
-      <p id="fact-media" class="fact"></p>
-      <div class="inputRow">
-        <p>I usually spend <input type="text" id="travelling" onClick="this.select();"> hours travelling a day. 
-        <img class="enter-button" id="travellingButton" src="img/inputArrow.svg" alt="Show new category"onclick="updateWaffle('travelling', '#7fcaa3', 'error-travelling')"> </p>
-        <p class="text input-error" id="error-travelling"></p>
-      </div> 
-      <p class="infobox"></p>
-      <img class="scroll down" src="img/arrowDown.svg" onclick="changePage('page3', 'page4')">
+			<div class="content">
+      	<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('page3', 'page2')">
+
+				<div>
+      		<p id="fact-media" class="fact"></p>
+        	<p>
+						I usually spend <input type="text" id="travelling" onClick="this.select();"> 
+						hours travelling a day. 
+        		<img class="enter-button" id="travellingButton" src="img/inputArrow.svg" alt="Show new category" 
+						onclick="updateWaffle('travelling', '#7fcaa3', 'error-travelling')">
+					</p>
+        	<p class="text input-error" id="error-travelling"></p>
+      		<p class="infobox">
+						Infotext
+					</p>
+      	</div> 
+
+      	<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('page3', 'page4')">
+    	</div>
     </div>
 
     <!-- ---------------------- page4 (admin / household) ---------------------- -->
+
     <div id= "page4" class="page">
-      <img class="scroll" src="img/arrowUp.svg" onclick="changePage('page4', 'page3')">
-      <p id="fact-admin" class="fact"></p>
-      <div class="inputRow"></div> 
-      <p class="infobox"></p>
-      <img class="scroll down" src="img/arrowDown.svg" onclick="changePage('page4', 'custom-page')">
+			<div class="content">
+      	<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('page4', 'page3')">
+
+				<div>
+      		<p id="fact-admin" class="fact"></p>
+      		<p class="infobox">
+						Infotext
+					</p>
+				</div>
+
+      	<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('page4', 'custom-page')">
+	    </div>
     </div>
 
     <!-- ----------------------------------------------------------------------- -->
     <!--                               custom-page                               -->
     <!-- ----------------------------------------------------------------------- -->
 
-    <div id= "custom-page" class="page">
-      <img class="scroll" src="img/arrowUp.svg" onclick="changePage('custom-page', 'page4')">
-      <p id="fact-admin" class="fact"></p>
-      <div class="inputRow"></div>
-      <div class="infobox"></div>
-      <img class="scroll down" src="img/arrowDown.svg" onclick="changePage('custom-page', 'depri-page')">
+    <div id="custom-page" class="page">
+			<div class="content">
+      	<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('custom-page', 'page4')">
+
+				<div>
+      		<p id="fact-admin" class="fact"></p>
+      		<p class="infobox">
+						Infotext
+					</p>
+				</div>
+
+      	<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('custom-page', 'depri-page')">
+    	</div>
     </div>
 
     <!-- ----------------------------------------------------------------------- -->
@@ -117,16 +172,25 @@
     <!-- ----------------------------------------------------------------------- -->
     
     <div id="depri-page" class="page">
-      <img class="scroll" src="img/arrowUp.svg" onclick="changePage('depri-page', 'custom-page')">
-      <div class="infobox"></div>
-      <div class="inputRow"></div>
-      <div class="inputRow"></div>
-      <div class="inputRow"></div>
-      <div class="inputRow"></div>
-      <img class="scroll down" src="img/arrowDown.svg" onclick="changePage('depri-page', 'fun-page')">
+			<div class="content">
+      	<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('depri-page', 'custom-page')">
+
+				<div>
+					<div class="infobox"></div>
+					<div class="inputRow"></div>
+					<div class="inputRow"></div>
+					<div class="inputRow"></div>
+					<div class="inputRow"></div>
+      		<p class="infobox">
+						Infotext
+					</p>
+				<div>
+
+      	<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('depri-page', 'fun-page')">
+    	</div>
     </div>
 
-  </div>
+	</div><!-- .pages -->
   
   <!-- ------------------------------ dotmatrix ------------------------------ -->
   <div class="container-dotChart">
@@ -140,10 +204,10 @@
   <!-- ----------------------------------------------------------------------- -->
 
   <div id="fun-page"  class="landing-page page active">
-		<img class="scroll" src="img/arrowUp.svg" onclick="changePage('fun-page', 'depri-page')">
+		<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('fun-page', 'depri-page')">
     <div class="dot1"></div>
 		<div class="dot2"></div>
-    <img class="scroll down" src="img/arrowDown.svg" onclick="changePage('fun-page', 'references-page')">
+    <img class="arrow down" src="img/arrowDown.svg" onclick="changePage('fun-page', 'references-page')">
 	</div>
 
   <!-- ----------------------------------------------------------------------- -->
@@ -151,7 +215,7 @@
   <!-- ----------------------------------------------------------------------- -->
 
   <div id="references-page"  class="landing-page page active">
-    <img class="scroll" src="img/arrowUp.svg" onclick="changePage('references-page', 'fun-page')">
+    <img class="arrow up" src="img/arrowUp.svg" onclick="changePage('references-page', 'fun-page')">
 		<div class="dot1"></div>
 		<div class="dot2"></div>
 	</div>
