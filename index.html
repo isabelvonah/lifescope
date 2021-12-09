@@ -27,7 +27,9 @@
 		<div class="dot1"></div>
 		<div class="dot2"></div>
 		<div class="inputRow enterAge" >
-      Enter your age: <input type="text" id="age" onClick="this.select();">
+      age: <input type="text" id="age" onClick="this.select();"> <br>
+      sex: <input type="radio" id="female" name="sex" value="female" checked><label for="female">female</label>
+      <input type="radio" id="male" name="sex" value="male"><label for="male">male</label>
       <img class="enter-button" id="ageButton" src="img/inputArrow.svg" alt="Enter" onclick="constructWaffle();">
       <p class="text input-error" id="error-start"></p>
     </div>
@@ -43,7 +45,7 @@
 			<div class="content">
 
 				<div>
-					<p id="fact-intro" class="fact hidden"></p>
+					<p id="fact-intro" class="fact"></p>
       		<p class="infobox">
 						Infotext
 					</p>
@@ -64,7 +66,7 @@
 				<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('page1', 'introduction-page')">
 
 				<div>
-					<p id="fact-sleep" class="fact hidden"></p>
+					<p id="fact-sleep" class="fact"></p>
 					<p>
 						I usually get <input type="text" id="sleep" onClick="this.select();"> hours of sleep a day. 
 						<img class="enter-button" id="sleepButton" src="img/inputArrow.svg" alt="Show new category" 

@@ -1,4 +1,4 @@
-const lifeExpectancy = 75; // years
+let lifeExpectancy = 0; // years
 
 let weeksToLive = 0;
 let age = 0;
@@ -137,29 +137,55 @@ window.addEventListener("resize",debounce(function(e){
 	DotMatrixChart( dataset, chart_options )
 }));
 
+/**
+ * Builds initial waffle chart based on age and sex input.
+ */
+function buildWaffle(data) {
+
+    let currentLifeExpectancy = data[new Date().getFullYear() - 1951][age];
+    console.log(currentLifeExpectancy);
+    lifeExpectancy = Math.round(currentLifeExpectancy) + age;
+    console.log(lifeExpectancy);
+
+    resetError('start');
+    updateWaffleOptions(viewportWidth);
+    let ageInWeeks = yearsToWeeks(age);
+    console.log(age, lifeExpectancy);
+    weeksToLive = yearsToWeeks(lifeExpectancy - age);
+
+    dataset.push( {category: "lived", count: ageInWeeks, color: "#fd6041"} );
+    dataset.push( {category: "to live", count: weeksToLive, color: "#0c5374"} );
+    // Waits for finished scrolling event before building chart.
+    delay(500).then(() => 
+        DotMatrixChart( dataset, chart_options )
+    );
+
+    document.getElementById("fact-intro").innerHTML = `<span> ${ageInWeeks} weeks </span> of your life have already passed. Yet, according to statistics, there are <span> ${weeksToLive} more weeks </span> awaiting you.`;
+
+}
 
 /**
- * Builds initial waffle chart based on age input.
+ * Evaluates age and sex input and (if validated) builds waffle chart.
  */
 function constructWaffle() {
 	age = parseInt(document.getElementById('age').value);
-  
-	if (validateInt(age) && age > 0) {
+    let female = document.getElementById('female').checked;
+    console.log(female)
 
-		resetError('start');
-		updateWaffleOptions(viewportWidth);
-		let ageInWeeks = yearsToWeeks(age);
-		weeksToLive = yearsToWeeks(lifeExpectancy - parseInt(age));
+	if (validateInt(age) && age > 0 && female) {
 
-		if (age < 75) {
-			dataset.push( {category: "lived", count: ageInWeeks, color: "#fd6041"} );
-			dataset.push( {category: "to live", count: weeksToLive, color: "#0c5374"} );
-			// Waits for finished scrolling event before building chart.
-			delay(500).then(() => 
-				DotMatrixChart( dataset, chart_options )
-			);
-		}
-    changePage('landing-page', 'page1');
+        d3.csv("../data/lifeexp_female.csv", function(data) {
+            buildWaffle(data);
+        });
+        changePage('landing-page', 'introduction-page');
+
+    } else if (validateInt(age) && age > 0 && female===false) {
+
+        d3.csv("../data/lifeexp_male.csv", function(data) {
+            buildWaffle(data)
+        });
+        changePage('landing-page', 'introduction-page');
+
     } else {
 			printError('start', 'Please enter your age in years...');
 		}
@@ -178,7 +204,7 @@ function updateWaffle(category, color) {
 		input = parseFloat(input);
 		if(validate24(input)) {
 			resetError(category);
-      numOfWeeks = parseInt(input / 24 * weeksToLive);
+      numOfWeeks = Math.round(input / 24 * weeksToLive);
 		} else {
 			printError(category, 'Please enter a valid number of hours');
 			return;
@@ -192,7 +218,7 @@ function updateWaffle(category, color) {
 		if (validateFloat(input) && input < 168 && validateInt(ageOfRetirement)) {
 			resetError(category);
 			if (ageOfRetirement > age) {
-				numOfWeeks = parseInt(input / 168 * 47 * (ageOfRetirement - age));
+				numOfWeeks = Math.round(input / 168 * 47 * (ageOfRetirement - age));
 			} 
 		} else {
 			printError(category, 'Please enter a valid number of working hours and age of retirement');
