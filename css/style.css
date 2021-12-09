@@ -26,6 +26,10 @@ input {
 	font-size: 20px;
 }
 
+input[type=radio] {
+    height: 15px;
+}
+
 b {
 	font-size: 40px;
 	font-style: italic;

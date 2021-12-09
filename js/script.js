@@ -175,14 +175,14 @@ function constructWaffle() {
         d3.csv("../data/lifeexp_female.csv", function(data) {
             buildWaffle(data);
         });
-        changePage('landing-page', 'page1');
+        changePage('landing-page', 'introduction-page');
 
     } else if (validateInt(age) && age > 0 && female===false) {
 
         d3.csv("../data/lifeexp_male.csv", function(data) {
             buildWaffle(data)
         });
-        changePage('landing-page', 'page1');
+        changePage('landing-page', 'introduction-page');
 
     } else {
 			printError('start', 'Please enter your age in years...');
