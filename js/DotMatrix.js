@@ -55,9 +55,12 @@ function DotMatrixChart( dataset, options ) {
 
   var svg = d3.select(divSelector)
     .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+		.attr("preserveAspectRatio", "xMinYMin meet")
+    //.attr("width", width + margin.left + margin.right)
+		.attr("viewBox", "0 0 " + (width + margin.left + margin.right) + " " + (height + margin.bottom))
+    //.attr("height", height + margin.top + margin.bottom)
+    //.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+		.classed("svg-content", true);
 
   let globalLineNo = 0.5/(numOfLines);
   let globalLineSize = 0;
