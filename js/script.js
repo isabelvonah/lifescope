@@ -160,6 +160,8 @@ function buildWaffle(data) {
         DotMatrixChart( dataset, chart_options )
     );
 
+    document.getElementById("fact-intro").innerHTML = `<span> ${ageInWeeks} weeks </span> of your life have already passed. Yet, according to statistics, there are <span> ${weeksToLive} more weeks </span> awaiting you.`;
+
 }
 
 /**

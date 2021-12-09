@@ -79,9 +79,13 @@ b {
  * text
  */
 
- .text {
-	font-size: 22px;
-	padding: 25px 100px;
+ .fact {
+	font-size: 26px;
+	padding: 25px 0px;
+}
+
+span {
+    color: chartreuse;
 }
 
 .input-error {
