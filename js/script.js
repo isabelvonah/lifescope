@@ -143,14 +143,11 @@ window.addEventListener("resize",debounce(function(e){
 function buildWaffle(data) {
 
     let currentLifeExpectancy = data[new Date().getFullYear() - 1951][age];
-    console.log(currentLifeExpectancy);
     lifeExpectancy = Math.round(currentLifeExpectancy) + age;
-    console.log(lifeExpectancy);
 
     resetError('start');
     updateWaffleOptions(viewportWidth);
     let ageInWeeks = yearsToWeeks(age);
-    console.log(age, lifeExpectancy);
     weeksToLive = yearsToWeeks(lifeExpectancy - age);
 
     dataset.push( {category: "lived", count: ageInWeeks, color: "#fd6041"} );
@@ -170,18 +167,17 @@ function buildWaffle(data) {
 function constructWaffle() {
 	age = parseInt(document.getElementById('age').value);
     let female = document.getElementById('female').checked;
-    console.log(female)
 
 	if (validateInt(age) && age > 0 && female) {
 
-        d3.csv("../data/lifeexp_female.csv", function(data) {
+        d3.csv("https://raw.githubusercontent.com/isabelvonah/lifescope/main/data/lifeexp_female.csv", function(data) {
             buildWaffle(data);
         });
         changePage('landing-page', 'introduction-page');
 
     } else if (validateInt(age) && age > 0 && female===false) {
 
-        d3.csv("../data/lifeexp_male.csv", function(data) {
+        d3.csv("https://raw.githubusercontent.com/isabelvonah/lifescope/main/data/lifeexp_male.csv", function(data) {
             buildWaffle(data)
         });
         changePage('landing-page', 'introduction-page');
