@@ -80,13 +80,31 @@ b {
  * text
  */
 
- .fact {
+.fact {
 	font-size: 26px;
 	padding: 25px 0px;
 }
 
-span {
-    color: chartreuse;
+.fact>span {
+	display: inline-block;
+	position: relative;
+  padding: 0 3px 0 3px;
+	color: white;
+	white-space: nowrap;
+}
+
+.fact>span:after {
+	content: '';
+	position: absolute;
+  height: 32px;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	background: transparent;
+	transition: all ease 0.5s;
+	background: #2DA4A8;
+  z-index: -99999;
+  transform: rotate(-1deg);
 }
 
 .input-error {
