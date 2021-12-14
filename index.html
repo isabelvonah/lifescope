@@ -68,7 +68,7 @@
 				<div>
 					<p id="fact-sleep" class="fact"></p>
 					<p class="text">
-						I usually get <input type="text" id="sleep" onClick="this.select();"> hours of sleep a day. 
+						Hours of sleep per day: <input type="text" id="sleep" onClick="this.select();">
 						<img class="enter-button" id="sleepButton" src="img/inputArrow.svg" alt="Show new category" 
 						onclick="updateWaffle('sleep', '#fea744', 'error-sleep'); showButton('sleepArrow');">
 					</p>
@@ -94,9 +94,8 @@
 				<div>
 					<p id="fact-work" class="fact"></p>
 					<p>
-						I usually work <input type="text" id="working" onClick="this.select();"> 
-						hours a week and I will be retired at the age of  
-						<input type="text" id="ageOfRetirement" onClick="this.select();">.
+						Working hours per week: <input type="text" id="working" onClick="this.select();"><br>
+						Retirement age: <input type="text" id="ageOfRetirement" onClick="this.select();">
 						<img class="enter-button" id="workingButton" src="img/inputArrow.svg" alt="Show new category" 
 						onclick="updateWaffle('working', '#27ae61', 'error-working')">
 					</p>
@@ -119,8 +118,7 @@
 				<div>
       		<p id="fact-media" class="fact"></p>
         	<p>
-						I usually spend <input type="text" id="travelling" onClick="this.select();"> 
-						hours travelling a day. 
+						Hours spend commuting per day: <input type="text" id="travelling" onClick="this.select();"> 
         		<img class="enter-button" id="travellingButton" src="img/inputArrow.svg" alt="Show new category" 
 						onclick="updateWaffle('travelling', '#7fcaa3', 'error-travelling')">
 					</p>

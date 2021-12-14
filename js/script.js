@@ -159,7 +159,10 @@ function buildWaffle(data) {
         DotMatrixChart( dataset, chart_options )
     );
 
-    document.getElementById("fact-intro").innerHTML = `<span> ${ageInWeeks} weeks </span> of your life have already passed. Yet, according to statistics, there are <span> ${weeksToLive} more weeks </span> awaiting you.`;
+    document.getElementById("fact-intro").innerHTML = `
+			<span> ${ageInWeeks} weeks </span> of your life have already passed. 
+			Yet, according to statistics, there are <span> ${weeksToLive} more weeks </span> awaiting you.
+		`;
 
 }
 
@@ -219,7 +222,7 @@ function updateWaffle(category, color) {
 				numOfWeeks = Math.round(input / 168 * 47 * (ageOfRetirement - age));
 			} 
 		} else {
-			printError(category, 'Please enter a valid number of working hours and age of retirement');
+			printError(category, 'Please enter a valid number');
 			return;
 		}
 
@@ -240,7 +243,7 @@ function updateWaffle(category, color) {
 		dataset.splice( dataset.length - 1, 0, {category: category, count: numOfWeeks, color: color} );
 		dataset[dataset.length - 1].count -= numOfWeeks;
 	} else {
-		printError(category, "Please enter a smaller number, you don't have that much time left...");
+		printError(category, "Please enter a smaller number");
 	}
 
 	DotMatrixChart( dataset, chart_options );
