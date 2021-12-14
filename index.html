@@ -31,7 +31,7 @@
       sex: <input type="radio" id="female" name="sex" value="female" checked><label for="female">female</label>
       <input type="radio" id="male" name="sex" value="male"><label for="male">male</label>
       <img class="enter-button" id="ageButton" src="img/inputArrow.svg" alt="Enter" onclick="constructWaffle();">
-      <p class="text input-error" id="error-start"></p>
+      <p class="input-error hidden" id="error-start"></p>
     </div>
 	</div>
 
@@ -67,12 +67,12 @@
 
 				<div>
 					<p id="fact-sleep" class="fact"></p>
-					<p>
+					<p class="text">
 						I usually get <input type="text" id="sleep" onClick="this.select();"> hours of sleep a day. 
 						<img class="enter-button" id="sleepButton" src="img/inputArrow.svg" alt="Show new category" 
 						onclick="updateWaffle('sleep', '#fea744', 'error-sleep'); showButton('sleepArrow');">
 					</p>
-					<p class="text input-error" id="error-sleep"></p>
+					<p class="input-error hidden" id="error-sleep"></p>
 					<p class="infobox">
 						Entwurf... was zur durchschnittlichen/gesunden Schlafdauer. 
 						Sleep duration is important, but it’s not the end-all, be-all. 
@@ -100,7 +100,7 @@
 						<img class="enter-button" id="workingButton" src="img/inputArrow.svg" alt="Show new category" 
 						onclick="updateWaffle('working', '#27ae61', 'error-working')">
 					</p>
-					<p class="text input-error" id="error-working"></p>
+					<p class="input-error hidden" id="error-working"></p>
 					<p class="infobox">
 						Infotext
 					</p>
@@ -124,7 +124,7 @@
         		<img class="enter-button" id="travellingButton" src="img/inputArrow.svg" alt="Show new category" 
 						onclick="updateWaffle('travelling', '#7fcaa3', 'error-travelling')">
 					</p>
-        	<p class="text input-error" id="error-travelling"></p>
+        	<p class="input-error hidden" id="error-travelling"></p>
       		<p class="infobox">
 						Infotext
 					</p>

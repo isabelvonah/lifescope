@@ -80,6 +80,10 @@ b {
  * text
  */
 
+.text {
+	font-size: 20px;
+}
+
 .fact {
 	font-size: 26px;
 	padding: 25px 0px;
@@ -108,9 +112,13 @@ b {
 }
 
 .input-error {
-    font-size: 16px;
-    font-style: italic;
-    padding-top: 15px;
+	font-size: 16px;
+	font-style: italic;
+	box-shadow: 5px 5px 0px var(--color-black);
+	background-color: #FF7A7A;
+	border: 1px solid black;
+	padding: 15px 19px;
+	width: max-content;
 }
 
 .small {

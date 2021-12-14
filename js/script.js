@@ -64,14 +64,14 @@ function debounce(func) {
 
 function changePage(from, to) {
 	let nextPage = document.getElementById(to);
-  nextPage.scrollIntoView({behavior: "smooth"});
+  nextPage.scrollIntoView({behavior: 'smooth'});
 	nextPage.classList.add('active');
 	document.getElementById(from).classList.remove('active');
 }
 
 function showButton(id) {
   let element = document.getElementById(id);
-  element.classList.remove("hidden");
+  element.classList.remove('hidden');
 }
 
 const yearsToWeeks = (years) => parseInt(years) * 52;
@@ -117,11 +117,13 @@ function validateRange(mode, numOfWeeks, category) {
  */
 function printError(cat, msg) {
   let error = document.getElementById('error-' + cat);
+  error.classList.remove('hidden');
 	error.innerHTML = msg;
 }
 
 function resetError(cat) {
   let error = document.getElementById('error-' + cat);
+  error.classList.add('hidden');
 	error.innerHTML = '';
 }
 
