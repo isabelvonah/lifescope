@@ -26,10 +26,9 @@
 		</div>
 		<div class="dot1"></div>
 		<div class="dot2"></div>
-		<div class="inputRow enterAge" >
-      age: <input type="text" id="age" onClick="this.select();"> <br>
-      sex: <input type="radio" id="female" name="sex" value="female" checked><label for="female">female</label>
-      <input type="radio" id="male" name="sex" value="male"><label for="male">male</label>
+		<div class="landinginput" >
+			age: <input type="text" id="age" onClick="this.select();"> <br><br>
+			sex: <p class="sex selected" id="female" onClick="setSex('female')">female</p><p class="sex" id="male" onClick="setSex('male')">male</p>
       <img class="enter-button" id="ageButton" src="img/inputArrow.svg" alt="Enter" onclick="constructWaffle();">
       <p class="input-error hidden" id="error-start"></p>
     </div>
@@ -177,11 +176,6 @@
       	<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('depri-page', 'custom-page')">
 
 				<div>
-					<div class="infobox"></div>
-					<div class="inputRow"></div>
-					<div class="inputRow"></div>
-					<div class="inputRow"></div>
-					<div class="inputRow"></div>
       		<p class="infobox">
 						Infotext
 					</p>
