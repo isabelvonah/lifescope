@@ -2,6 +2,7 @@ let lifeExpectancy = 0; // years
 
 let weeksToLive = 0;
 let age = 0;
+let sex = 'female';
 let ageOfRetirement = 0;
 
 let dataset = [];
@@ -64,14 +65,27 @@ function debounce(func) {
 
 function changePage(from, to) {
 	let nextPage = document.getElementById(to);
-  nextPage.scrollIntoView({behavior: "smooth"});
+  nextPage.scrollIntoView({behavior: 'smooth'});
 	nextPage.classList.add('active');
 	document.getElementById(from).classList.remove('active');
 }
 
 function showButton(id) {
   let element = document.getElementById(id);
-  element.classList.remove("hidden");
+  element.classList.remove('hidden');
+}
+
+function setSex(input) {
+	sex = input;
+	let btnMale = document.getElementById('male');
+	let btnFemale = document.getElementById('female');
+	if (sex == 'male') {
+		btnMale.classList.add('selected');
+		btnFemale.classList.remove('selected');
+	} else {
+		btnMale.classList.remove('selected');
+		btnFemale.classList.add('selected');
+	}
 }
 
 const yearsToWeeks = (years) => parseInt(years) * 52;
@@ -123,6 +137,7 @@ function printError(cat, msg, custom) {
 		error = document.getElementById('error-' + cat);
 	}
 
+	error.classList.remove('hidden');
 	error.innerHTML = msg;
 }
 
@@ -134,7 +149,8 @@ function resetError(cat, custom) {
 		error = document.getElementById('error-' + cat);
 	}
 
-	error.innerHTML = '';
+error.classList.add('hidden');	
+error.innerHTML = '';
 }
 
 
@@ -154,22 +170,25 @@ window.addEventListener("resize",debounce(function(e){
  */
 function buildWaffle(data) {
 
-    let currentLifeExpectancy = data[new Date().getFullYear() - 1951][age];
-    lifeExpectancy = Math.round(currentLifeExpectancy) + age;
+	let currentLifeExpectancy = data[new Date().getFullYear() - 1951][age];
+	lifeExpectancy = Math.round(currentLifeExpectancy) + age;
 
-    resetError('start');
-    updateWaffleOptions(viewportWidth);
-    let ageInWeeks = yearsToWeeks(age);
-    weeksToLive = yearsToWeeks(lifeExpectancy - age);
+	resetError('start');
+	updateWaffleOptions(viewportWidth);
+	let ageInWeeks = yearsToWeeks(age);
+	weeksToLive = yearsToWeeks(lifeExpectancy - age);
 
-    dataset.push( {category: "lived", count: ageInWeeks, color: "#fd6041"} );
-    dataset.push( {category: "to live", count: weeksToLive, color: "#0c5374"} );
-    // Waits for finished scrolling event before building chart.
-    delay(500).then(() => 
-        DotMatrixChart( dataset, chart_options )
-    );
+	dataset.push( {category: "lived", count: ageInWeeks, color: "#fd6041"} );
+	dataset.push( {category: "to live", count: weeksToLive, color: "#0c5374"} );
+	// Waits for finished scrolling event before building chart.
+	delay(500).then(() => 
+			DotMatrixChart( dataset, chart_options )
+	);
 
-    document.getElementById("fact-intro").innerHTML = `<span> ${ageInWeeks} weeks </span> of your life have already passed. Yet, according to statistics, there are <span> ${weeksToLive} more weeks </span> awaiting you.`;
+	document.getElementById("fact-intro").innerHTML = `
+		<span> ${ageInWeeks} weeks </span> of your life have already passed. 
+		Yet, according to statistics, there are <span> ${weeksToLive} more weeks </span> awaiting you.
+	`;
 
 }
 
@@ -178,25 +197,24 @@ function buildWaffle(data) {
  */
 function constructWaffle() {
 	age = parseInt(document.getElementById('age').value);
-    let female = document.getElementById('female').checked;
 
-	if (validateInt(age) && age > 0 && female) {
+	if (validateInt(age) && age > 0 && sex == 'female') {
 
-        d3.csv("https://raw.githubusercontent.com/isabelvonah/lifescope/main/data/lifeexp_female.csv", function(data) {
-            buildWaffle(data);
-        });
-        changePage('landing-page', 'introduction-page');
+		d3.csv("https://raw.githubusercontent.com/isabelvonah/lifescope/main/data/lifeexp_female.csv", function(data) {
+				buildWaffle(data);
+		});
+		changePage('landing-page', 'introduction-page');
 
-    } else if (validateInt(age) && age > 0 && female===false) {
+  } else if (validateInt(age) && age > 0 && sex == 'male') {
 
-        d3.csv("https://raw.githubusercontent.com/isabelvonah/lifescope/main/data/lifeexp_male.csv", function(data) {
-            buildWaffle(data)
-        });
-        changePage('landing-page', 'introduction-page');
+		d3.csv("https://raw.githubusercontent.com/isabelvonah/lifescope/main/data/lifeexp_male.csv", function(data) {
+				buildWaffle(data)
+		});
+		changePage('landing-page', 'introduction-page');
 
-    } else {
-			printError('start', 'Please enter your age in years...');
-		}
+  } else {
+		printError('start', 'Please enter your age in years...');
+	}
 }
 
 
@@ -256,7 +274,7 @@ function updateWaffle(category, color, custom=false) {
 		dataset.splice( dataset.length - 1, 0, {category: category, count: numOfWeeks, color: color} );
 		dataset[dataset.length - 1].count -= numOfWeeks;
 	} else {
-		printError(category, "Please enter a smaller number, you don't have that much time left...");
+		printError(category, "Please enter a smaller number");
 	}
 
 	DotMatrixChart( dataset, chart_options );

@@ -15,16 +15,16 @@ body {
 
 input, button {font-family: inherit;}
 
-input {
+input[type=text] {
 	width: 30px;
 	height: 30px;
-	padding: 2px 0px 8px 10px;
-	margin-left: 15px;
-	margin-right: 10px;
+	padding: 2px 6px 8px 4px;
+	margin: 0 4px;
 	border: 1px solid var(--color-black);
-	box-shadow: 5px 5px 0px #000000;
+	box-shadow: 5px 5px 0px var(--color-black);
 	border-radius: 0;
 	font-size: 20px;
+	text-align: center;
 }
 
 input[type=radio] {
@@ -42,7 +42,18 @@ b {
 
 .enter-button {
 	margin-left: 15px;
-	transform: translateY(8px);
+	transform: translateY(14px);
+	background-color: white;
+	border: 1px solid var(--color-black);
+	padding: 7px;
+	width: 20px;
+	height: 20px;
+	border-radius: 100%;
+}
+
+
+.enter-button:hover {
+	box-shadow: 4px 4px 0px var(--color-black);
 }
 
 
@@ -63,22 +74,37 @@ b {
 	display: none;
 }
 
-/*
- * inputRows
- */
-
-.inputRow {
-	font-size: 22px;
-	padding: 25px 100px;
+.sex.selected {
+	opacity: 1;
+	border: 1px solid var(--color-black);
+	box-shadow: 5px 5px 0px var(--color-black);
 }
 
-.enterAge {
-	padding: 0;
+.sex {
+	display: inline-block;
+	margin: 0 16px 0 7px;
+	padding: 8px 13px;
+	opacity: .7;
+	text-align: center;
+	border: 1px dashed var(--color-black);
+	background-color: white;
+	cursor: pointer;
+	box-shadow: none; 
 }
+
+#ageButton {
+	transform: translateY(9px);
+}
+
+
 
 /*
  * text
  */
+
+.text {
+	font-size: 20px;
+}
 
 .fact {
 	font-size: 26px;
@@ -108,9 +134,13 @@ b {
 }
 
 .input-error {
-    font-size: 16px;
-    font-style: italic;
-    padding-top: 15px;
+	font-size: 16px;
+	font-style: italic;
+	box-shadow: 5px 5px 0px var(--color-black);
+	background-color: #FF7A7A;
+	border: 1px solid black;
+	padding: 15px 19px;
+	width: max-content;
 }
 
 .small {
@@ -134,6 +164,11 @@ b {
 
 .landing-title>p:nth-child(2){
 	margin-top: -.5em;
+}
+
+.landinginput {
+	font-size: 22px;
+	padding: 0;
 }
 
 .dot1 {

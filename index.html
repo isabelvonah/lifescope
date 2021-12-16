@@ -26,12 +26,11 @@
 		</div>
 		<div class="dot1"></div>
 		<div class="dot2"></div>
-		<div class="inputRow enterAge" >
-      age: <input type="text" id="age" onClick="this.select();"> <br>
-      sex: <input type="radio" id="female" name="sex" value="female" checked><label for="female">female</label>
-      <input type="radio" id="male" name="sex" value="male"><label for="male">male</label>
+		<div class="landinginput" >
+			age: <input type="text" id="age" onClick="this.select();"> <br><br>
+			sex: <p class="sex selected" id="female" onClick="setSex('female')">female</p><p class="sex" id="male" onClick="setSex('male')">male</p>
       <img class="enter-button" id="ageButton" src="img/inputArrow.svg" alt="Enter" onclick="constructWaffle();">
-      <p class="text input-error" id="error-start"></p>
+      <p class="input-error hidden" id="error-start"></p>
     </div>
 	</div>
 
@@ -67,12 +66,12 @@
 
 				<div>
 					<p id="fact-sleep" class="fact"></p>
-					<p>
-						I usually get <input type="text" id="sleep" onClick="this.select();"> hours of sleep a day. 
+					<p class="text">
+						Hours of sleep per day: <input type="text" id="sleep" onClick="this.select();">
 						<img class="enter-button" id="sleepButton" src="img/inputArrow.svg" alt="Show new category" 
 						onclick="updateWaffle('sleep', '#fea744'); showButton('sleepArrow');">
 					</p>
-					<p class="text input-error" id="error-sleep"></p>
+					<p class="input-error hidden" id="error-sleep"></p>
 					<p class="infobox">
 						Entwurf... was zur durchschnittlichen/gesunden Schlafdauer. 
 						Sleep duration is important, but it’s not the end-all, be-all. 
@@ -94,13 +93,12 @@
 				<div>
 					<p id="fact-work" class="fact"></p>
 					<p>
-						I usually work <input type="text" id="working" onClick="this.select();"> 
-						hours a week and I will be retired at the age of  
-						<input type="text" id="ageOfRetirement" onClick="this.select();">.
+						Working hours per week: <input type="text" id="working" onClick="this.select();"><br>
+						Retirement age: <input type="text" id="ageOfRetirement" onClick="this.select();">
 						<img class="enter-button" id="workingButton" src="img/inputArrow.svg" alt="Show new category" 
 						onclick="updateWaffle('working', '#27ae61')">
 					</p>
-					<p class="text input-error" id="error-working"></p>
+					<p class="input-error hidden" id="error-working"></p>
 					<p class="infobox">
 						Infotext
 					</p>
@@ -119,12 +117,11 @@
 				<div>
       		<p id="fact-media" class="fact"></p>
         	<p>
-						I usually spend <input type="text" id="travelling" onClick="this.select();"> 
-						hours travelling a day. 
+						Hours spend commuting per day: <input type="text" id="travelling" onClick="this.select();"> 
         		<img class="enter-button" id="travellingButton" src="img/inputArrow.svg" alt="Show new category" 
 						onclick="updateWaffle('travelling', '#7fcaa3',)">
 					</p>
-        	<p class="text input-error" id="error-travelling"></p>
+        	<p class="input-error hidden" id="error-travelling"></p>
       		<p class="infobox">
 						Infotext
 					</p>
@@ -185,11 +182,6 @@
       	<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('depri-page', 'custom-page')">
 
 				<div>
-					<div class="infobox"></div>
-					<div class="inputRow"></div>
-					<div class="inputRow"></div>
-					<div class="inputRow"></div>
-					<div class="inputRow"></div>
       		<p class="infobox">
 						Infotext
 					</p>
