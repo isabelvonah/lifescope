@@ -70,7 +70,7 @@
 					<p>
 						I usually get <input type="text" id="sleep" onClick="this.select();"> hours of sleep a day. 
 						<img class="enter-button" id="sleepButton" src="img/inputArrow.svg" alt="Show new category" 
-						onclick="updateWaffle('sleep', '#fea744', 'error-sleep'); showButton('sleepArrow');">
+						onclick="updateWaffle('sleep', '#fea744'); showButton('sleepArrow');">
 					</p>
 					<p class="text input-error" id="error-sleep"></p>
 					<p class="infobox">
@@ -98,7 +98,7 @@
 						hours a week and I will be retired at the age of  
 						<input type="text" id="ageOfRetirement" onClick="this.select();">.
 						<img class="enter-button" id="workingButton" src="img/inputArrow.svg" alt="Show new category" 
-						onclick="updateWaffle('working', '#27ae61', 'error-working')">
+						onclick="updateWaffle('working', '#27ae61')">
 					</p>
 					<p class="text input-error" id="error-working"></p>
 					<p class="infobox">
@@ -122,7 +122,7 @@
 						I usually spend <input type="text" id="travelling" onClick="this.select();"> 
 						hours travelling a day. 
         		<img class="enter-button" id="travellingButton" src="img/inputArrow.svg" alt="Show new category" 
-						onclick="updateWaffle('travelling', '#7fcaa3', 'error-travelling')">
+						onclick="updateWaffle('travelling', '#7fcaa3',)">
 					</p>
         	<p class="text input-error" id="error-travelling"></p>
       		<p class="infobox">
@@ -160,11 +160,17 @@
       	<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('custom-page', 'page4')">
 
 				<div>
-      		<p id="fact-admin" class="fact"></p>
+      		<p id="fact-custom" class="fact"></p>
+          <p>
+            <input type="text" id="customCategory" onClick="this.select();"> per day: <input type="text" class="changeId" id="custom" onClick="this.select();"> 
+        <img class="enter-button" id="customButton" src="img/inputArrow.svg" alt="Show new category" 
+                onclick="updateWaffleCustom()">
+            </p>
       		<p class="infobox">
 						Infotext
 					</p>
 				</div>
+            <p class="text input-error" id="error-custom"></p>
 
       	<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('custom-page', 'depri-page')">
     	</div>

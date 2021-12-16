@@ -115,13 +115,25 @@ function validateRange(mode, numOfWeeks, category) {
 /**
  * Prints/resets error messages.
  */
-function printError(cat, msg) {
-  let error = document.getElementById('error-' + cat);
+function printError(cat, msg, custom) {
+	let error = "";
+	if (custom) {
+		error = document.getElementById('error-custom');
+	} else {
+		error = document.getElementById('error-' + cat);
+	}
+
 	error.innerHTML = msg;
 }
 
-function resetError(cat) {
-  let error = document.getElementById('error-' + cat);
+function resetError(cat, custom) {
+	let error = "";
+	if (custom) {
+		error = document.getElementById('error-custom');
+	} else {
+		error = document.getElementById('error-' + cat);
+	}
+
 	error.innerHTML = '';
 }
 
@@ -191,18 +203,24 @@ function constructWaffle() {
 /** 
  * Updates waffle chart.
  */
-function updateWaffle(category, color) { 
-	let input = document.getElementById(category).value;
+function updateWaffle(category, color, custom=false) { 
+    let input = "";
+    if (custom) {
+        input = document.getElementById("custom").value;
+    } else {
+        input = document.getElementById(category).value; 
+    }
+
 	let numOfWeeks = 0;
 	
-	if (category == 'sleep' || category == 'travelling') {
+	if (category == 'sleep' || category == 'travelling' || custom == true) {
 
 		input = parseFloat(input);
 		if(validate24(input)) {
-			resetError(category);
+			resetError(category, custom);
       numOfWeeks = Math.round(input / 24 * weeksToLive);
 		} else {
-			printError(category, 'Please enter a valid number of hours');
+			printError(category, 'Please enter a valid number of hours', custom);
 			return;
 		}
 
@@ -212,19 +230,19 @@ function updateWaffle(category, color) {
 		input = parseFloat(input);
 
 		if (validateFloat(input) && input < 168 && validateInt(ageOfRetirement)) {
-			resetError(category);
+			resetError(category, custom);
 			if (ageOfRetirement > age) {
 				numOfWeeks = Math.round(input / 168 * 47 * (ageOfRetirement - age));
 			} 
 		} else {
-			printError(category, 'Please enter a valid number of working hours and age of retirement');
+			printError(category, 'Please enter a valid number of working hours and age of retirement', custom);
 			return;
 		}
 
 	}
 
 	/**
-	 * Checks if category exists and input isn't to big.
+	 * Checks if category exists and input isn't too big.
 	 */
 	if ( JSON.stringify(dataset).indexOf(category) > -1 && validateRange("update", numOfWeeks, category) ) {
 		for ( let i=0; i<dataset.length; i++ ) {
@@ -242,6 +260,28 @@ function updateWaffle(category, color) {
 	}
 
 	DotMatrixChart( dataset, chart_options );
+}
+
+let colors = ['green', 'yellow', 'lime', 'lightgreen', 'lightblue', 'pink', 'red'];
+
+/**
+* Handles the color distribution for custom categories before updateWaffle(...,color,...)
+*/
+function updateWaffleCustom() {
+    let customCategory = document.getElementById('customCategory').value;
+
+	/**
+	 * Checks if category exists --> update or insert category 
+	 */
+    if ( JSON.stringify(dataset).indexOf(customCategory) > -1) {
+        for ( let i=0; i<dataset.length; i++ ) {
+            if ( dataset[i].category == customCategory ) {
+                updateWaffle(customCategory, dataset[i].color, true);
+            }
+        }
+    } else {        
+        updateWaffle(customCategory,colors.pop(), true);
+    }
 }
 
 
@@ -263,6 +303,8 @@ enableEnterKey("sleep", "sleepButton");
 enableEnterKey("travelling", "travellingButton");
 enableEnterKey("working", "workingButton");
 enableEnterKey("ageOfRetirement", "workingButton");
+enableEnterKey("customCategory", "customButton");
+enableEnterKey("custom", "customButton");
 
 
 // let finalDataset = [];
