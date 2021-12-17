@@ -94,18 +94,23 @@ const weeksToPercentage = (weeks) => (weeks / yearsToWeeks(lifeExpectancy) * 100
 
 
 /**
- * Validator functions.
+ * Validates integer and returns integer or false if validation fails.
+ * @param {*} value - Value to check.
+ * @returns {int|bool} Valid integer or false.
  */
-function validateInt(value) {
-	return Number.isInteger(value);
+function getValidInt(value) {
+  if ( !isNaN(value) && parseInt(Number(value)) == value && !isNaN(parseInt(value, 10)) ) {
+		return parseInt(value);
+	}
+	return false;
 }
 
-function validateFloat(value) {
-	return !isNaN(value)
+function getValidFloat(value) {
+	return ( !isNaN(Number(value)) ) ? Number(value) : false;
 }
 
 function validate24(value) {
-	return (validateFloat(value) && value > 0 && value < 24);
+	return (getValidFloat(value) > 0 && getValidFloat(value) < 24);
 }
 
 /**
@@ -184,16 +189,16 @@ function buildWaffle(data) {
  * Evaluates age and sex input and (if validated) builds waffle chart.
  */
 function constructWaffle() {
-	age = parseInt(document.getElementById('age').value);
+	age = getValidInt(document.getElementById('age').value);
 
-	if (validateInt(age) && age > 0 && sex == 'female') {
+	if ( age > 0 && sex == 'female' ) {
 
 		d3.csv("https://raw.githubusercontent.com/isabelvonah/lifescope/main/data/lifeexp_female.csv", function(data) {
 				buildWaffle(data);
 		});
 		changePage('landing-page', 'introduction-page');
 
-  } else if (validateInt(age) && age > 0 && sex == 'male') {
+  } else if ( age > 0 && sex == 'male' ) {
 
 		d3.csv("https://raw.githubusercontent.com/isabelvonah/lifescope/main/data/lifeexp_male.csv", function(data) {
 				buildWaffle(data)
@@ -210,40 +215,36 @@ function constructWaffle() {
  * Updates waffle chart.
  */
 function updateWaffle(category, color) { 
-	let input = document.getElementById(category).value;
+	let input = getValidFloat(document.getElementById(category).value);
 	let numOfWeeks = 0;
 	
 	if (category == 'sleep' || category == 'travelling') {
 
-		input = parseFloat(input);
 		if(validate24(input)) {
 			resetError(category);
       numOfWeeks = Math.round(input / 24 * weeksToLive);
 		} else {
 			printError(category, 'Please enter a valid number of hours');
-			return;
 		}
 
 	} else if (category == 'working') {
 
-		ageOfRetirement = parseInt(document.getElementById('ageOfRetirement').value);
-		input = parseFloat(input);
+		ageOfRetirement = getValidInt(document.getElementById('ageOfRetirement').value);
 
-		if (validateFloat(input) && input < 168 && validateInt(ageOfRetirement)) {
+		if (input && input < 168 && ageOfRetirement) {
 			resetError(category);
+
 			if (ageOfRetirement > age) {
 				numOfWeeks = Math.round(input / 168 * 47 * (ageOfRetirement - age));
 			} 
+
 		} else {
 			printError(category, 'Please enter a valid number');
-			return;
 		}
 
 	}
 
-	/**
-	 * Checks if category exists and input isn't to big.
-	 */
+	// Checks if category exists and input isn't to big.
 	if ( JSON.stringify(dataset).indexOf(category) > -1 && validateRange("update", numOfWeeks, category) ) {
 		for ( let i=0; i<dataset.length; i++ ) {
 			if ( dataset[i].category == category ) {
