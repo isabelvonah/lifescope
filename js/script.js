@@ -15,14 +15,14 @@ let chart_options = {
 	dot_padding_bottom : 2,
 	div_selector: '#dotmatrix',
 	tooltip: true 
- }
+}
 
 
 /**
  * Sets reload position to top.
  */
 window.onbeforeunload = function () {
-  window.scrollTo(0, 0);
+	window.scrollTo(0, 0);
 }
 
 
@@ -52,27 +52,27 @@ function updateWaffleOptions(viewportWidth) {
  * Delays execution of a function.
  */
 function delay(time) {
-  return new Promise(resolve => setTimeout(resolve, time));
+	return new Promise(resolve => setTimeout(resolve, time));
 }
 
 function debounce(func) {
-  let timer;
-  return function(event) {
-    if (timer) clearTimeout(timer);
-    timer = setTimeout(func,200,event);
-  };
+	let timer;
+	return function(event) {
+		if (timer) clearTimeout(timer);
+		timer = setTimeout(func,200,event);
+	};
 }
 
 function changePage(from, to) {
 	let nextPage = document.getElementById(to);
-  nextPage.scrollIntoView({behavior: 'smooth'});
+	nextPage.scrollIntoView({behavior: 'smooth'});
 	nextPage.classList.add('active');
 	document.getElementById(from).classList.remove('active');
 }
 
 function showButton(id) {
-  let element = document.getElementById(id);
-  element.classList.remove('hidden');
+	let element = document.getElementById(id);
+	element.classList.remove('hidden');
 }
 
 function setSex(input) {
@@ -99,7 +99,7 @@ const weeksToPercentage = (weeks) => (weeks / yearsToWeeks(lifeExpectancy) * 100
  * @returns {int|bool} Valid integer or false.
  */
 function getValidInt(value) {
-  if ( !isNaN(value) && parseInt(Number(value)) == value && !isNaN(parseInt(value, 10)) ) {
+	if ( !isNaN(value) && parseInt(Number(value)) == value && !isNaN(parseInt(value, 10)) ) {
 		return parseInt(value);
 	}
 	return false;
@@ -119,30 +119,30 @@ function validate24(value) {
 function validateRange(mode, numOfWeeks, category) {
 	if (mode === 'insert') {
 		return (numOfWeeks >= dataset[dataset.length - 1].count) ? false : true; 
-  }
-  if (mode === 'update') {
+	}
+	if (mode === 'update') {
 		existingDots = 0;
 		for ( let i=0; i<dataset.length; i++ ) {
 			if ( dataset[i].category == category ) {
-      	existingDots = dataset[i].count
-      }
-    }
-    return (numOfWeeks >= dataset[dataset.length - 1].count + existingDots) ? false : true;
-  }
+				existingDots = dataset[i].count
+			}
+		}
+		return (numOfWeeks >= dataset[dataset.length - 1].count + existingDots) ? false : true;
+	}
 }
 
 /**
  * Prints/resets error messages.
  */
 function printError(cat, msg) {
-  let error = document.getElementById('error-' + cat);
-  error.classList.remove('hidden');
+	let error = document.getElementById('error-' + cat);
+	error.classList.remove('hidden');
 	error.innerHTML = msg;
 }
 
 function resetError(cat) {
-  let error = document.getElementById('error-' + cat);
-  error.classList.add('hidden');
+	let error = document.getElementById('error-' + cat);
+	error.classList.add('hidden');
 	error.innerHTML = '';
 }
 
@@ -175,7 +175,7 @@ function buildWaffle(data) {
 	dataset.push( {category: "to live", count: weeksToLive, color: "#0c5374"} );
 	// Waits for finished scrolling event before building chart.
 	delay(500).then(() => 
-			DotMatrixChart( dataset, chart_options )
+		DotMatrixChart( dataset, chart_options )
 	);
 
 	document.getElementById("fact-intro").innerHTML = `
@@ -194,18 +194,18 @@ function constructWaffle() {
 	if ( age > 0 && sex == 'female' ) {
 
 		d3.csv("https://raw.githubusercontent.com/isabelvonah/lifescope/main/data/lifeexp_female.csv", function(data) {
-				buildWaffle(data);
+			buildWaffle(data);
 		});
 		changePage('landing-page', 'introduction-page');
 
-  } else if ( age > 0 && sex == 'male' ) {
+	} else if ( age > 0 && sex == 'male' ) {
 
 		d3.csv("https://raw.githubusercontent.com/isabelvonah/lifescope/main/data/lifeexp_male.csv", function(data) {
-				buildWaffle(data)
+			buildWaffle(data)
 		});
 		changePage('landing-page', 'introduction-page');
 
-  } else {
+	} else {
 		printError('start', 'Please enter your age in years...');
 	}
 }
@@ -217,12 +217,12 @@ function constructWaffle() {
 function updateWaffle(category, color) { 
 	let input = getValidFloat(document.getElementById(category).value);
 	let numOfWeeks = 0;
-	
+
 	if (category == 'sleep' || category == 'travelling') {
 
 		if(validate24(input)) {
 			resetError(category);
-      numOfWeeks = Math.round(input / 24 * weeksToLive);
+			numOfWeeks = Math.round(input / 24 * weeksToLive);
 		} else {
 			printError(category, 'Please enter a valid number of hours');
 		}
@@ -290,26 +290,26 @@ enableEnterKey("ageOfRetirement", "workingButton");
 /**
  * constructs a new chart containing just the last category when navigating to final page
 function constructFinalWaffle () {
-    finalDataset.push({category: "to live", count: dataset[dataset.length -1], color: "#0c5374"});
+		finalDataset.push({category: "to live", count: dataset[dataset.length -1], color: "#0c5374"});
 
-    finalChartOptions = chart_options;
-    finalChartOptions.dot_radius += 1.5;
-    finalChartOptions.no_of_circles_in_a_row -= 10;
+		finalChartOptions = chart_options;
+		finalChartOptions.dot_radius += 1.5;
+		finalChartOptions.no_of_circles_in_a_row -= 10;
 
-    DotMatrixChart( finalDataset, chart_options );
+		DotMatrixChart( finalDataset, chart_options );
 
-    //TODO: Make it work ;)
-    //TODO: hide legend...?
+//TODO: Make it work ;)
+//TODO: hide legend...?
 }
 
 /**
  * constructs the main chart again when navigating back from final page
 function constructWaffleAgain () {
 
-    finalChartOptions.dot_radius -= 1.5;
-    finalChartOptions.no_of_circles_in_a_row += 10;
+		finalChartOptions.dot_radius -= 1.5;
+		finalChartOptions.no_of_circles_in_a_row += 10;
 
-    DotMatrixChart( dataset, chart_options );
+		DotMatrixChart( dataset, chart_options );
 }
 
-*/
+ */
