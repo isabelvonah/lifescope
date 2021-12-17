@@ -69,7 +69,7 @@
 					<p class="text">
 						Hours of sleep per day: <input type="text" id="sleep" onClick="this.select();">
 						<img class="enter-button" id="sleepButton" src="img/inputArrow.svg" alt="Show new category" 
-						onclick="updateWaffle('sleep', '#fea744', 'error-sleep'); showButton('sleepArrow');">
+						onclick="updateWaffle('sleep', '#fea744'); showButton('sleepArrow');">
 					</p>
 					<p class="input-error hidden" id="error-sleep"></p>
 					<p class="infobox">
@@ -96,7 +96,7 @@
 						Working hours per week: <input type="text" id="working" onClick="this.select();"><br>
 						Retirement age: <input type="text" id="ageOfRetirement" onClick="this.select();">
 						<img class="enter-button" id="workingButton" src="img/inputArrow.svg" alt="Show new category" 
-						onclick="updateWaffle('working', '#27ae61', 'error-working')">
+						onclick="updateWaffle('working', '#27ae61')">
 					</p>
 					<p class="input-error hidden" id="error-working"></p>
 					<p class="infobox">
@@ -119,7 +119,7 @@
         	<p>
 						Hours spend commuting per day: <input type="text" id="travelling" onClick="this.select();"> 
         		<img class="enter-button" id="travellingButton" src="img/inputArrow.svg" alt="Show new category" 
-						onclick="updateWaffle('travelling', '#7fcaa3', 'error-travelling')">
+						onclick="updateWaffle('travelling', '#7fcaa3',)">
 					</p>
         	<p class="input-error hidden" id="error-travelling"></p>
       		<p class="infobox">
@@ -157,11 +157,17 @@
       	<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('custom-page', 'page4')">
 
 				<div>
-      		<p id="fact-admin" class="fact"></p>
+      		<p id="fact-custom" class="fact"></p>
+          <p>
+            <input type="text" id="customCategory" onClick="this.select();"> per day: <input type="text" class="changeId" id="custom" onClick="this.select();"> 
+        <img class="enter-button" id="customButton" src="img/inputArrow.svg" alt="Show new category" 
+                onclick="updateWaffleCustom()">
+            </p>
       		<p class="infobox">
 						Infotext
 					</p>
 				</div>
+            <p class="text input-error" id="error-custom"></p>
 
       	<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('custom-page', 'depri-page')">
     	</div>
