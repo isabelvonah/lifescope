@@ -139,6 +139,7 @@ function DotMatrixChart( dataset, options ) {
 	 * Adds tooltip (optional).
 	 */
 	if (options.tooltip) {
+		d3.selectAll(".tooltip").remove()
 		var tooltip = d3.select("body")
 			.append('div')
 			.attr('class', 'tooltip');
@@ -150,7 +151,7 @@ function DotMatrixChart( dataset, options ) {
 		svg.selectAll(".circleArray > circle")
 			.on('mouseover', function(d,i) {
 
-				tooltip.select('.category').html(`${d.category}: ${weeksToPercentage(d.count)} % of your lifetime`);
+				tooltip.select('.category').html(`${d.category}: ${weeksToPercentage(d.count)} % of your lifetime` + d3.event.layerX);
 
 				tooltip.style('display', 'block');
 				tooltip.style('opacity',2);
@@ -159,7 +160,7 @@ function DotMatrixChart( dataset, options ) {
 			})
 			.on('mousemove', function(d) {
 				tooltip.style('top', (d3.event.layerY + 10) + 'px')
-					.style('left', (d3.event.layerX + 550) + 'px');
+					.style('left', 'calc(30vw + ' + d3.event.layerX + 'px');
 			})
 			.on('mouseout', function() {
 				tooltip.style('display', 'none');
