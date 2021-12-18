@@ -156,14 +156,18 @@ function resetError(cat, custom) {
 	error.innerHTML = '';
 }
 
+function fadeIn(id) {
+	document.getElementById(id).classList.add('fade');
+}
+
 
 /**
  * Listens to resize event and changes scrolling position and
  * chart setup accordingly.
  */
-window.addEventListener("resize",debounce(function(e){
+window.addEventListener('resize',debounce(function(e){
 	let viewportWidth = window.innerWidth;
-	document.getElementsByClassName('active')[0].scrollIntoView({behavior: "smooth"});
+	document.getElementsByClassName('active')[0].scrollIntoView({behavior: 'smooth'});
 	updateWaffleOptions(viewportWidth);
 	DotMatrixChart( dataset, chart_options )
 }));
@@ -183,10 +187,12 @@ function buildWaffle(data) {
 
 	dataset.push( {category: "lived", count: ageInWeeks, color: "#fd6041"} );
 	dataset.push( {category: "to live", count: weeksToLive, color: "#0c5374"} );
-	// Waits for finished scrolling event before building chart.
-	delay(500).then(() => 
-		DotMatrixChart( dataset, chart_options )
-	);
+	
+	DotMatrixChart( dataset, chart_options );
+
+	fadeIn('dotmatrix');
+	fadeIn('fact-intro');
+	fadeIn('info-intro');
 
 	document.getElementById("fact-intro").innerHTML = `
 		<span> ${ageInWeeks} weeks </span> of your life have already passed. 
