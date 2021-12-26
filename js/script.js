@@ -1,3 +1,7 @@
+/**
+ * Variables 
+ */
+
 let lifeExpectancy = 0; // years
 
 let weeksToLive = 0;
@@ -73,10 +77,10 @@ function updateWaffleOptions(viewportWidth) {
 
 /**
  * Delays execution of a function.
- */
 function delay(time) {
 	return new Promise(resolve => setTimeout(resolve, time));
 }
+ */
 
 function debounce(func) {
 	let timer;
@@ -118,8 +122,6 @@ const weeksToPercentage = (weeks) => (weeks / yearsToWeeks(lifeExpectancy) * 100
 
 /**
  * Validates integer and returns integer or false if validation fails.
- * @param {*} value - Value to check.
- * @returns {int|bool} Valid integer or false.
  */
 function getValidInt(value) {
 	if ( !isNaN(value) && parseInt(Number(value)) == value && !isNaN(parseInt(value, 10)) ) {
@@ -188,9 +190,9 @@ function fadeIn(id) {
  * Listens to resize event and changes scrolling position and
  * chart setup accordingly.
  */
-window.addEventListener('resize',debounce(function(e){
+window.addEventListener('resize', debounce(function(e) {
 	let viewportWidth = window.innerWidth;
-	document.getElementsByClassName('active')[0].scrollIntoView({behavior: 'smooth'});
+	document.getElementsByClassName('active')[0].scrollIntoView( {behavior: 'smooth'} );
 	updateWaffleOptions(viewportWidth);
 	DotMatrixChart( dataset, chart_options )
 }));

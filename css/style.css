@@ -1,19 +1,20 @@
+/*
+ * Global styles and variables.
+ */
+
 :root {
-	--chartWidth: 1150px;
 	--color-black: #333;
 	--bg-color: #F8F1E5;
-	--font: 'Playfair Display', serif;
+	--font-main: 'Playfair Display', serif;
+	--font-copy: 'Roboto', sans-serif;
 }
 
 body {
 	margin: 0;
 	background-color: var(--bg-color);
 	/* overflow: hidden; /* to disable scrolling */
-	font-family: var(--font);
 	font-variant-numeric: lining-nums;
 }
-
-input, button {font-family: inherit;}
 
 input[type=text] {
 	width: 30px;
@@ -31,19 +32,23 @@ input[type=radio] {
     height: 15px;
 }
 
-b {
-	font-size: 40px;
-	font-style: italic;
+.hidden {
+	display: none;
 }
+
+
+/*
+ * Animations 
+ */
 
 .o0 {
 	opacity: 0;
 }
 
 .fade {
-  animation-duration: 0.8s;
+  animation-duration: 0.4s;
   animation-name: animate-fade;
-  animation-delay: 0.3s;
+  animation-delay: 0.2s;
   animation-fill-mode: forwards;;
 	opacity: 0;
 }
@@ -60,8 +65,9 @@ b {
   100% { opacity: 1; }
 }
 
+
 /*
- * buttons
+ * Button styles. 
  */
 
 .enter-button {
@@ -75,11 +81,9 @@ b {
 	border-radius: 100%;
 }
 
-
 .enter-button:hover {
 	box-shadow: 4px 4px 0px var(--color-black);
 }
-
 
 .arrow {
 	position: absolute;
@@ -92,10 +96,6 @@ b {
 
 .arrow.up {
 	top: 44px;
-}
-
-.hidden {
-	display: none;
 }
 
 .sex.selected {
@@ -121,18 +121,30 @@ b {
 }
 
 
-
 /*
- * text
+ * Text styles. 
  */
 
-.text {
+.fact,
+.input-block,
+.landing-title>p,
+input {
+	font-family: var(--font-main);
+}
+
+.infobox,
+.legend {
+	font-family: var(--font-copy);
+}
+
+.input-block {
 	font-size: 20px;
 }
 
 .fact {
 	font-size: 26px;
 	padding: 25px 0px;
+	font-family: var(--font-main);
 }
 
 .fact>span {
@@ -167,12 +179,9 @@ b {
 	width: max-content;
 }
 
-.small {
-	font-size: 16px;
-}
 
 /*
- * Landing page 
+ * Landing page.
  */
 
 .landing-page {
@@ -190,8 +199,7 @@ b {
 	margin-top: -.5em;
 }
 
-.landinginput {
-	font-size: 22px;
+.landing-input {
 	padding: 0;
 }
 
@@ -215,8 +223,9 @@ b {
 	right: -12vw;
 }
 
+
 /*
- * pages
+ * Pages 
  */
 
 .page {
@@ -233,9 +242,7 @@ b {
 
 .pages {
 	width: 30vw;
-	/*font-family: var(--font);*/
 }
-
 
 .infobox {
 	background-color: #fff;
@@ -243,6 +250,7 @@ b {
 	border: 1px solid var(--color-black);
 	padding: 15px 19px;
 }
+
 
 /*
  * Dotmatrix
@@ -268,7 +276,6 @@ b {
 
 .tooltip {
 	background: rgba(255,255,255,95%);
-	/*color: var(--color-black);*/
 	left: 130px;
 	padding: 10px;
 	position: fixed;

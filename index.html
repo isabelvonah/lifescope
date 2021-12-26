@@ -8,8 +8,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet"> 
-
+	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap" rel="stylesheet"> 
   <title>lifeScope</title>
 </head>
 
@@ -26,7 +25,7 @@
 		</div>
 		<div class="dot1"></div>
 		<div class="dot2"></div>
-		<div class="landinginput" >
+		<div class="landing-input input-block" >
 			age: <input type="text" id="age" onClick="this.select();"> <br><br>
 			sex: <p class="sex selected" id="female" onClick="setSex('female')">female</p><p class="sex" id="male" onClick="setSex('male')">male</p>
       <img class="enter-button" id="ageButton" src="img/inputArrow.svg" alt="Enter" onclick="constructWaffle();">
@@ -70,7 +69,7 @@
 
 				<div>
 					<p id="fact-sleep" class="fact"></p>
-					<p class="text">
+					<p class="input-block">
 						Hours of sleep per day: <input type="text" id="sleep" onClick="this.select();">
 						<img class="enter-button" id="sleepButton" src="img/inputArrow.svg" alt="Show new category" 
 						onclick="updateWaffle('sleep', colorSleep); showButton('sleepArrow');">
@@ -96,7 +95,7 @@
 
 				<div>
 					<p id="fact-work" class="fact"></p>
-					<p>
+					<p class="input-block">
 						Working hours per week: <input type="text" id="working" onClick="this.select();"><br>
 						Retirement age: <input type="text" id="ageOfRetirement" onClick="this.select();">
 						<img class="enter-button" id="workingButton" src="img/inputArrow.svg" alt="Show new category" 
@@ -120,7 +119,7 @@
 
 				<div>
       		<p id="fact-media" class="fact"></p>
-        	<p>
+        	<p class="input-block">
 						Hours spend commuting per day: <input type="text" id="travelling" onClick="this.select();"> 
         		<img class="enter-button" id="travellingButton" src="img/inputArrow.svg" alt="Show new category" 
 						onclick="updateWaffle('travelling', colorMedia)">
@@ -162,10 +161,11 @@
 
 				<div>
       		<p id="fact-custom" class="fact"></p>
-          <p>
-            <input type="text" id="customCategory" onClick="this.select();"> per day: <input type="text" class="changeId" id="custom" onClick="this.select();"> 
-        <img class="enter-button" id="customButton" src="img/inputArrow.svg" alt="Show new category" 
-                onclick="updateWaffleCustom()">
+          <p class="input-block">
+            <input type="text" id="customCategory" onClick="this.select();"> per day: 
+						<input type="text" class="changeId" id="custom" onClick="this.select();"> 
+        		<img class="enter-button" id="customButton" src="img/inputArrow.svg" alt="Show new category" 
+            onclick="updateWaffleCustom()">
             </p>
       		<p class="infobox">
 						Infotext
