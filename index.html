@@ -46,7 +46,7 @@
 				<div>
 					<p id="fact-intro" class="fact"></p>
       		<p id="info-intro" class="infobox">
-						Infotext
+						On the chart on the right you see your estimated life duration. With the following inputs, you can determine how much free time will be left if you continue living as you do now. Feel free to play around with the categories but stay aware, that this side's only function is to raise awareness for the limitation of your life scope and there is no claim for scientific accuracy.
 					</p>
 				</div>
 
@@ -72,7 +72,7 @@
 						onclick="updateWaffle('sleep', colorSleep); showButton('sleepArrow');">
 					</p>
 					<p class="input-error hidden" id="error-sleep"></p>
-					<p class="infobox">
+					<p class="infobox" id="info-sleep">
 						Entwurf... was zur durchschnittlichen/gesunden Schlafdauer. 
 						Sleep duration is important, but it’s not the end-all, be-all. 
 						Sleep quality is another critical factor to consider, and it is 
@@ -167,7 +167,7 @@
 						Infotext
 					</p>
 				</div>
-            <p class="text input-error" id="error-custom"></p>
+            <p class="text hidden input-error" id="error-custom"></p>
 
       	<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('custom-page', 'depri-page')">
     	</div>
