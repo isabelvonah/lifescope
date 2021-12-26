@@ -191,10 +191,10 @@ b {
 	right: -12vw;
 }
 
-
 /*
  * pages
  */
+
 .page {
 	position: relative;
 	height: 100vh;
@@ -209,6 +209,7 @@ b {
 
 .pages {
 	width: 30vw;
+	/*font-family: var(--font);*/
 }
 
 
@@ -219,10 +220,10 @@ b {
 	padding: 15px 19px;
 }
 
-
 /*
  * Dotmatrix
  */
+
 .container-dotmatrix {
 	width: 70vw;
 	position: fixed;
@@ -242,12 +243,13 @@ b {
 }
 
 .tooltip {
-	background-color: #fff;
-	box-shadow: 5px 5px 0px var(--color-black);
-	border: 1px solid var(--color-black);
+	background: rgba(255,255,255,95%);
+	/*color: var(--color-black);*/
+	left: 130px;
 	padding: 10px;
 	position: fixed;
 	text-align: left;
+	top: 95px;
 	z-index: 100;
 	display: block;
 	opacity: 0;

@@ -69,7 +69,7 @@
 					<p class="text">
 						Hours of sleep per day: <input type="text" id="sleep" onClick="this.select();">
 						<img class="enter-button" id="sleepButton" src="img/inputArrow.svg" alt="Show new category" 
-						onclick="updateWaffle('sleep', '#fea744'); showButton('sleepArrow');">
+						onclick="updateWaffle('sleep', colorSleep); showButton('sleepArrow');">
 					</p>
 					<p class="input-error hidden" id="error-sleep"></p>
 					<p class="infobox">
@@ -96,7 +96,7 @@
 						Working hours per week: <input type="text" id="working" onClick="this.select();"><br>
 						Retirement age: <input type="text" id="ageOfRetirement" onClick="this.select();">
 						<img class="enter-button" id="workingButton" src="img/inputArrow.svg" alt="Show new category" 
-						onclick="updateWaffle('working', '#27ae61')">
+						onclick="updateWaffle('working', colorWork)">
 					</p>
 					<p class="input-error hidden" id="error-working"></p>
 					<p class="infobox">
@@ -119,7 +119,7 @@
         	<p>
 						Hours spend commuting per day: <input type="text" id="travelling" onClick="this.select();"> 
         		<img class="enter-button" id="travellingButton" src="img/inputArrow.svg" alt="Show new category" 
-						onclick="updateWaffle('travelling', '#7fcaa3',)">
+						onclick="updateWaffle('travelling', colorMedia)">
 					</p>
         	<p class="input-error hidden" id="error-travelling"></p>
       		<p class="infobox">

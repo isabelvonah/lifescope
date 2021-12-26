@@ -17,6 +17,30 @@ let chart_options = {
 	tooltip: true 
 }
 
+/*color palette */
+let colorBlack = "#333";
+let bgColor = "#F8F1E5";
+let colorLived = "#FF3509";
+let colorSleep = "#FFA237";
+let colorWork = "#EADA48";
+let colorMedia = "#93D360";
+let colorAdministration = "#4DAA89";
+let colorCustom1 = "#2DA1A8";
+let colorCustom2 = "#8CC6C8";
+let colorCustom3 = "#32898E";
+let colorCustom4 =  "#50D1A3";
+let colorCustom5 = "#E84C09";
+let colorCustom6 = "#91CFD1";
+let colorCustom7 = "#FF8800";
+let colorCustom8 = "#608F90";
+let colorCustom9 = "#4D8AAC";
+let colorCustom10 = "#FB8661";
+let colorCustom11 = "#5DCB75";
+let colorCustom13 = "#5B84D4";
+let colorCustom14 = "#9EDD78";
+let colorCustom15 = "#C9736E";
+let colorToLive = "#167278";
+
 
 /**
  * Sets reload position to top.
@@ -181,8 +205,8 @@ function buildWaffle(data) {
 	let ageInWeeks = yearsToWeeks(age);
 	weeksToLive = yearsToWeeks(lifeExpectancy - age);
 
-	dataset.push( {category: "lived", count: ageInWeeks, color: "#fd6041"} );
-	dataset.push( {category: "to live", count: weeksToLive, color: "#0c5374"} );
+	dataset.push( {category: "lived", count: ageInWeeks, color: colorLived} );
+	dataset.push( {category: "to live", count: weeksToLive, color: colorToLive} );
 	// Waits for finished scrolling event before building chart.
 	delay(500).then(() => 
 		DotMatrixChart( dataset, chart_options )
