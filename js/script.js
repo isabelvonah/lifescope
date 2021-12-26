@@ -17,7 +17,7 @@ let chart_options = {
 	tooltip: true 
 }
 
-/*color palette */
+/* Color palette */
 let colorBlack = "#333";
 let bgColor = "#F8F1E5";
 let colorLived = "#FF3509";
@@ -266,7 +266,7 @@ function updateWaffle(category, color, custom=false) {
 	if (category == 'sleep' || category == 'travelling' || custom == true) {
 
 		if(validate24(input)) {
-			resetError(category);
+			resetError(category, custom);
 			numOfWeeks = Math.round(input / 24 * weeksToLive);
 		} else {
 			printError(category, 'Please enter a valid number of hours', custom);
