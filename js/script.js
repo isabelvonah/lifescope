@@ -197,58 +197,51 @@ window.addEventListener('resize', debounce(function(e) {
 	DotMatrixChart( dataset, chart_options )
 }));
 
+
 /**
  * Builds initial waffle chart based on age and sex input.
  */
-function buildWaffle(data) {
-
-	let currentLifeExpectancy = data[new Date().getFullYear() - 1951][age];
-	lifeExpectancy = Math.round(currentLifeExpectancy) + age;
+function initWaffle() {
 
 	resetError('start');
-	updateWaffleOptions(viewportWidth);
-	let ageInWeeks = yearsToWeeks(age);
-	weeksToLive = yearsToWeeks(lifeExpectancy - age);
-
-	dataset.push( {category: "lived", count: ageInWeeks, color: colorLived} );
-	dataset.push( {category: "to live", count: weeksToLive, color: colorToLive} );
-	
-	DotMatrixChart( dataset, chart_options );
-
-	fadeIn('dotmatrix');
-	fadeIn('fact-intro');
-	fadeIn('info-intro');
-
-	document.getElementById("fact-intro").innerHTML = `
-		<span> ${ageInWeeks} weeks </span> of your life have already passed. 
-		Yet, according to statistics, there are <span> ${weeksToLive} more weeks </span> awaiting you.
-	`;
-
-}
-
-/**
- * Evaluates age and sex input and (if validated) builds waffle chart.
- */
-function constructWaffle() {
 	age = getValidInt(document.getElementById('age').value);
 
-	if ( age > 0 && sex == 'female' ) {
+	if ( age > 0 ) {
+		let url = "https://raw.githubusercontent.com/isabelvonah/lifescope/main/data/lifeexp_male.csv";
+		if ( sex == 'female' ) { 
+			url = "https://raw.githubusercontent.com/isabelvonah/lifescope/main/data/lifeexp_female.csv"	
+		}
 
-		d3.csv("https://raw.githubusercontent.com/isabelvonah/lifescope/main/data/lifeexp_female.csv", function(data) {
-			buildWaffle(data);
+		d3.csv(url, function(data) {
+			lifeExpectancy = Math.round( (data[new Date().getFullYear() - 1951][age]) ) + age;
+
+			weeksToLive = yearsToWeeks(lifeExpectancy - age);
+			let ageInWeeks = yearsToWeeks(age);
+
+			dataset.push( {category: "lived", count: ageInWeeks, color: colorLived} );
+			dataset.push( {category: "to live", count: weeksToLive, color: colorToLive} );
+
+			updateWaffleOptions(viewportWidth);
+
+
+			changePage('landing-page', 'introduction-page');
+			DotMatrixChart( dataset, chart_options );
+			fadeIn('dotmatrix');
+			fadeIn('fact-intro');
+			fadeIn('info-intro');
+
+			document.getElementById("fact-intro").innerHTML = `
+				<span> ${ageInWeeks} weeks </span> of your life have already passed. 
+				Yet, according to statistics, there are <span> ${weeksToLive} more weeks </span> awaiting you.
+			`;
 		});
-		changePage('landing-page', 'introduction-page');
-
-	} else if ( age > 0 && sex == 'male' ) {
-
-		d3.csv("https://raw.githubusercontent.com/isabelvonah/lifescope/main/data/lifeexp_male.csv", function(data) {
-			buildWaffle(data)
-		});
-		changePage('landing-page', 'introduction-page');
 
 	} else {
+
 		printError('start', 'Please enter your age in years...');
+
 	}
+
 }
 
 
