@@ -178,6 +178,9 @@ input {
 	padding: 15px 19px;
 }
 
+#waffle-title {
+	font-family: var(--font-main);
+}
 
 /*
  * Landing page.

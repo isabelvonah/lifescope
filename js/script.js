@@ -102,6 +102,15 @@ function showButton(id) {
 	element.classList.remove('hidden');
 }
 
+function setContent(id, content) {
+	let element = document.getElementById(id);
+	element.innerHTML = content;
+}
+
+function fadeIn(id) {
+	document.getElementById(id).classList.add('fade');
+}
+
 function setSex(input) {
 	sex = input;
 	let btnMale = document.getElementById('male');
@@ -181,10 +190,6 @@ function resetError(cat, custom) {
 	error.innerHTML = '';
 }
 
-function fadeIn(id) {
-	document.getElementById(id).classList.add('fade');
-}
-
 
 /**
  * Listens to resize event and changes scrolling position and
@@ -214,6 +219,7 @@ function initWaffle() {
 
 		d3.csv(url, function(data) {
 			lifeExpectancy = Math.round( (data[new Date().getFullYear() - 1951][age]) ) + age;
+			console.log(lifeExpectancy);
 
 			weeksToLive = yearsToWeeks(lifeExpectancy - age);
 			let ageInWeeks = yearsToWeeks(age);
@@ -222,10 +228,9 @@ function initWaffle() {
 			dataset.push( {category: "to live", count: weeksToLive, color: colorToLive} );
 
 			updateWaffleOptions(viewportWidth);
-
+			DotMatrixChart( dataset, chart_options );
 
 			changePage('landing-page', 'introduction-page');
-			DotMatrixChart( dataset, chart_options );
 			fadeIn('dotmatrix');
 			fadeIn('fact-intro');
 			fadeIn('info-intro');
@@ -305,6 +310,7 @@ function updateWaffle(category, color, custom=false) {
 }
 
 let colors = ['green', 'yellow', 'lime', 'lightgreen', 'lightblue', 'pink', 'red'];
+
 
 /**
 * Handles the color distribution for custom categories before updateWaffle(...,color,...)

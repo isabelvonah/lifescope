@@ -21,6 +21,7 @@ function DotMatrixChart( dataset, options ) {
 		totalNumOfCircles += dataset[i]['count'];
 	}
 
+
 	let catcol = [];
 	uniqueCategories.forEach(function(cat, i){
 		let obj = {};
@@ -36,8 +37,8 @@ function DotMatrixChart( dataset, options ) {
 	 */ 
 	var	margin = {top: dotRadius*10, right: dotRadius*15, bottom: dotRadius*10, left: dotRadius*15};
 
-	let height = numOfLines * (dotRadius*2 + dotPaddingBottom + dotPaddingTop);
-	let width = (dotRadius*2 + dotPaddingLeft + dotPaddingRight) * numOfCirclesInARow;
+	let height = numOfLines * (dotRadius * 2 + dotPaddingBottom + dotPaddingTop);
+	let width = (dotRadius * 2 + dotPaddingLeft + dotPaddingRight) * numOfCirclesInARow;
 
 	/**
 	 * Sets the ranges.
@@ -86,6 +87,8 @@ function DotMatrixChart( dataset, options ) {
 		return arr;
 	}
 
+	let dotToYears = parseInt( (totalNumOfCircles / 52).toFixed(1) );
+
 	/**
 	 * Adds SVG content.
 	 */
@@ -95,6 +98,13 @@ function DotMatrixChart( dataset, options ) {
 		.enter()
 		.append('g')
 		.attr("class", "group");
+
+	svg.append("text")
+		.attr("x", (width / 2) - margin.right*1.3)             
+		.attr("y", (margin.top / 2))
+		.style("font-size", dotRadius * 5 + "px")
+		.attr("id", "waffle-title")
+		.text(`Life expectancy: ${dotToYears} years`);
 
 	var circleArray = groups.selectAll("g.circleArray")
 		.data( function(d) { return generate_array(d); } );
@@ -108,6 +118,8 @@ function DotMatrixChart( dataset, options ) {
 		.attr("r", dotRadius)
 		.attr("cx", function(d) { return xScale(d.x); })
 		.attr("cy", function(d) { return yScale(d.y); });
+
+
 
 	/**
 	 * Adds legend.
