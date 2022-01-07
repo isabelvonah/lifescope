@@ -96,12 +96,12 @@
 				<div>
 					<p id="fact-work" class="fact"></p>
 					<p class="input-block">
-						Working hours per week: <input type="text" id="working" onClick="this.select();"><br>
+						Working hours per week: <input type="text" id="work" onClick="this.select();"><br>
 						Retirement age: <input type="text" id="ageOfRetirement" onClick="this.select();">
-						<img class="enter-button" id="workingButton" src="img/inputArrow.svg" alt="Show new category" 
-						onclick="updateWaffle('working', colorWork)">
+						<img class="enter-button" id="workButton" src="img/inputArrow.svg" alt="Show new category" 
+						onclick="updateWaffle('work', colorWork)">
 					</p>
-					<p class="input-error hidden" id="error-working"></p>
+					<p class="input-error hidden" id="error-work"></p>
 					<p class="infobox">
 						Infotext
 					</p>
@@ -120,11 +120,11 @@
 				<div>
       		<p id="fact-media" class="fact"></p>
         	<p class="input-block">
-						Hours spend commuting per day: <input type="text" id="travelling" onClick="this.select();"> 
-        		<img class="enter-button" id="travellingButton" src="img/inputArrow.svg" alt="Show new category" 
-						onclick="updateWaffle('travelling', colorMedia)">
+						Hours spend media per day: <input type="text" id="media" onClick="this.select();"> 
+        		<img class="enter-button" id="mediaButton" src="img/inputArrow.svg" alt="Show new category" 
+						onclick="updateWaffle('media', colorMedia)">
 					</p>
-        	<p class="input-error hidden" id="error-travelling"></p>
+        	<p class="input-error hidden" id="error-media"></p>
       		<p class="infobox">
 						Infotext
 					</p>
@@ -132,7 +132,7 @@
 
       	<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('page3', 'page4')">
     	</div>
-    </div>
+		</div>
 
     <!-- ---------------------- page4 (admin / household) ---------------------- -->
 
@@ -142,10 +142,16 @@
 
 				<div>
       		<p id="fact-admin" class="fact"></p>
+        	<p class="input-block">
+						Hours spend admin per day: <input type="text" id="admin" onClick="this.select();"> 
+        		<img class="enter-button" id="adminButton" src="img/inputArrow.svg" alt="Show new category" 
+						onclick="updateWaffle('admin', colorAdmin)">
+					</p>
+        	<p class="input-error hidden" id="error-admin"></p>
       		<p class="infobox">
 						Infotext
 					</p>
-				</div>
+      	</div> 
 
       	<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('page4', 'custom-page')">
 	    </div>

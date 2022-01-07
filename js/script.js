@@ -22,27 +22,27 @@ let chart_options = {
 }
 
 /* Color palette */
-let colorBlack = "#333";
-let bgColor = "#F8F1E5";
-let colorLived = "#FF3509";
-let colorSleep = "#FFA237";
-let colorWork = "#93D360";
-let colorMedia = "#4DAA89";
-let colorAdministration = "#2DA1A8";
-let colorCustom1 = "#8CC6C8";
-let colorCustom2 = "#32898E";
-let colorCustom3 = "#50D1A3";
-let colorCustom4 =  "#E84C09";
-let colorCustom5 ="#91CFD1" ;
-let colorCustom6 = "#FF8800";
-let colorCustom7 = "#C9736E";
-let colorCustom8 = "#608F90";
-let colorCustom9 = "#4D8AAC";
+let colorBlack		= "#333333";
+let bgColor				= "#F8F1E5";
+let colorLived		= "#FF3509";
+let colorSleep		= "#FFA237";
+let colorWork			= "#93D360";
+let colorMedia		= "#4DAA89";
+let colorAdmin		= "#2DA1A8";
+let colorCustom1	= "#8CC6C8";
+let colorCustom2	= "#32898E";
+let colorCustom3	= "#50D1A3";
+let colorCustom4	= "#E84C09";
+let colorCustom5	= "#91CFD1";
+let colorCustom6	= "#FF8800";
+let colorCustom7	= "#C9736E";
+let colorCustom8	= "#608F90";
+let colorCustom9	= "#4D8AAC";
 let colorCustom10 = "#FB8661";
 let colorCustom11 = "#5DCB75";
 let colorCustom13 = "#5B84D4";
 let colorCustom14 = "#9EDD78";
-let colorToLive = "#167278";
+let colorToLive		= "#167278";
 
 
 /**
@@ -235,10 +235,10 @@ function initWaffle() {
 			fadeIn('fact-intro');
 			fadeIn('info-intro');
 
-			document.getElementById("fact-intro").innerHTML = `
-				<span> ${ageInWeeks} weeks </span> of your life have already passed. 
-				Yet, according to statistics, there are <span> ${weeksToLive} more weeks </span> awaiting you.
-			`;
+			setContent('fact-intro', 
+				`<span> ${ageInWeeks} weeks </span> of your life have already passed. 
+				Yet, according to statistics, there are <span> ${weeksToLive} more weeks </span> awaiting you.`
+			);
 		});
 
 	} else {
@@ -246,7 +246,37 @@ function initWaffle() {
 		printError('start', 'Please enter your age in years...');
 
 	}
+}
 
+
+/**
+ * Returns single category object from dataset.
+ */
+function getCatObj(cat) {
+	return dataset.filter(obj => { return obj.category == cat });
+}
+
+
+/**
+ * Prints highlighted fact.
+ */
+function printFact(category) {
+	let catObj = getCatObj(category);
+	switch(category) {
+		case 'sleep':
+			console.log(dataset);
+			setContent('fact-sleep', `Todo: You will sleep for another <span>${catObj[0].count} weeks</span>`);
+			break;
+		case 'work':
+			setContent('fact-work', `Todo: working <span>${catObj[0].count} weeks</span>`)
+			break;
+		case 'media':
+			setContent('fact-media', `Todo: media <span>${catObj[0].count} weeks</span>`)
+			break;
+		case 'admin':
+			setContent('fact-admin', `Todo: admin <span>${catObj[0].count} weeks</span>`)
+			break;
+	}
 }
 
 
@@ -263,8 +293,9 @@ function updateWaffle(category, color, custom=false) {
 		input = getValidFloat(document.getElementById(category).value);
 	}
 
-	if (category == 'sleep' || category == 'travelling' || custom == true) {
+	if (category == 'sleep' || category == 'media' || category == 'admin' || custom) {
 
+		console.log(category);
 		if(validate24(input)) {
 			resetError(category, custom);
 			numOfWeeks = Math.round(input / 24 * weeksToLive);
@@ -273,7 +304,7 @@ function updateWaffle(category, color, custom=false) {
 			return;
 		}
 
-	} else if (category == 'working') {
+	} else if (category == 'work') {
 
 		ageOfRetirement = getValidInt(document.getElementById('ageOfRetirement').value);
 
@@ -299,9 +330,11 @@ function updateWaffle(category, color, custom=false) {
 				dataset[i].count = numOfWeeks;
 			}
 		}
+		printFact(category);
 	} else if (validateRange("insert", numOfWeeks, category)) {
 		dataset.splice( dataset.length - 1, 0, {category: category, count: numOfWeeks, color: color} );
 		dataset[dataset.length - 1].count -= numOfWeeks;
+		printFact(category);
 	} else {
 		printError(category, "Please enter a smaller number");
 	}
@@ -313,14 +346,12 @@ let colors = ['green', 'yellow', 'lime', 'lightgreen', 'lightblue', 'pink', 'red
 
 
 /**
-* Handles the color distribution for custom categories before updateWaffle(...,color,...)
-*/
+ * Handles colors for custom categories before updateWaffle().
+ */
 function updateWaffleCustom() {
-    let customCategory = document.getElementById('customCategory').value;
+	let customCategory = document.getElementById('customCategory').value;
 
-	/**
-	 * Checks if category exists --> update or insert category 
-	 */
+	// Checks if category exists and updates or inserts category.
 	if ( JSON.stringify(dataset).indexOf(customCategory) > -1) {
 		for ( let i=0; i<dataset.length; i++ ) {
 			if ( dataset[i].category == customCategory ) {
@@ -349,8 +380,8 @@ function enableEnterKey (inputId, buttonId) {
 enableEnterKey("age", "ageButton");
 enableEnterKey("sleep", "sleepButton");
 enableEnterKey("travelling", "travellingButton");
-enableEnterKey("working", "workingButton");
-enableEnterKey("ageOfRetirement", "workingButton");
+enableEnterKey("work", "workButton");
+enableEnterKey("ageOfRetirement", "workButton");
 enableEnterKey("customCategory", "customButton");
 enableEnterKey("custom", "customButton");
 

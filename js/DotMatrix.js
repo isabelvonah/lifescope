@@ -120,7 +120,6 @@ function DotMatrixChart( dataset, options ) {
 		.attr("cy", function(d) { return yScale(d.y); });
 
 
-
 	/**
 	 * Adds legend.
 	 */
@@ -146,6 +145,7 @@ function DotMatrixChart( dataset, options ) {
 		.attr("y", function(d,i){return i*dotRadius*4 + dotRadius;})
 		.style("font-size", dotRadius*3 + "px")
 		.text(function(d){return d['cat']});
+
 
 	/**
 	 * Adds tooltip (optional).
