@@ -21,6 +21,10 @@ let chart_options = {
 	tooltip: true 
 }
 
+let finalChartOptions = { ...chart_options };
+finalChartOptions.tooltip = false;
+let finalDataset = [];
+
 /* Color palette */
 let colorBlack		= "#333333";
 let bgColor				= "#F8F1E5";
@@ -342,6 +346,11 @@ function updateWaffle(category, color, custom=false) {
 	DotMatrixChart( dataset, chart_options );
 }
 
+function loadWaffle() {
+	DotMatrixChart( dataset, chart_options );
+	console.log('done');
+}
+
 let colors = ['green', 'yellow', 'lime', 'lightgreen', 'lightblue', 'pink', 'red'];
 
 
@@ -386,22 +395,20 @@ enableEnterKey("customCategory", "customButton");
 enableEnterKey("custom", "customButton");
 
 
-// let finalDataset = [];
-// let finalChartOptions = chart_options;
 
 /**
  * constructs a new chart containing just the last category when navigating to final page
-function constructFinalWaffle () {
-		finalDataset.push({category: "to live", count: dataset[dataset.length -1], color: "#0c5374"});
+ */
+function constructFinalWaffle() {
+	finalDataset = [];
+	finalDataset.push({category: "to live", count: dataset[dataset.length -1].count, color: "#0c5374"});
 
-		finalChartOptions = chart_options;
-		finalChartOptions.dot_radius += 1.5;
-		finalChartOptions.no_of_circles_in_a_row -= 10;
+	//finalChartOptions = chart_options;
+	//finalChartOptions.dot_radius += 1.5;
+	//finalChartOptions.no_of_circles_in_a_row -= 10;
 
-		DotMatrixChart( finalDataset, chart_options );
+	DotMatrixChart( finalDataset, finalChartOptions);
 
-//TODO: Make it work ;)
-//TODO: hide legend...?
 }
 
 /**

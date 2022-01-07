@@ -179,9 +179,15 @@
 				</div>
             <p class="text hidden input-error" id="error-custom"></p>
 
-      	<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('custom-page', 'depri-page')">
+      	<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('custom-page', 'depri-page'); constructFinalWaffle();">
     	</div>
     </div>
+
+    <!-- ----------------------------------------------------------------------- -->
+    <!--                              summary page 											    		 -->
+    <!-- ----------------------------------------------------------------------- -->
+
+		<!-- TODOOOO -->
 
     <!-- ----------------------------------------------------------------------- -->
     <!--                               depri-page                                -->
@@ -189,11 +195,11 @@
     
     <div id="depri-page" class="page">
 			<div class="content">
-      	<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('depri-page', 'custom-page')">
+      	<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('depri-page', 'custom-page'); loadWaffle();">
 
 				<div>
       		<p class="infobox">
-						Infotext
+						Infotext Depri Page
 					</p>
 				</div>
 
