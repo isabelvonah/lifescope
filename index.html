@@ -45,11 +45,10 @@
 				<div>
 					<p id="fact-intro" class="fact"></p>
       		<p id="info-intro" class="infobox o0">
-						On the chart on the right you see your estimated life duration. 
-						With the following inputs, you can determine how much free time will be 
-						left if you continue living as you do now. Feel free to play around 
-						with the categories but stay aware, that this side's only function is to 
-						raise awareness for the limitation of your life scope and there is no claim for scientific accuracy.
+						The chart on the right displays your estimated life expectancy. One dot represents one week.
+						Work your way through the coming pages to finally find out with how much free time your're left.
+						The main purpose of lifeScope is to get you thinking, so take everything with a grain of salt. 
+						All claimes are based on estimates and can vary from person to person.
 					</p>
 				</div>
 
@@ -72,18 +71,18 @@
 					<p class="input-block">
 						Hours of sleep per day: <input type="text" id="sleep" onClick="this.select();">
 						<img class="enter-button" id="sleepButton" src="img/inputArrow.svg" alt="Show new category" 
-						onclick="updateWaffle('sleep', colorSleep); showButton('sleepArrow');">
+						onclick="updateWaffle('sleep', colorSleep); showElement('arrow-sleep');">
 					</p>
 					<p class="input-error hidden" id="error-sleep"></p>
 					<p class="infobox" id="info-sleep">
-						Entwurf... was zur durchschnittlichen/gesunden Schlafdauer. 
-						Sleep duration is important, but it’s not the end-all, be-all. 
+						Most adults need seven to nine hours of sleep, what's your average?
+						Be aware that sleep duration is important, but it’s not the end-all, be-all. 
 						Sleep quality is another critical factor to consider, and it is 
 						closely connected with sleep continuity and avoiding sleep disruptions.
 					</p>
 				</div>
 
-				<img id="sleepArrow" class="arrow down hidden" src="img/arrowDown.svg" onclick="changePage('page1', 'page2')">
+				<img id="arrow-sleep" class="arrow down hidden" src="img/arrowDown.svg" onclick="changePage('page1', 'page2')">
     	</div>
     </div>
 
@@ -99,15 +98,16 @@
 						Working hours per week: <input type="text" id="work" onClick="this.select();"><br>
 						Retirement age: <input type="text" id="ageOfRetirement" onClick="this.select();">
 						<img class="enter-button" id="workButton" src="img/inputArrow.svg" alt="Show new category" 
-						onclick="updateWaffle('work', colorWork)">
+						onclick="updateWaffle('work', colorWork); showElement('arrow-work');">
 					</p>
 					<p class="input-error hidden" id="error-work"></p>
 					<p class="infobox">
-						Infotext
+						41 hours and 10 minutes. That’s the average in Switzerland for people with full-time jobs.
+						How many hours a week do you work?
 					</p>
 				</div>
 
-      	<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('page2', 'page3')">
+      	<img id="arrow-work" class="arrow down hidden" src="img/arrowDown.svg" onclick="changePage('page2', 'page3')">
     	</div>
     </div>
 
@@ -120,17 +120,19 @@
 				<div>
       		<p id="fact-media" class="fact"></p>
         	<p class="input-block">
-						Hours spend media per day: <input type="text" id="media" onClick="this.select();"> 
+						Media consumption per day (hours): <input type="text" id="media" onClick="this.select();"> 
         		<img class="enter-button" id="mediaButton" src="img/inputArrow.svg" alt="Show new category" 
-						onclick="updateWaffle('media', colorMedia)">
+						onclick="updateWaffle('media', colorMedia); showElement('arrow-media');">
 					</p>
         	<p class="input-error hidden" id="error-media"></p>
       		<p class="infobox">
-						Infotext
+						Now lets talk about media consumption. This can be anything: TV, Netflix, social media, you name it...
+						So ask yourself, how much time do you spend watching TV or scrolling through your social media feeds? 
+						Try to estimate your daily average. And be honest with yourself!
 					</p>
       	</div> 
 
-      	<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('page3', 'page4')">
+      	<img id="arrow-media" class="arrow down hidden" src="img/arrowDown.svg" onclick="changePage('page3', 'page4')">
     	</div>
 		</div>
 
@@ -143,17 +145,19 @@
 				<div>
       		<p id="fact-admin" class="fact"></p>
         	<p class="input-block">
-						Hours spend admin per day: <input type="text" id="admin" onClick="this.select();"> 
+						Everyday things (hours per day): <input type="text" id="admin" onClick="this.select();"> 
         		<img class="enter-button" id="adminButton" src="img/inputArrow.svg" alt="Show new category" 
-						onclick="updateWaffle('admin', colorAdmin)">
+						onclick="updateWaffle('admin', colorAdmin); showElement('arrow-admin');">
 					</p>
         	<p class="input-error hidden" id="error-admin"></p>
       		<p class="infobox">
-						Infotext
+						There are a lot of other things that need to be done throughout a day. 
+						Things like cooking, washing the dishes, watering plants and so on... 
+						Sum them all up and guess how much time they take (probably somewhere between 0.5 and 1.5 hours).
 					</p>
       	</div> 
 
-      	<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('page4', 'custom-page')">
+      	<img id="arrow-admin" class="arrow down hidden" src="img/arrowDown.svg" onclick="changePage('page4', 'custom-page')">
 	    </div>
     </div>
 
@@ -172,14 +176,16 @@
 						Hours per day: <input type="text" class="changeId" id="custom" onClick="this.select();"> 
         		<img class="enter-button" id="customButton" src="img/inputArrow.svg" alt="Show new category" 
             onclick="updateWaffleCustom()">
-            </p>
+          </p>
+          <p class="text hidden input-error" id="error-custom"></p>
       		<p class="infobox">
-						Infotext
+						Now it's your turn! Is there any category we forgot? Maybe you play piano one hour a day. 
+						Or you spend two hours a day reading. Enter your own categories if you want.<br><br>
+						On the next page you will see how much free time you are left with...
 					</p>
 				</div>
-            <p class="text hidden input-error" id="error-custom"></p>
 
-      	<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('custom-page', 'depri-page'); constructFinalWaffle();">
+      	<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('custom-page', 'summery-page'); constructFinalWaffle();">
     	</div>
     </div>
 
@@ -187,7 +193,19 @@
     <!--                              summary page 											    		 -->
     <!-- ----------------------------------------------------------------------- -->
 
-		<!-- TODOOOO -->
+    <div id="summery-page" class="page">
+			<div class="content">
+      	<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('summery-page', 'custom-page'); loadWaffle();">
+
+				<div>
+      		<p class="infobox">
+						Infotext Summary Page
+					</p>
+				</div>
+
+      	<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('summary-page', 'depri-page')">
+    	</div>
+    </div>
 
     <!-- ----------------------------------------------------------------------- -->
     <!--                               depri-page                                -->
@@ -195,7 +213,7 @@
     
     <div id="depri-page" class="page">
 			<div class="content">
-      	<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('depri-page', 'custom-page'); loadWaffle();">
+      	<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('depri-page', 'summery-page')">
 
 				<div>
       		<p class="infobox">

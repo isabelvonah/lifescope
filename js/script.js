@@ -101,7 +101,7 @@ function changePage(from, to) {
 	document.getElementById(from).classList.remove('active');
 }
 
-function showButton(id) {
+function showElement(id) {
 	let element = document.getElementById(id);
 	element.classList.remove('hidden');
 }
