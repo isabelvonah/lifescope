@@ -27,7 +27,7 @@
 		<div class="dot2"></div>
 		<div class="landing-input input-block" >
 			age: <input type="text" id="age" onClick="this.select();"> <br><br>
-			sex: <p class="sex selected" id="female" onClick="setSex('female')">female</p><p class="sex" id="male" onClick="setSex('male')">male</p>
+			sex: <p class="button selected" id="female" onClick="setSex('female')">female</p><p class="button" id="male" onClick="setSex('male')">male</p>
       <img class="enter-button" id="ageButton" src="img/inputArrow.svg" alt="Enter" onclick="initWaffle();">
       <p class="input-error hidden" id="error-start"></p>
     </div>
@@ -48,7 +48,8 @@
 						The chart on the right displays your estimated life expectancy. One dot represents one week.
 						Work your way through the coming pages to finally find out with how much free time your're left.
 						The main purpose of lifeScope is to get you thinking, so take everything with a grain of salt. 
-						All claimes are based on estimates and can vary from person to person.
+						All claimes are based on estimates and can vary from person to person.<br><br>
+						Click the arrow down below to go to the next page...
 					</p>
 				</div>
 
@@ -120,14 +121,14 @@
 				<div>
       		<p id="fact-media" class="fact"></p>
         	<p class="input-block">
-						Media consumption per day (hours): <input type="text" id="media" onClick="this.select();"> 
+						Media consumption per day: <input type="text" id="media" onClick="this.select();"> 
         		<img class="enter-button" id="mediaButton" src="img/inputArrow.svg" alt="Show new category" 
 						onclick="updateWaffle('media', colorMedia); showElement('arrow-media');">
 					</p>
         	<p class="input-error hidden" id="error-media"></p>
       		<p class="infobox">
 						Now lets talk about media consumption. This can be anything: TV, Netflix, social media, you name it...
-						So ask yourself, how much time do you spend watching TV or scrolling through your social media feeds? 
+						So ask yourself, how much hours a day do you spend watching TV or scrolling through your social media feeds? 
 						Try to estimate your daily average. And be honest with yourself!
 					</p>
       	</div> 
@@ -153,7 +154,7 @@
       		<p class="infobox">
 						There are a lot of other things that need to be done throughout a day. 
 						Things like cooking, washing the dishes, watering plants and so on... 
-						Sum them all up and guess how much time they take (probably somewhere between 0.5 and 1.5 hours).
+						Sum them all up and guess how much time they take per day.
 					</p>
       	</div> 
 
@@ -170,7 +171,6 @@
       	<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('custom-page', 'page4')">
 
 				<div>
-      		<p id="fact-custom" class="fact"></p>
           <p class="input-block">
 						Category: <input type="text" id="customCategory" onClick="this.select();"><br>
 						Hours per day: <input type="text" class="changeId" id="custom" onClick="this.select();"> 
@@ -185,7 +185,7 @@
 					</p>
 				</div>
 
-      	<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('custom-page', 'summery-page'); constructFinalWaffle();">
+      	<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('custom-page', 'summary-page'); constructFinalWaffle();">
     	</div>
     </div>
 
@@ -193,11 +193,12 @@
     <!--                              summary page 											    		 -->
     <!-- ----------------------------------------------------------------------- -->
 
-    <div id="summery-page" class="page">
+    <div id="summary-page" class="page">
 			<div class="content">
-      	<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('summery-page', 'custom-page'); loadWaffle();">
+      	<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('summary-page', 'custom-page'); loadWaffle();">
 
 				<div>
+      		<p id="fact-custom" class="fact"></p>
       		<p class="infobox">
 						Infotext Summary Page
 					</p>
@@ -216,8 +217,15 @@
       	<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('depri-page', 'summery-page')">
 
 				<div>
+          <p class="input-block">
+					I am a smoker: 
+					<a class="button" id="smoker-yes" onClick="setDepriButton(true, 'smoker', 200)">Yes</a> 
+					<a class="button selected" id="smoker-no" onClick="setDepriButton(false, 'smoker', 200)">No</a> 
+					</p>
       		<p class="infobox">
-						Infotext Depri Page
+						Infotext Depri Page 
+					</p>
+
 					</p>
 				</div>
 

@@ -128,6 +128,23 @@ function setSex(input) {
 	}
 }
 
+function setDepriButton(button, id, weeks) {
+	let yes = document.getElementById(id + '-yes');
+	let no = document.getElementById(id + '-no');
+	if(button) {
+		finalDataset[0].count -= weeks;
+		yes.classList.add('selected');
+		no.classList.remove('selected');
+	} else {
+		finalDataset[0].count += weeks;
+		no.classList.add('selected');
+		yes.classList.remove('selected');
+	}
+	DotMatrixChart(finalDataset, finalChartOptions);
+}
+
+
+
 const yearsToWeeks = (years) => parseInt(years) * 52;
 const weeksToYears = (weeks) => (weeks / 52).toFixed(1);
 const weeksToPercentage = (weeks) => (weeks / yearsToWeeks(lifeExpectancy) * 100).toFixed(1)
@@ -401,7 +418,7 @@ enableEnterKey("custom", "customButton");
  */
 function constructFinalWaffle() {
 	finalDataset = [];
-	finalDataset.push({category: "to live", count: dataset[dataset.length -1].count, color: "#0c5374"});
+	finalDataset.push({category: "free time", count: dataset[dataset.length -1].count, color: "#0c5374"});
 
 	//finalChartOptions = chart_options;
 	//finalChartOptions.dot_radius += 1.5;

@@ -106,13 +106,13 @@ input[type=radio] {
 	top: 44px;
 }
 
-.sex.selected {
+.button.selected {
 	opacity: 1;
 	border: 1px solid var(--color-black);
 	box-shadow: 5px 5px 0px var(--color-black);
 }
 
-.sex {
+.button {
 	display: inline-block;
 	margin: 0 16px 0 7px;
 	padding: 8px 13px;
