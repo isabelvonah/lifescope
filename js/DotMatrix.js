@@ -37,16 +37,17 @@ function DotMatrixChart( dataset, options ) {
 	 */ 
 	var	margin = {top: dotRadius*10, right: dotRadius*15, bottom: dotRadius*10, left: dotRadius*15};
 
-	let height = numOfLines * (dotRadius * 2 + dotPaddingBottom + dotPaddingTop);
+	let height = (numOfLines+1) * (dotRadius * 2 + dotPaddingBottom + dotPaddingTop);
 	let width = (dotRadius * 2 + dotPaddingLeft + dotPaddingRight) * numOfCirclesInARow;
 
 	/**
 	 * Sets the ranges.
 	 */
 	var	xScale = d3.scale.linear().range( [margin.left, width] );
-	var	yScale = d3.scale.linear().range( [margin.bottom, height] );
+	var	yScale = d3.scale.linear().range( [margin.top, height] );
 
 	xScale.domain( [0, numOfCirclesInARow] );
+  yScale.domain([0, totalNumOfCircles/numOfCirclesInARow-1 ]);
 
 	/**
 	 * Creates SVG element.
@@ -60,7 +61,7 @@ function DotMatrixChart( dataset, options ) {
 		.attr("viewBox", "0 0 " + (width + margin.left + margin.right) + " " + (height + margin.bottom))
 		.classed("svg-content", true);
 
-	let globalLineNo = 0.5/(numOfLines);
+	let globalLineNo = 0;
 	let globalLineSize = 0;
 	let globalDotXPosition = 0;
 
@@ -75,7 +76,7 @@ function DotMatrixChart( dataset, options ) {
 		for ( let i=0; i<d.count; i++ ) {
 
 			if ( globalLineSize!=0 && globalLineSize % numOfCirclesInARow == 0 ) {
-				globalLineNo += 1/(numOfLines);
+				globalLineNo += 1;
 				globalDotXPosition=1;
 			} else {
 				globalDotXPosition+=1;
