@@ -64,6 +64,7 @@ function DotMatrixChart( dataset, options ) {
 	let globalLineSize = 0;
 	let globalDotXPosition = 0;
 
+
 	/**
 	 * Creates array element
 	 */
@@ -87,7 +88,9 @@ function DotMatrixChart( dataset, options ) {
 		return arr;
 	}
 
+
 	let dotToYears = parseInt( (totalNumOfCircles / 52).toFixed(1) );
+
 
 	/**
 	 * Adds SVG content.
@@ -104,7 +107,7 @@ function DotMatrixChart( dataset, options ) {
 		.attr("y", (margin.top / 2))
 		.style("font-size", dotRadius * 5 + "px")
 		.attr("id", "waffle-title")
-		.text(`Life expectancy: ${dotToYears} years`);
+		.text(`${options.chart_title} ${dotToYears} years`);
 
 	var circleArray = groups.selectAll("g.circleArray")
 		.data( function(d) { return generate_array(d); } );
@@ -179,5 +182,6 @@ function DotMatrixChart( dataset, options ) {
 				tooltip.style('opacity',0);
 			});
 	}
+
 
 }

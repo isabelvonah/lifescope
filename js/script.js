@@ -18,11 +18,13 @@ let chart_options = {
 	dot_padding_top : 2,
 	dot_padding_bottom : 2,
 	div_selector: '#dotmatrix',
+	chart_title: 'Life expectancy:',
 	tooltip: true 
 }
 
 let finalChartOptions = { ...chart_options };
 finalChartOptions.tooltip = false;
+finalChartOptions.chart_title = 'Free time:';
 let finalDataset = [];
 
 /* Color palette */
@@ -224,7 +226,6 @@ function initWaffle() {
 
 		d3.csv(url, function(data) {
 			lifeExpectancy = Math.round( (data[new Date().getFullYear() - 1951][age]) ) + age;
-			console.log(lifeExpectancy);
 
 			weeksToLive = yearsToWeeks(lifeExpectancy - age);
 			let ageInWeeks = yearsToWeeks(age);
