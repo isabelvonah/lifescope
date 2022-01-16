@@ -181,7 +181,7 @@
       		<p class="infobox">
 						Now it's your turn! Is there any category we forgot? Maybe you play piano one hour a day. 
 						Or you spend two hours a day reading. Enter your own categories if you want.<br><br>
-						On the next page you will see how much free time you are left with...
+						On the next page you will see with how much free time you are left with...
 					</p>
 				</div>
 
@@ -198,9 +198,11 @@
       	<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('summary-page', 'custom-page'); loadWaffle();">
 
 				<div>
-      		<p id="fact-custom" class="fact"></p>
+      		<p id="fact-summary" class="fact"></p>
       		<p class="infobox">
-						Infotext Summary Page
+						How does that make you feel? Do you have an idea how you'll spend that time?
+						You can always click the top arrow to go back and change inputs.<br><br>
+						On the next page you will see how your lifestyle affects your life in a positive or negative way...
 					</p>
 				</div>
 
@@ -214,19 +216,33 @@
     
     <div id="depri-page" class="page">
 			<div class="content">
-      	<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('depri-page', 'summery-page')">
+      	<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('depri-page', 'summary-page')">
 
 				<div>
           <p class="input-block">
-					I am a smoker: 
-					<a class="button" id="smoker-yes" onClick="setDepriButton(true, 'smoker', 200)">Yes</a> 
-					<a class="button selected" id="smoker-no" onClick="setDepriButton(false, 'smoker', 200)">No</a> 
-					</p>
-      		<p class="infobox">
-						Infotext Depri Page 
-					</p>
+
+						I am a smoker:<br>
+						<a class="button" id="smoker-yes" onClick="setDepriButton(true, 'smoker', 200)">Yes</a> 
+						<a class="button selected" id="smoker-no" onClick="setDepriButton(false, 'smoker', 200)">No</a>
+						<br>
+
+						I am stressed all the time:<br>
+						<a class="button" id="stress-yes" onClick="setDepriButton(true, 'stress', 200)">Yes</a> 
+						<a class="button selected" id="stress-no" onClick="setDepriButton(false, 'stress', 200)">No</a> 
+						<br>
+
+						I don't do any sports:<br>
+						<a class="button" id="sports-yes" onClick="setDepriButton(true, 'sports', 200)">Yes</a> 
+						<a class="button selected" id="sports-no" onClick="setDepriButton(false, 'sports', 200)">No</a> 
 
 					</p>
+
+					<p class="infobox">
+						This is highly speculative, there are endless other factors affecting your life expectancy! 
+						The goal here is to show you the importance of self-care and the harsh impact a unhealthy lifestyle 
+						could have on your life expectancy. 
+					</p>
+
 				</div>
 
       	<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('depri-page', 'fun-page')">

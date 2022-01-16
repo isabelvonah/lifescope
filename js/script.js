@@ -128,22 +128,6 @@ function setSex(input) {
 	}
 }
 
-function setDepriButton(button, id, weeks) {
-	let yes = document.getElementById(id + '-yes');
-	let no = document.getElementById(id + '-no');
-	if(button) {
-		finalDataset[0].count -= weeks;
-		yes.classList.add('selected');
-		no.classList.remove('selected');
-	} else {
-		finalDataset[0].count += weeks;
-		no.classList.add('selected');
-		yes.classList.remove('selected');
-	}
-	DotMatrixChart(finalDataset, finalChartOptions);
-}
-
-
 
 const yearsToWeeks = (years) => parseInt(years) * 52;
 const weeksToYears = (weeks) => (weeks / 52).toFixed(1);
@@ -286,16 +270,16 @@ function printFact(category) {
 	switch(category) {
 		case 'sleep':
 			console.log(dataset);
-			setContent('fact-sleep', `Todo: You will sleep for another <span>${catObj[0].count} weeks</span>`);
+			setContent('fact-sleep', `Alright, you will sleep for another <span>${catObj[0].count} weeks</span>`);
 			break;
 		case 'work':
-			setContent('fact-work', `Todo: working <span>${catObj[0].count} weeks</span>`)
+			setContent('fact-work', `You have <span>${catObj[0].count} weeks</span> of work ahead of you`)
 			break;
 		case 'media':
-			setContent('fact-media', `Todo: media <span>${catObj[0].count} weeks</span>`)
+			setContent('fact-media', `Your media consumtion sums up to around <span>${catObj[0].count} weeks</span>`)
 			break;
 		case 'admin':
-			setContent('fact-admin', `Todo: admin <span>${catObj[0].count} weeks</span>`)
+			setContent('fact-admin', `These small things will cost you another <span>${catObj[0].count} weeks</span>`)
 			break;
 	}
 }
@@ -403,6 +387,7 @@ function enableEnterKey (inputId, buttonId) {
 	}); 
 }
 
+// TODO: check
 enableEnterKey("age", "ageButton");
 enableEnterKey("sleep", "sleepButton");
 enableEnterKey("travelling", "travellingButton");
@@ -412,7 +397,6 @@ enableEnterKey("customCategory", "customButton");
 enableEnterKey("custom", "customButton");
 
 
-
 /**
  * constructs a new chart containing just the last category when navigating to final page
  */
@@ -420,22 +404,25 @@ function constructFinalWaffle() {
 	finalDataset = [];
 	finalDataset.push({category: "free time", count: dataset[dataset.length -1].count, color: "#0c5374"});
 
-	//finalChartOptions = chart_options;
-	//finalChartOptions.dot_radius += 1.5;
-	//finalChartOptions.no_of_circles_in_a_row -= 10;
-
+	setContent('fact-summary', `That's it, you are left with <span>${finalDataset[0].count} weeks</span>`)
 	DotMatrixChart( finalDataset, finalChartOptions);
 
 }
 
-/**
- * constructs the main chart again when navigating back from final page
-function constructWaffleAgain () {
 
-		finalChartOptions.dot_radius -= 1.5;
-		finalChartOptions.no_of_circles_in_a_row += 10;
 
-		DotMatrixChart( dataset, chart_options );
+function setDepriButton(button, id, weeks) {
+	let yes = document.getElementById(id + '-yes');
+	let no = document.getElementById(id + '-no');
+	if(button) {
+		finalDataset[0].count -= weeks;
+		yes.classList.add('selected');
+		no.classList.remove('selected');
+	} else {
+		finalDataset[0].count += weeks;
+		no.classList.add('selected');
+		yes.classList.remove('selected');
+	}
+	DotMatrixChart(finalDataset, finalChartOptions);
 }
 
- */
