@@ -417,12 +417,17 @@ function constructFinalWaffle() {
 function setDepriButton(button, id, weeks) {
 	let yes = document.getElementById(id + '-yes');
 	let no = document.getElementById(id + '-no');
+
 	if(button) {
-		finalDataset[0].count -= weeks;
+        if(yes.classList.contains('selected') == false) {
+		    finalDataset[0].count -= weeks;
+        }
 		yes.classList.add('selected');
 		no.classList.remove('selected');
 	} else {
-		finalDataset[0].count += weeks;
+        if(no.classList.contains('selected') == false) {
+		    finalDataset[0].count += weeks;
+        }
 		no.classList.add('selected');
 		yes.classList.remove('selected');
 	}
