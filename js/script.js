@@ -6,7 +6,7 @@ let lifeExpectancy = 0; // years
 
 let weeksToLive = 0;
 let age = 0;
-let sex = 'female';
+let sex = '';
 let ageOfRetirement = 0;
 
 let dataset = [];
@@ -219,33 +219,40 @@ function initWaffle() {
 	age = getValidInt(document.getElementById('age').value);
 
 	if ( age > 0 ) {
-		let url = "https://raw.githubusercontent.com/isabelvonah/lifescope/main/data/lifeexp_male.csv";
-		if ( sex == 'female' ) { 
-			url = "https://raw.githubusercontent.com/isabelvonah/lifescope/main/data/lifeexp_female.csv"	
-		}
+        if (sex != '') {
+            let url = "https://raw.githubusercontent.com/isabelvonah/lifescope/main/data/lifeexp_male.csv";
+            if ( sex == 'female' ) { 
+                url = "https://raw.githubusercontent.com/isabelvonah/lifescope/main/data/lifeexp_female.csv"	
+            }
 
-		d3.csv(url, function(data) {
-			lifeExpectancy = Math.round( (data[new Date().getFullYear() - 1951][age]) ) + age;
+            d3.csv(url, function(data) {
+                lifeExpectancy = Math.round( (data[new Date().getFullYear() - 1951][age]) ) + age;
 
-			weeksToLive = yearsToWeeks(lifeExpectancy - age);
-			let ageInWeeks = yearsToWeeks(age);
+                weeksToLive = yearsToWeeks(lifeExpectancy - age);
+                let ageInWeeks = yearsToWeeks(age);
 
-			dataset.push( {category: "lived", count: ageInWeeks, color: colorLived} );
-			dataset.push( {category: "to live", count: weeksToLive, color: colorToLive} );
+                dataset.push( {category: "lived", count: ageInWeeks, color: colorLived} );
+                dataset.push( {category: "to live", count: weeksToLive, color: colorToLive} );
 
-			updateWaffleOptions(viewportWidth);
-			DotMatrixChart( dataset, chart_options );
+                updateWaffleOptions(viewportWidth);
+                DotMatrixChart( dataset, chart_options );
 
-			changePage('landing-page', 'introduction-page');
-			fadeIn('dotmatrix');
-			fadeIn('fact-intro');
-			fadeIn('info-intro');
+                changePage('landing-page', 'introduction-page');
+                fadeIn('dotmatrix');
+                fadeIn('fact-intro');
+                fadeIn('info-intro');
 
-			setContent('fact-intro', 
-				`<span> ${ageInWeeks} weeks </span> of your life have already passed. 
-				Yet, according to statistics, there are <span> ${weeksToLive} more weeks </span> awaiting you.`
-			);
-		});
+                setContent('fact-intro', 
+                    `<span> ${ageInWeeks} weeks </span> of your life have already passed. 
+                    Yet, according to statistics, there are <span> ${weeksToLive} more weeks </span> awaiting you.`
+                );
+            });
+            
+        } else {
+
+            printError('start', 'Please click on female or male');
+
+        }
 
 	} else {
 
