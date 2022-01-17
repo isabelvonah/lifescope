@@ -303,7 +303,7 @@ function updateWaffle(category, color, custom=false) {
 	if (category == 'sleep' || category == 'media' || category == 'admin' || custom) {
 
 		console.log(category);
-		if(validate24(input)) {
+		if(validate24(input) || (input == 0 && category != 'sleep')) {
 			resetError(category, custom);
 			numOfWeeks = Math.round(input / 24 * weeksToLive);
 		} else {
@@ -315,7 +315,7 @@ function updateWaffle(category, color, custom=false) {
 
 		ageOfRetirement = getValidInt(document.getElementById('ageOfRetirement').value);
 
-		if (input && input < 168 && ageOfRetirement) {
+		if (input && input < 168 && ageOfRetirement || input == 0) {
 			resetError(category, custom);
 
 			if (ageOfRetirement > age) {
