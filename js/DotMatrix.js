@@ -47,7 +47,7 @@ function DotMatrixChart( dataset, options ) {
 	var	yScale = d3.scale.linear().range( [margin.top, height] );
 
 	xScale.domain( [0, numOfCirclesInARow] );
-  yScale.domain([0, totalNumOfCircles/numOfCirclesInARow-1 ]);
+    yScale.domain([0, totalNumOfCircles/numOfCirclesInARow-1 ]);
 
 	/**
 	 * Creates SVG element.
@@ -151,6 +151,14 @@ function DotMatrixChart( dataset, options ) {
 		.text(function(d){return d['cat']});
 
 
+    function countOfCat(cat) {
+        for (i = 0; i < dataset.length; i++) {
+            if (dataset[i].category == cat) {
+                return dataset[i].count;
+            }
+        }
+    }
+
 	/**
 	 * Adds tooltip (optional).
 	 */
@@ -167,11 +175,12 @@ function DotMatrixChart( dataset, options ) {
 		svg.selectAll(".circleArray > circle")
 			.on('mouseover', function(d,i) {
 
-				tooltip.select('.category').html(`${d.category}: ${weeksToPercentage(d.count)} % of your lifetime` + d3.event.layerX);
+				tooltip.select('.category').html(`<b>${d.category}:</b> ${countOfCat(d.category)} weeks`);
 
 				tooltip.style('display', 'block');
 				tooltip.style('opacity',2);
-				tooltip.style("font-size", dotRadius*3 + "px")
+				tooltip.style("font-size", dotRadius*4.5 + "px");
+                tooltip.style("font-family", "var(--font-copy)");
 
 			})
 			.on('mousemove', function(d) {
