@@ -315,7 +315,7 @@ function updateWaffle(category, color, custom=false) {
 
 		ageOfRetirement = getValidInt(document.getElementById('ageOfRetirement').value);
 
-		if (input && input < 168 && ageOfRetirement || input == 0) {
+		if ((input && input < 168 && ageOfRetirement) || input === 0) {
 			resetError(category, custom);
 
 			if (ageOfRetirement > age) {
@@ -324,9 +324,10 @@ function updateWaffle(category, color, custom=false) {
 
 		} else {
 			printError(category, 'Please enter a valid number of working hours and age of retirement', custom);
+            return;
 		}
 
-	}
+	} 
 
 	// Checks if category exists and input isn't to big.
 	if ( JSON.stringify(dataset).indexOf(category) > -1 && validateRange("update", numOfWeeks, category) ) {
@@ -355,8 +356,6 @@ function loadWaffle() {
 }
 
 let colors = [colorCustom7, colorCustom6, colorCustom5, colorCustom4, colorCustom3, colorCustom2, colorCustom1];
-
-console.log(colors);
 
 /**
  * Handles colors for custom categories before updateWaffle().
