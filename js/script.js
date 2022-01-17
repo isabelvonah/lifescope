@@ -30,24 +30,18 @@ let finalDataset = [];
 /* Color palette */
 let colorBlack		= "#333333";
 let bgColor				= "#F8F1E5";
-let colorLived		= "#FF3509";
-let colorSleep		= "#FFA237";
-let colorWork			= "#93D360";
-let colorMedia		= "#4DAA89";
-let colorAdmin		= "#2DA1A8";
-let colorCustom1	= "#8CC6C8";
-let colorCustom2	= "#32898E";
-let colorCustom3	= "#50D1A3";
+let colorLived		= "#FFA237";
+let colorSleep		= "#93D360";
+let colorWork			= "#FF3509";
+let colorMedia		= "#50D1A3";
+let colorAdmin		= "#AC2978";
+let colorCustom1	= "#64C6C9";
+let colorCustom2	= "#E8337F";
+let colorCustom3	= "#5DCB89";
 let colorCustom4	= "#E84C09";
 let colorCustom5	= "#91CFD1";
 let colorCustom6	= "#FF8800";
-let colorCustom7	= "#C9736E";
-let colorCustom8	= "#608F90";
-let colorCustom9	= "#4D8AAC";
-let colorCustom10 = "#FB8661";
-let colorCustom11 = "#5DCB75";
-let colorCustom13 = "#5B84D4";
-let colorCustom14 = "#9EDD78";
+let colorCustom7	= "#5DCB8A";
 let colorToLive		= "#167278";
 
 
@@ -247,7 +241,7 @@ function initWaffle() {
                     Yet, according to statistics, there are <span> ${weeksToLive} more weeks </span> awaiting you.`
                 );
             });
-            
+
         } else {
 
             printError('start', 'Please click on female or male');
@@ -360,8 +354,9 @@ function loadWaffle() {
 	console.log('done');
 }
 
-let colors = ['green', 'yellow', 'lime', 'lightgreen', 'lightblue', 'pink', 'red'];
+let colors = [colorCustom7, colorCustom6, colorCustom5, colorCustom4, colorCustom3, colorCustom2, colorCustom1];
 
+console.log(colors);
 
 /**
  * Handles colors for custom categories before updateWaffle().
