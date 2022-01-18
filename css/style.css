@@ -174,7 +174,7 @@ input {
 	left: 0;
 	background: transparent;
 	transition: all ease 0.5s;
-	background: #2DA4A8;
+	background: var(--span-bg);
   z-index: -99999;
   transform: rotate(-1deg);
 }

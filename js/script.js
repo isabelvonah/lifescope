@@ -107,6 +107,11 @@ function setContent(id, content) {
 	element.innerHTML = content;
 }
 
+function setColor(id, color) {
+    let element = document.getElementById(id);
+    element.style.setProperty("--span-bg", color);
+}
+
 function fadeIn(id) {
 	document.getElementById(id).classList.add('fade');
 }
@@ -237,9 +242,12 @@ function initWaffle() {
                 fadeIn('info-intro');
 
                 setContent('fact-intro', 
-                    `<span> ${ageInWeeks} weeks </span> of your life have already passed. 
-                    Yet, according to statistics, there are <span> ${weeksToLive} more weeks </span> awaiting you.`
+                    `<span id='fact1'> ${ageInWeeks} weeks </span> of your life have already passed. 
+                    Yet, according to statistics, there are <span id='fact2'> ${weeksToLive} more weeks </span> awaiting you.`
                 );
+                setColor('fact1', colorLived);
+                setColor('fact2', colorToLive);
+
             });
 
         } else {
@@ -273,15 +281,19 @@ function printFact(category) {
 		case 'sleep':
 			console.log(dataset);
 			setContent('fact-sleep', `Alright, you will sleep for another <span>${catObj[0].count} weeks</span>`);
+            setColor('fact-sleep', colorSleep);
 			break;
 		case 'work':
-			setContent('fact-work', `You have <span>${catObj[0].count} weeks</span> of work ahead of you`)
+			setContent('fact-work', `You have <span>${catObj[0].count} weeks</span> of work ahead of you`);
+            setColor('fact-work', colorWork);
 			break;
 		case 'media':
-			setContent('fact-media', `Your media consumtion sums up to around <span>${catObj[0].count} weeks</span>`)
+			setContent('fact-media', `Your media consumtion sums up to around <span>${catObj[0].count} weeks</span>`);
+            setColor('fact-media', colorMedia);
 			break;
 		case 'admin':
-			setContent('fact-admin', `These small things will cost you another <span>${catObj[0].count} weeks</span>`)
+			setContent('fact-admin', `These small things will cost you another <span>${catObj[0].count} weeks</span>`);
+            setColor('fact-admin', colorAdmin);
 			break;
 	}
 }
@@ -404,9 +416,10 @@ enableEnterKey("custom", "customButton");
  */
 function constructFinalWaffle() {
 	finalDataset = [];
-	finalDataset.push({category: "free time", count: dataset[dataset.length -1].count, color: "#0c5374"});
+	finalDataset.push({category: "free time", count: dataset[dataset.length -1].count, color: colorToLive});
 
 	setContent('fact-summary', `That's it, you are left with <span>${finalDataset[0].count} weeks</span>`)
+    setColor('fact-summary', colorToLive);
 	DotMatrixChart( finalDataset, finalChartOptions);
 
 }
