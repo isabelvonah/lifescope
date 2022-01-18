@@ -334,8 +334,7 @@ function updateWaffle(category, color, custom=false) {
 
 	if (category == 'sleep' || category == 'media' || category == 'admin' || custom) {
 
-		console.log(category);
-		if(validate24(input) || (input == 0 && category != 'sleep')) {
+		if(validate24(input) || (input === 0 && category != 'sleep')) {
 			resetError(category, custom);
 			numOfWeeks = Math.round(input / 24 * weeksToLive);
 		} else {
@@ -371,10 +370,16 @@ function updateWaffle(category, color, custom=false) {
 			}
 		}
 		printFact(category);
+        if (!custom) {
+            showElement('arrow-' + category);
+        }
 	} else if (validateRange("insert", numOfWeeks, category)) {
 		dataset.splice( dataset.length - 1, 0, {category: category, count: numOfWeeks, color: color} );
 		dataset[dataset.length - 1].count -= numOfWeeks;
 		printFact(category);
+        if (!custom) {
+            showElement('arrow-' + category);
+        }
 	} else {
 		printError(category, "Please enter a smaller number");
 	}

@@ -72,7 +72,7 @@
 					<p class="input-block">
 						Hours of sleep per day: <input type="text" id="sleep" onClick="this.select();">
 						<img class="enter-button" id="sleepButton" src="img/inputArrow.svg" alt="Show new category" 
-						onclick="updateWaffle('sleep', colorSleep); showElement('arrow-sleep');">
+						onclick="updateWaffle('sleep', colorSleep)">
 					</p>
 					<p class="input-error hidden" id="error-sleep"></p>
 					<p class="infobox" id="info-sleep">
@@ -99,7 +99,7 @@
 						Working hours per week: <input type="text" id="work" onClick="this.select();"><br>
 						Retirement age: <input type="text" id="ageOfRetirement" onClick="this.select();">
 						<img class="enter-button" id="workButton" src="img/inputArrow.svg" alt="Show new category" 
-						onclick="updateWaffle('work', colorWork); showElement('arrow-work');">
+						onclick="updateWaffle('work', colorWork)">
 					</p>
 					<p class="input-error hidden" id="error-work"></p>
 					<p class="infobox">
@@ -123,7 +123,7 @@
         	<p class="input-block">
 						Media consumption per day: <input type="text" id="media" onClick="this.select();"> 
         		<img class="enter-button" id="mediaButton" src="img/inputArrow.svg" alt="Show new category" 
-						onclick="updateWaffle('media', colorMedia); showElement('arrow-media');">
+						onclick="updateWaffle('media', colorMedia)">
 					</p>
         	<p class="input-error hidden" id="error-media"></p>
       		<p class="infobox">
@@ -148,7 +148,7 @@
         	<p class="input-block">
 						Everyday things (hours per day): <input type="text" id="admin" onClick="this.select();"> 
         		<img class="enter-button" id="adminButton" src="img/inputArrow.svg" alt="Show new category" 
-						onclick="updateWaffle('admin', colorAdmin); showElement('arrow-admin');">
+						onclick="updateWaffle('admin', colorAdmin)">
 					</p>
         	<p class="input-error hidden" id="error-admin"></p>
       		<p class="infobox">
@@ -185,7 +185,7 @@
 					</p>
 				</div>
 
-      	<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('custom-page', 'summary-page'); constructFinalWaffle();">
+      	<img id="arrow-custom" class="arrow down" src="img/arrowDown.svg" onclick="changePage('custom-page', 'summary-page'); constructFinalWaffle();">
     	</div>
     </div>
 
