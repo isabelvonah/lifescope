@@ -34,7 +34,7 @@ let colorLived		= "#FFA237";
 let colorSleep		= "#93D360";
 let colorWork			= "#FF3509";
 let colorMedia		= "#50D1A3";
-let colorAdmin		= "#AC2978";
+let colorAdmin		= "#AC2941";
 let colorCustom1	= "#64C6C9";
 let colorCustom2	= "#E8337F";
 let colorCustom3	= "#5DCB89";
@@ -207,6 +207,23 @@ window.addEventListener('resize', debounce(function(e) {
 	updateWaffleOptions(viewportWidth);
 	DotMatrixChart( dataset, chart_options )
 }));
+
+
+/**
+ * Listens to keydown event and prevent tab key from working (with exception ond work page)
+ */
+
+window.addEventListener("keydown", (e) => {
+    if ((e.shiftKey == false && e.key == "Tab") && event.target.id != "work") {
+      e.preventDefault();
+    }
+  });
+
+window.addEventListener("keydown", (e) => {
+    if ((e.shiftKey && e.key == "Tab") && event.target.id != "ageOfRetirement") {
+      e.preventDefault();
+    }
+  });
 
 
 /**
