@@ -43,7 +43,7 @@ input[type=radio] {
 }
 
 #mobile-overlay {
-	z-index: 9999;
+	z-index: 10;
 	position: fixed;
 	width: 94vw;
 	height: 100vh;
@@ -189,7 +189,7 @@ input {
 	background: transparent;
 	transition: all ease 0.5s;
 	background: var(--span-bg);
-  z-index: -99999;
+  z-index: -5;
   transform: rotate(-1deg);
 }
 
@@ -200,6 +200,10 @@ input {
 	background-color: #FF7A7A;
 	border: 1px solid black;
 	padding: 15px 19px;
+}
+
+#error-start {
+    width: 30%;
 }
 
 #waffle-title {
@@ -238,6 +242,7 @@ input {
 	position: absolute;
 	top: -150px;
 	left: 50vw;
+    z-index: -5;
 }
 
 .dot2 {
@@ -248,6 +253,7 @@ input {
 	position: absolute;
 	bottom: -260px;
 	right: -12vw;
+    z-index: -5;
 }
 
 
@@ -292,7 +298,6 @@ input {
 .container-dotmatrix {
 	width: 70vw;
 	position: fixed;
-	z-index: 99;
 	right: 0;
 	top: 0;
 }
@@ -314,7 +319,7 @@ input {
 	border-radius: 4px;
 	padding: 15px 19px;
     position: fixed;
-	z-index: 100;
+	z-index: 5;
 	display: block;
 	opacity: 0;
 }
