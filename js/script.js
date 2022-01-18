@@ -45,13 +45,6 @@ let colorCustom7	= "#5DCB8A";
 let colorToLive		= "#167278";
 
 
-/**
- * Sets reload position to top.
- */
-window.onbeforeunload = function () {
-	window.scrollTo(0, 0);
-}
-
 
 /**
  * Updates waffle chart options based on viewport width.
@@ -74,6 +67,43 @@ function updateWaffleOptions(viewportWidth) {
 	}
 }
 
+/**
+ * Sets reload position to top.
+ */
+window.onbeforeunload = function () {
+	window.scrollTo(0, 0);
+}
+
+/**
+ * Checks if screen is to small on load.
+ */
+window.addEventListener('load', () => {
+	toggleMobileOverlay(window.innerWidth, window.innerHeight);
+});
+
+/**
+ * Listens to resize event and changes scrolling position and
+ * chart setup accordingly.
+ */
+window.addEventListener('resize', debounce(function(e) {
+	let viewportWidth = window.innerWidth;
+	let viewportHeight = window.innerHeight;
+	document.getElementsByClassName('active')[0].scrollIntoView( {behavior: 'smooth'} );
+	updateWaffleOptions(viewportWidth);
+	DotMatrixChart(dataset, chart_options);
+	toggleMobileOverlay(viewportWidth, viewportHeight);
+}));
+
+/**
+ * Checks if screen is to small.
+ */
+function toggleMobileOverlay(vw, vh) {
+	if(vw < 900 || vh < 900) {
+		showElement('mobile-overlay');
+	} else {
+		hideElement('mobile-overlay');
+	}
+}
 
 /**
  * 
@@ -196,18 +226,6 @@ function resetError(cat, custom) {
 	error.classList.add('hidden');	
 	error.innerHTML = '';
 }
-
-
-/**
- * Listens to resize event and changes scrolling position and
- * chart setup accordingly.
- */
-window.addEventListener('resize', debounce(function(e) {
-	let viewportWidth = window.innerWidth;
-	document.getElementsByClassName('active')[0].scrollIntoView( {behavior: 'smooth'} );
-	updateWaffleOptions(viewportWidth);
-	DotMatrixChart( dataset, chart_options )
-}));
 
 
 /**
