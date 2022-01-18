@@ -210,17 +210,17 @@ window.addEventListener('resize', debounce(function(e) {
 
 
 /**
- * Listens to keydown event and prevent tab key from working (with exception ond work page)
+ * Listens to keydown event and prevent tab key from working (with exceptions ond work page and custom)
  */
 
 window.addEventListener("keydown", (e) => {
-    if ((e.shiftKey == false && e.key == "Tab") && event.target.id != "work") {
+    if ((e.shiftKey == false && e.key == "Tab") && event.target.id != "work" && event.target.id != "customCategory") {
       e.preventDefault();
     }
   });
 
 window.addEventListener("keydown", (e) => {
-    if ((e.shiftKey && e.key == "Tab") && event.target.id != "ageOfRetirement") {
+    if ((e.shiftKey && e.key == "Tab") && event.target.id != "ageOfRetirement" && event.target.id != "custom") {
       e.preventDefault();
     }
   });
@@ -418,12 +418,12 @@ function enableEnterKey (inputId, buttonId) {
 	}); 
 }
 
-// TODO: check
 enableEnterKey("age", "ageButton");
 enableEnterKey("sleep", "sleepButton");
-enableEnterKey("travelling", "travellingButton");
 enableEnterKey("work", "workButton");
 enableEnterKey("ageOfRetirement", "workButton");
+enableEnterKey("media", "mediaButton");
+enableEnterKey("admin", "adminButton");
 enableEnterKey("customCategory", "customButton");
 enableEnterKey("custom", "customButton");
 
