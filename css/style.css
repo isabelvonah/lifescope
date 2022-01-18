@@ -12,7 +12,7 @@
 body {
 	margin: 0;
 	background-color: var(--bg-color);
-	overflow: hidden; /* to disable scrolling */
+	/* overflow: hidden; /* to disable scrolling */
 	font-variant-numeric: lining-nums;
 }
 
@@ -54,7 +54,7 @@ input[type=radio] {
 .fade {
   animation-duration: 0.4s;
   animation-name: animate-fade;
-  animation-delay: 0.2s;
+  animation-delay: 0.4s;
   animation-fill-mode: forwards;;
 	opacity: 0;
 }
@@ -255,6 +255,10 @@ input {
 
 .pages {
 	width: 30vw;
+}
+
+.final-pages {
+	overflow: hidden;
 }
 
 .infobox {

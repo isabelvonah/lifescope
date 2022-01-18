@@ -245,40 +245,41 @@
 
 				</div>
 
-      	<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('depri-page', 'fun-page')">
+      	<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('depri-page', 'final-page1'); hideElement('waffle-wrap');">
     	</div>
     </div>
 
 	</div><!-- .pages -->
   
   <!-- ------------------------------ dotmatrix ------------------------------ -->
-  <div class="container-dotmatrix">
+  <div id="waffle-wrap" class="container-dotmatrix hidden">
 		<div id="dotmatrix"></div> 
   </div>
 
   
-
+	<div class="final-pages">
   <!-- ----------------------------------------------------------------------- -->
   <!--                                fun-page                                 -->
   <!-- ----------------------------------------------------------------------- -->
 
-  <div id="fun-page"  class="landing-page page active">
-		<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('fun-page', 'depri-page')">
+  <div id="final-page1"  class="page content">
+		<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('final-page1', 'depri-page'); showElement('waffle-wrap');">
     <div class="dot1"></div>
 		<div class="dot2"></div>
-    <img class="arrow down" src="img/arrowDown.svg" onclick="changePage('fun-page', 'references-page')">
+    <img class="arrow down" src="img/arrowDown.svg" onclick="changePage('final-page1', 'final-page2')">
 	</div>
 
   <!-- ----------------------------------------------------------------------- -->
   <!--                             references-page                             -->
   <!-- ----------------------------------------------------------------------- -->
 
-  <div id="references-page"  class="landing-page page active">
-    <img class="arrow up" src="img/arrowUp.svg" onclick="changePage('references-page', 'fun-page')">
-		<div class="dot1"></div>
+  <div id="final-page2"  class="page content">
+		<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('final-page2', 'final-page1')">
+    <div class="dot1"></div>
 		<div class="dot2"></div>
 	</div>
     
+	</div><!-- .final-pages -->
 </body>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>

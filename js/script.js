@@ -76,12 +76,8 @@ function updateWaffleOptions(viewportWidth) {
 
 
 /**
- * Delays execution of a function.
-function delay(time) {
-	return new Promise(resolve => setTimeout(resolve, time));
-}
+ * 
  */
-
 function debounce(func) {
 	let timer;
 	return function(event) {
@@ -100,6 +96,11 @@ function changePage(from, to) {
 function showElement(id) {
 	let element = document.getElementById(id);
 	element.classList.remove('hidden');
+}
+
+function hideElement(id) {
+	let element = document.getElementById(id);
+	element.classList.add('hidden');
 }
 
 function setContent(id, content) {
@@ -235,43 +236,45 @@ function initWaffle() {
 	age = getValidInt(document.getElementById('age').value);
 
 	if ( age > 0 ) {
-        if (sex != '') {
-            let url = "https://raw.githubusercontent.com/isabelvonah/lifescope/main/data/lifeexp_male.csv";
-            if ( sex == 'female' ) { 
-                url = "https://raw.githubusercontent.com/isabelvonah/lifescope/main/data/lifeexp_female.csv"	
-            }
+		if (sex != '') {
+			let url = "https://raw.githubusercontent.com/isabelvonah/lifescope/main/data/lifeexp_male.csv";
+			if ( sex == 'female' ) { 
+				url = "https://raw.githubusercontent.com/isabelvonah/lifescope/main/data/lifeexp_female.csv"	
+			}
+			showElement('waffle-wrap');
 
-            d3.csv(url, function(data) {
-                lifeExpectancy = Math.round( (data[new Date().getFullYear() - 1951][age]) ) + age;
+			d3.csv(url, function(data) {
+				lifeExpectancy = Math.round( (data[new Date().getFullYear() - 1951][age]) ) + age;
 
-                weeksToLive = yearsToWeeks(lifeExpectancy - age);
-                let ageInWeeks = yearsToWeeks(age);
+				weeksToLive = yearsToWeeks(lifeExpectancy - age);
+				let ageInWeeks = yearsToWeeks(age);
 
-                dataset.push( {category: "lived", count: ageInWeeks, color: colorLived} );
-                dataset.push( {category: "to live", count: weeksToLive, color: colorToLive} );
+				dataset.push( {category: "lived", count: ageInWeeks, color: colorLived} );
+				dataset.push( {category: "to live", count: weeksToLive, color: colorToLive} );
 
-                updateWaffleOptions(viewportWidth);
-                DotMatrixChart( dataset, chart_options );
+				updateWaffleOptions(viewportWidth);
 
-                changePage('landing-page', 'introduction-page');
-                fadeIn('dotmatrix');
-                fadeIn('fact-intro');
-                fadeIn('info-intro');
+				DotMatrixChart( dataset, chart_options );
 
-                setContent('fact-intro', 
-                    `<span id='fact1'> ${ageInWeeks} weeks </span> of your life have already passed. 
-                    Yet, according to statistics, there are <span id='fact2'> ${weeksToLive} more weeks </span> awaiting you.`
-                );
-                setColor('fact1', colorLived);
-                setColor('fact2', colorToLive);
+				changePage('landing-page', 'introduction-page');
+				fadeIn('dotmatrix');
+				fadeIn('fact-intro');
+				fadeIn('info-intro');
 
-            });
+				setContent('fact-intro', 
+					`<span id='fact1'> ${ageInWeeks} weeks </span> of your life have already passed. 
+										Yet, according to statistics, there are <span id='fact2'> ${weeksToLive} more weeks </span> awaiting you.`
+				);
+				setColor('fact1', colorLived);
+				setColor('fact2', colorToLive);
 
-        } else {
+			});
 
-            printError('start', 'Please click on female or male');
+		} else {
 
-        }
+			printError('start', 'Please select female or male');
+
+		}
 
 	} else {
 
@@ -448,15 +451,15 @@ function setDepriButton(button, id, weeks) {
 	let no = document.getElementById(id + '-no');
 
 	if(button) {
-        if(yes.classList.contains('selected') == false) {
-		    finalDataset[0].count -= weeks;
-        }
+		if(!yes.classList.contains('selected')) {
+			finalDataset[0].count -= weeks;
+		}
 		yes.classList.add('selected');
 		no.classList.remove('selected');
 	} else {
-        if(no.classList.contains('selected') == false) {
-		    finalDataset[0].count += weeks;
-        }
+		if(!no.classList.contains('selected')) {
+			finalDataset[0].count += weeks;
+		}
 		no.classList.add('selected');
 		yes.classList.remove('selected');
 	}
