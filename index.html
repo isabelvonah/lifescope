@@ -229,21 +229,22 @@
           <p class="input-block">
 
 						I am a smoker:<br>
-						<a class="button" id="smoker-yes" onClick="setDepriButton(true, 'smoker', 200)">Yes</a> 
-						<a class="button selected" id="smoker-no" onClick="setDepriButton(false, 'smoker', 200)">No</a>
+						<a class="button" id="smoker-yes" onClick="setDepriButton(true, 'smoker', 290)">Yes</a> 
+						<a class="button selected" id="smoker-no" onClick="setDepriButton(false, 'smoker', 290)">No</a>
 						<br>
 
 						I am stressed all the time:<br>
-						<a class="button" id="stress-yes" onClick="setDepriButton(true, 'stress', 200)">Yes</a> 
-						<a class="button selected" id="stress-no" onClick="setDepriButton(false, 'stress', 200)">No</a> 
+						<a class="button" id="stress-yes" onClick="setDepriButton(true, 'stress', 78)">Yes</a> 
+						<a class="button selected" id="stress-no" onClick="setDepriButton(false, 'stress', 78)">No</a> 
 						<br>
 
 						I don't do any sports:<br>
-						<a class="button" id="sports-yes" onClick="setDepriButton(true, 'sports', 200)">Yes</a> 
-						<a class="button selected" id="sports-no" onClick="setDepriButton(false, 'sports', 200)">No</a> 
+						<a class="button" id="sports-yes" onClick="setDepriButton(true, 'sports', 104)">Yes</a> 
+						<a class="button selected" id="sports-no" onClick="setDepriButton(false, 'sports', 104)">No</a> 
 
 					</p>
 
+        	<p class="input-error hidden" id="error-depri"></p>
 					<p class="infobox">
 						This is highly speculative, there are endless other factors affecting your life expectancy! 
 						The goal here is to show you the importance of self-care and the harsh impact a unhealthy lifestyle 
@@ -273,6 +274,18 @@
 		<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('final-page1', 'depri-page'); showElement('waffle-wrap');">
     <div class="dot1"></div>
 		<div class="dot2"></div>
+		<div class="final-content">
+			<h1>...life goes on</h1>
+			<p>Thanks for using lifeScope, we hope you could gain some insights and found inspiration to commit even more to your goals and dreams!</p>
+			<p>
+				If you're still think about your lifestyle choices from the page before, here are some helpfull links:<br>
+				<ul>
+					<li><a target="_blank" href="https://www.stopsmoking.ch/">StopSmoking.ch - Swiss stop smoking campaign</a></li>
+					<li><a target="_blank" href="https://www.mentalhealth.org.uk/publications/how-manage-and-reduce-stress">Mental Health Foundation - Manage and reduce Stress</a></li>
+					<li><a target="_blank" href="">UK National Health Service - Benefits of exercise</a></li>
+				</ul>
+			</p>
+		</div>
     <img class="arrow down" src="img/arrowDown.svg" onclick="changePage('final-page1', 'final-page2')">
 	</div>
 
@@ -284,6 +297,17 @@
 		<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('final-page2', 'final-page1')">
     <div class="dot1"></div>
 		<div class="dot2"></div>
+		<div class="final-content">
+			<h1>Sources</h1>
+			<ul>
+				<li>Life expectancy data source: <a target="_blank" href="https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/healthandlifeexpectancies/articles/lifeexpectancycalculator/2019-06-07">UK Office for National Statistics</a></li>
+				<li>Sleep: <a target="_blank" href="https://www.sleepfoundation.org/how-sleep-works/myths-and-facts-about-sleep">sleepfoundation.org</a></li>
+				<li>Average working hours: <a target="_blank" href="https://www.swissinfo.ch/eng/office-time_how-many-hours-do-you-work-a-week-/43716794">swissinfo.ch</a></li>
+				<li>Tabacco-related Mortality: <a target="_blank" href="https://www.cdc.gov/tobacco/data_statistics/fact_sheets/health_effects/tobacco_related_mortality/index.htm">Centers for Disease Control and Prevention</a></li>
+				<li>Stress-related Mortality: <a target="_blank" href="https://www.sciencedaily.com/releases/2020/03/200311100857.htm">Finnish Institute for Health and Welfare</a></li>
+				<li>Effects of exercising on life expectancy: <a target="_blank" href="https://www.livescience.com/36723-exercise-life-expectancy-overweight-obese.html"></a>livescience.com</li>
+			</ul>
+		</div>
 	</div>
     
 	</div><!-- .final-pages -->
