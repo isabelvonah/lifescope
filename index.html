@@ -1,232 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap" rel="stylesheet"> 
-  <title>lifeScope</title>
-</head>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap" rel="stylesheet"> 
+		<title>lifeScope</title>
+	</head>
 
-<body>
+	<body>
 
-	<div id="mobile-overlay" class="hidden">
-		<p>
+		<div id="mobile-overlay" class="hidden">
+			<p>
 			lifeScope looks best on large screens.<br>
 			Please resize your browser window or switch devices.
-		</p>
-	</div>
-
-  <!-- ----------------------------------------------------------------------- -->
-  <!--                              landing-page                               -->
-  <!-- ----------------------------------------------------------------------- -->
-
-	<div id="landing-page"  class="landing-page page active fade-onload">
-		<div class="landing-title">
-			<p>life</p>	
-			<p>Scope</p>	
+			</p>
 		</div>
-		<div class="dot1"></div>
-		<div class="dot2"></div>
-		<div class="landing-input input-block" >
-			age: <input type="text" id="age" onClick="this.select();"> <br><br>
-			sex: <p class="button" id="female" onClick="setSex('female')">female</p><p class="button" id="male" onClick="setSex('male')">male</p>
-      <img class="enter-button" id="ageButton" src="img/inputArrow.svg" alt="Enter" onclick="initWaffle();">
-      <p class="input-error hidden" id="error-start"></p>
-    </div>
-	</div>
 
-  <div class="pages">
+		<!-- ----------------------------------------------------------------------- -->
+		<!--                              landing-page                               -->
+		<!-- ----------------------------------------------------------------------- -->
 
-    <!-- ----------------------------------------------------------------------- -->
-    <!--                            introduction-page                            -->
-    <!-- ----------------------------------------------------------------------- -->
+		<div id="landing-page"  class="landing-page page active fade-onload">
+			<div class="landing-title">
+				<p>life</p>	
+				<p>Scope</p>	
+			</div>
+			<div class="dot1"></div>
+			<div class="dot2"></div>
+			<div class="landing-input input-block" >
+				age: <input type="text" id="age" onClick="this.select();"> <br><br>
+				sex: <p class="button" id="female" onClick="setSex('female')">female</p><p class="button" id="male" onClick="setSex('male')">male</p>
+				<img class="enter-button" id="ageButton" src="img/inputArrow.svg" alt="Enter" onclick="initWaffle();">
+				<p class="input-error hidden" id="error-start"></p>
+			</div>
+		</div>
 
-    <div id="introduction-page" class="page">
-			<div class="content">
+		<div class="pages">
 
-				<div>
-					<p id="fact-intro" class="fact"></p>
-      		<p id="info-intro" class="infobox o0">
+			<!-- ----------------------------------------------------------------------- -->
+			<!--                            introduction-page                            -->
+			<!-- ----------------------------------------------------------------------- -->
+
+			<div id="introduction-page" class="page">
+				<div class="content">
+
+					<div>
+						<p id="fact-intro" class="fact"></p>
+						<p id="info-intro" class="infobox o0">
 						The chart on the right displays your estimated life expectancy. One dot represents one week.
 						Work your way through the coming pages to finally find out with how much free time your're left.
 						The main purpose of lifeScope is to get you thinking, so take everything with a grain of salt. 
 						All claimes are based on estimates and can vary from person to person.<br><br>
 						Click the arrow down below to go to the next page...
-					</p>
+						</p>
+					</div>
+
+					<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('introduction-page', 'page1')">
 				</div>
-
-      	<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('introduction-page', 'page1')">
 			</div>
-    </div>
 
-    <!-- ----------------------------------------------------------------------- -->
-    <!--                               input pages                               -->
-    <!-- ----------------------------------------------------------------------- -->
+			<!-- ----------------------------------------------------------------------- -->
+			<!--                               input pages                               -->
+			<!-- ----------------------------------------------------------------------- -->
 
-    <!-- ---------------------------- page1 (sleep) ---------------------------- -->
+			<!-- ---------------------------- page1 (sleep) ---------------------------- -->
 
-    <div id="page1" class="page">
-			<div class="content">
-				<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('page1', 'introduction-page')">
+			<div id="page1" class="page">
+				<div class="content">
+					<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('page1', 'introduction-page')">
 
-				<div>
-					<p id="fact-sleep" class="fact"></p>
-					<p class="input-block">
+					<div>
+						<p id="fact-sleep" class="fact"></p>
+						<p class="input-block">
 						Hours of sleep per day: <input type="text" id="sleep" onClick="this.select();">
 						<img class="enter-button" id="sleepButton" src="img/inputArrow.svg" alt="Show new category" 
-						onclick="updateWaffle('sleep', colorSleep)">
-					</p>
-					<p class="input-error hidden" id="error-sleep"></p>
-					<p class="infobox" id="info-sleep">
+																																								onclick="updateWaffle('sleep', colorSleep)">
+						</p>
+						<p class="input-error hidden" id="error-sleep"></p>
+						<p class="infobox" id="info-sleep">
 						Most adults need seven to nine hours of sleep, what's your average?
 						Be aware that sleep duration is important, but it’s not the end-all, be-all. 
 						Sleep quality is another critical factor to consider, and it is 
 						closely connected with sleep continuity and avoiding sleep disruptions.
-					</p>
+						</p>
+					</div>
+
+					<img id="arrow-sleep" class="arrow down hidden" src="img/arrowDown.svg" onclick="changePage('page1', 'page2')">
 				</div>
+			</div>
 
-				<img id="arrow-sleep" class="arrow down hidden" src="img/arrowDown.svg" onclick="changePage('page1', 'page2')">
-    	</div>
-    </div>
+			<!-- ---------------------------- page2 (work) ----------------------------- -->
 
-    <!-- ---------------------------- page2 (work) ----------------------------- -->
+			<div id="page2" class="page">
+				<div class="content">
+					<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('page2', 'page1')">
 
-    <div id="page2" class="page">
-			<div class="content">
-      	<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('page2', 'page1')">
-
-				<div>
-					<p id="fact-work" class="fact"></p>
-					<p class="input-block">
+					<div>
+						<p id="fact-work" class="fact"></p>
+						<p class="input-block">
 						Working hours per week: <input type="text" id="work" onClick="this.select();"><br>
 						Retirement age: <input type="text" id="ageOfRetirement" onClick="this.select();">
 						<img class="enter-button" id="workButton" src="img/inputArrow.svg" alt="Show new category" 
-						onclick="updateWaffle('work', colorWork)">
-					</p>
-					<p class="input-error hidden" id="error-work"></p>
-					<p class="infobox">
+																																							 onclick="updateWaffle('work', colorWork)">
+						</p>
+						<p class="input-error hidden" id="error-work"></p>
+						<p class="infobox">
 						41 hours and 10 minutes. That’s the average in Switzerland for people with full-time jobs.
 						How many hours a week do you work?
-					</p>
+						</p>
+					</div>
+
+					<img id="arrow-work" class="arrow down hidden" src="img/arrowDown.svg" onclick="changePage('page2', 'page3')">
 				</div>
+			</div>
 
-      	<img id="arrow-work" class="arrow down hidden" src="img/arrowDown.svg" onclick="changePage('page2', 'page3')">
-    	</div>
-    </div>
+			<!-- ---------------------------- page3 (media) ---------------------------- -->
 
-    <!-- ---------------------------- page3 (media) ---------------------------- -->
+			<div id="page3" class="page">
+				<div class="content">
+					<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('page3', 'page2')">
 
-    <div id="page3" class="page">
-			<div class="content">
-      	<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('page3', 'page2')">
-
-				<div>
-      		<p id="fact-media" class="fact"></p>
-        	<p class="input-block">
+					<div>
+						<p id="fact-media" class="fact"></p>
+						<p class="input-block">
 						Media consumption per day: <input type="text" id="media" onClick="this.select();"> 
-        		<img class="enter-button" id="mediaButton" src="img/inputArrow.svg" alt="Show new category" 
-						onclick="updateWaffle('media', colorMedia)">
-					</p>
-        	<p class="input-error hidden" id="error-media"></p>
-      		<p class="infobox">
+						<img class="enter-button" id="mediaButton" src="img/inputArrow.svg" alt="Show new category" 
+																																								onclick="updateWaffle('media', colorMedia)">
+						</p>
+						<p class="input-error hidden" id="error-media"></p>
+						<p class="infobox">
 						Now lets talk about media consumption. This can be anything: TV, Netflix, social media, you name it...
 						So ask yourself, how much hours a day do you spend watching TV or scrolling through your social media feeds? 
 						Try to estimate your daily average. And be honest with yourself!
-					</p>
-      	</div> 
+						</p>
+					</div> 
 
-      	<img id="arrow-media" class="arrow down hidden" src="img/arrowDown.svg" onclick="changePage('page3', 'page4')">
-    	</div>
-		</div>
+					<img id="arrow-media" class="arrow down hidden" src="img/arrowDown.svg" onclick="changePage('page3', 'page4')">
+				</div>
+			</div>
 
-    <!-- ---------------------- page4 (admin / household) ---------------------- -->
+			<!-- ---------------------- page4 (admin / household) ---------------------- -->
 
-    <div id= "page4" class="page">
-			<div class="content">
-      	<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('page4', 'page3')">
+			<div id= "page4" class="page">
+				<div class="content">
+					<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('page4', 'page3')">
 
-				<div>
-      		<p id="fact-admin" class="fact"></p>
-        	<p class="input-block">
+					<div>
+						<p id="fact-admin" class="fact"></p>
+						<p class="input-block">
 						Everyday things (hours per day): <input type="text" id="admin" onClick="this.select();"> 
-        		<img class="enter-button" id="adminButton" src="img/inputArrow.svg" alt="Show new category" 
-						onclick="updateWaffle('admin', colorAdmin)">
-					</p>
-        	<p class="input-error hidden" id="error-admin"></p>
-      		<p class="infobox">
+						<img class="enter-button" id="adminButton" src="img/inputArrow.svg" alt="Show new category" 
+																																								onclick="updateWaffle('admin', colorAdmin)">
+						</p>
+						<p class="input-error hidden" id="error-admin"></p>
+						<p class="infobox">
 						There are a lot of other things that need to be done throughout a day. 
 						Things like cooking, washing the dishes, watering plants and so on... 
 						Sum them all up and guess how much time they take per day.
-					</p>
-      	</div> 
+						</p>
+					</div> 
 
-      	<img id="arrow-admin" class="arrow down hidden" src="img/arrowDown.svg" onclick="changePage('page4', 'custom-page')">
-	    </div>
-    </div>
+					<img id="arrow-admin" class="arrow down hidden" src="img/arrowDown.svg" onclick="changePage('page4', 'custom-page')">
+				</div>
+			</div>
 
-    <!-- ----------------------------------------------------------------------- -->
-    <!--                               custom-page                               -->
-    <!-- ----------------------------------------------------------------------- -->
+			<!-- ----------------------------------------------------------------------- -->
+			<!--                               custom-page                               -->
+			<!-- ----------------------------------------------------------------------- -->
 
-    <div id="custom-page" class="page">
-			<div class="content">
-      	<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('custom-page', 'page4')">
+			<div id="custom-page" class="page">
+				<div class="content">
+					<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('custom-page', 'page4')">
 
-				<div>
-          <p class="input-block">
+					<div>
+						<p class="input-block">
 						Category: <input type="text" id="customCategory" onClick="this.select();"><br>
 						Hours per day: <input type="text" class="changeId" id="custom" onClick="this.select();"> 
-        		<img class="enter-button" id="customButton" src="img/inputArrow.svg" alt="Show new category" 
-            onclick="updateWaffleCustom()">
-          </p>
-          <p class="text hidden input-error" id="error-custom"></p>
-      		<p class="infobox">
+						<img class="enter-button" id="customButton" src="img/inputArrow.svg" alt="Show new category" 
+																																								 onclick="updateWaffleCustom()">
+						</p>
+						<p class="text hidden input-error" id="error-custom"></p>
+						<p class="infobox">
 						Now it's your turn! Is there any category we forgot? Maybe you play piano one hour a day. 
 						Or you spend two hours a day reading. Enter your own categories if you want.<br><br>
 						On the next page you will see with how much free time you are left with...
-					</p>
+						</p>
+					</div>
+
+					<img id="arrow-custom" class="arrow down" src="img/arrowDown.svg" onclick="changePage('custom-page', 'summary-page'); constructFinalWaffle();">
 				</div>
+			</div>
 
-      	<img id="arrow-custom" class="arrow down" src="img/arrowDown.svg" onclick="changePage('custom-page', 'summary-page'); constructFinalWaffle();">
-    	</div>
-    </div>
+			<!-- ----------------------------------------------------------------------- -->
+			<!--                              summary page															 -->
+			<!-- ----------------------------------------------------------------------- -->
 
-    <!-- ----------------------------------------------------------------------- -->
-    <!--                              summary page 											    		 -->
-    <!-- ----------------------------------------------------------------------- -->
+			<div id="summary-page" class="page">
+				<div class="content">
+					<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('summary-page', 'custom-page'); loadWaffle();">
 
-    <div id="summary-page" class="page">
-			<div class="content">
-      	<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('summary-page', 'custom-page'); loadWaffle();">
-
-				<div>
-      		<p id="fact-summary" class="fact"></p>
-      		<p class="infobox">
+					<div>
+						<p id="fact-summary" class="fact"></p>
+						<p class="infobox">
 						How does that make you feel? Do you have an idea how you'll spend that time?
 						You can always click the top arrow to go back and change inputs.<br><br>
 						On the next page you will see how your lifestyle affects your life in a positive or negative way...
-					</p>
+						</p>
+					</div>
+
+					<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('summary-page', 'depri-page')">
 				</div>
+			</div>
 
-      	<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('summary-page', 'depri-page')">
-    	</div>
-    </div>
+			<!-- ----------------------------------------------------------------------- -->
+			<!--                               depri-page                                -->
+			<!-- ----------------------------------------------------------------------- -->
 
-    <!-- ----------------------------------------------------------------------- -->
-    <!--                               depri-page                                -->
-    <!-- ----------------------------------------------------------------------- -->
-    
-    <div id="depri-page" class="page">
-			<div class="content">
-      	<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('depri-page', 'summary-page')">
+			<div id="depri-page" class="page">
+				<div class="content">
+					<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('depri-page', 'summary-page')">
 
-				<div>
-          <p class="input-block">
+					<div>
+						<p class="input-block">
 
 						I am a smoker:<br>
 						<a class="button" id="smoker-yes" onClick="setDepriButton(true, 'smoker', 290)">Yes</a> 
@@ -242,79 +242,76 @@
 						<a class="button" id="sports-yes" onClick="setDepriButton(true, 'sports', 104)">Yes</a> 
 						<a class="button selected" id="sports-no" onClick="setDepriButton(false, 'sports', 104)">No</a> 
 
-					</p>
+						</p>
 
-        	<p class="input-error hidden" id="error-depri"></p>
-					<p class="infobox">
+						<p class="input-error hidden" id="error-depri"></p>
+						<p class="infobox">
 						This is highly speculative, there are endless other factors affecting your life expectancy! 
 						The goal here is to show you the importance of self-care and the harsh impact a unhealthy lifestyle 
 						could have on your life expectancy. 
-					</p>
+						</p>
 
+					</div>
+
+					<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('depri-page', 'final-page1'); hideElement('waffle-wrap');">
 				</div>
+			</div>
 
-      	<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('depri-page', 'final-page1'); hideElement('waffle-wrap');">
-    	</div>
-    </div>
+		</div><!-- .pages -->
 
-	</div><!-- .pages -->
-  
-  <!-- ------------------------------ dotmatrix ------------------------------ -->
-  <div id="waffle-wrap" class="container-dotmatrix hidden">
-		<div id="dotmatrix"></div> 
-  </div>
-
-  
-	<div class="final-pages">
-  <!-- ----------------------------------------------------------------------- -->
-  <!--                                fun-page                                 -->
-  <!-- ----------------------------------------------------------------------- -->
-
-  <div id="final-page1"  class="page content">
-		<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('final-page1', 'depri-page'); showElement('waffle-wrap');">
-    <div class="dot1"></div>
-		<div class="dot2"></div>
-		<div class="final-content">
-			<h1>...life goes on</h1>
-			<p>Thanks for using lifeScope, we hope you could gain some insights and found inspiration to commit even more to your goals and dreams!</p>
-			<p>
-				If you're still think about your lifestyle choices from the page before, here are some helpfull links:<br>
-				<ul>
-					<li><a target="_blank" href="https://www.stopsmoking.ch/">StopSmoking.ch - Swiss stop smoking campaign</a></li>
-					<li><a target="_blank" href="https://www.mentalhealth.org.uk/publications/how-manage-and-reduce-stress">Mental Health Foundation - Manage and reduce Stress</a></li>
-					<li><a target="_blank" href="">UK National Health Service - Benefits of exercise</a></li>
-				</ul>
-			</p>
+		<!-- ------------------------------ dotmatrix ------------------------------ -->
+		<div id="waffle-wrap" class="container-dotmatrix hidden">
+			<div id="dotmatrix"></div> 
 		</div>
-    <img class="arrow down" src="img/arrowDown.svg" onclick="changePage('final-page1', 'final-page2')">
-	</div>
 
-  <!-- ----------------------------------------------------------------------- -->
-  <!--                             references-page                             -->
-  <!-- ----------------------------------------------------------------------- -->
 
-  <div id="final-page2"  class="page content">
-		<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('final-page2', 'final-page1')">
-    <div class="dot1"></div>
-		<div class="dot2"></div>
-		<div class="final-content">
-			<h1>Sources</h1>
-			<ul>
-				<li>Life expectancy data source: <a target="_blank" href="https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/healthandlifeexpectancies/articles/lifeexpectancycalculator/2019-06-07">UK Office for National Statistics</a></li>
-				<li>Sleep: <a target="_blank" href="https://www.sleepfoundation.org/how-sleep-works/myths-and-facts-about-sleep">sleepfoundation.org</a></li>
-				<li>Average working hours: <a target="_blank" href="https://www.swissinfo.ch/eng/office-time_how-many-hours-do-you-work-a-week-/43716794">swissinfo.ch</a></li>
-				<li>Tabacco-related Mortality: <a target="_blank" href="https://www.cdc.gov/tobacco/data_statistics/fact_sheets/health_effects/tobacco_related_mortality/index.htm">Centers for Disease Control and Prevention</a></li>
-				<li>Stress-related Mortality: <a target="_blank" href="https://www.sciencedaily.com/releases/2020/03/200311100857.htm">Finnish Institute for Health and Welfare</a></li>
-				<li>Effects of exercising on life expectancy: <a target="_blank" href="https://www.livescience.com/36723-exercise-life-expectancy-overweight-obese.html"></a>livescience.com</li>
-			</ul>
-		</div>
-	</div>
-    
-	</div><!-- .final-pages -->
-</body>
+		<div class="final-pages">
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
-<script type="text/javascript" src="./js/DotMatrix.js"></script>
-<script type="text/javascript" src="./js/script.js"></script>
+			<!-- ----------------------------------------------------------------------- -->
+			<!--                                final-pages                              -->
+			<!-- ----------------------------------------------------------------------- -->
+
+			<div id="final-page1"  class="page content">
+				<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('final-page1', 'depri-page'); showElement('waffle-wrap');">
+				<div class="dot1"></div>
+				<div class="dot2"></div>
+				<div class="final-content">
+					<h1>...life goes on</h1>
+					<p>Thanks for using lifeScope, we hope you could gain some insights and found inspiration to commit even more to your goals and dreams!</p>
+					<p>
+					If you're still think about your lifestyle choices from the page before, here are some helpfull links:<br>
+					<ul>
+						<li><a target="_blank" href="https://www.stopsmoking.ch/">StopSmoking.ch - Swiss stop smoking campaign</a></li>
+						<li><a target="_blank" href="https://www.mentalhealth.org.uk/publications/how-manage-and-reduce-stress">Mental Health Foundation - Manage and reduce Stress</a></li>
+						<li><a target="_blank" href="https://www.nhs.uk/live-well/exercise/exercise-health-benefits/">UK National Health Service - Benefits of exercise</a></li>
+					</ul>
+					</p>
+				</div>
+				<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('final-page1', 'final-page2')">
+			</div>
+
+			<div id="final-page2"  class="page content">
+				<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('final-page2', 'final-page1')">
+				<div class="dot1"></div>
+				<div class="dot2"></div>
+				<div class="final-content">
+					<h1>Sources</h1>
+					<ul>
+						<li>Life expectancy data source: <a target="_blank" href="https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/healthandlifeexpectancies/articles/lifeexpectancycalculator/2019-06-07">UK Office for National Statistics</a></li>
+						<li>Sleep: <a target="_blank" href="https://www.sleepfoundation.org/how-sleep-works/myths-and-facts-about-sleep">sleepfoundation.org</a></li>
+						<li>Average working hours: <a target="_blank" href="https://www.swissinfo.ch/eng/office-time_how-many-hours-do-you-work-a-week-/43716794">swissinfo.ch</a></li>
+						<li>Tabacco-related Mortality: <a target="_blank" href="https://www.cdc.gov/tobacco/data_statistics/fact_sheets/health_effects/tobacco_related_mortality/index.htm">Centers for Disease Control and Prevention</a></li>
+						<li>Stress-related Mortality: <a target="_blank" href="https://www.sciencedaily.com/releases/2020/03/200311100857.htm">Finnish Institute for Health and Welfare</a></li>
+						<li>Effects of exercising on life expectancy: <a target="_blank" href="https://www.livescience.com/36723-exercise-life-expectancy-overweight-obese.html">https://www.livescience.com/36723-exercise-life-expectancy-overweight-obese.html</a>livescience.com</li>
+					</ul>
+				</div>
+			</div>
+
+		</div><!-- .final-pages -->
+	</body>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+	<script type="text/javascript" src="./js/DotMatrix.js"></script>
+	<script type="text/javascript" src="./js/script.js"></script>
 
 </html>

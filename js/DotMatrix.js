@@ -1,3 +1,16 @@
+/**
+ * Dieses Script basiert vorwiegend auf der d3-dotmatrix Library von Arpit Narechania.
+ * https://github.com/arpitnarechania/d3-dotmatrix
+ *
+ * Eigene Anpassungen:
+ * - Optionaler Tooltip welcher anzahl Wochen anzeigt
+ * - aktualisieren des Scripts
+ * - dynamischer Chart-Titel
+ * - Möglichkeit, eingene Farben hinzuzufügen
+ * - entfernen der Gruppierung mehrerer Charts
+ */
+
+
 function DotMatrixChart( dataset, options ) {
 
 	/**
