@@ -469,22 +469,27 @@ function constructFinalWaffle() {
 
 
 
-function setDepriButton(button, id, weeks) {
+function setDepriButton(selected, id, weeks) {
 	let yes = document.getElementById(id + '-yes');
 	let no = document.getElementById(id + '-no');
 
-	if(button) {
-		if(!yes.classList.contains('selected')) {
-			finalDataset[0].count -= weeks;
+	if (weeks <= weeksToLive) {
+		resetError('depri');
+		if (selected) {
+			if (!yes.classList.contains('selected')) {
+				finalDataset[0].count -= weeks;
+			}
+			yes.classList.add('selected');
+			no.classList.remove('selected');
+		} else {
+			if (!no.classList.contains('selected')) {
+				finalDataset[0].count += weeks;
+			}
+			no.classList.add('selected');
+			yes.classList.remove('selected');
 		}
-		yes.classList.add('selected');
-		no.classList.remove('selected');
 	} else {
-		if(!no.classList.contains('selected')) {
-			finalDataset[0].count += weeks;
-		}
-		no.classList.add('selected');
-		yes.classList.remove('selected');
+		printError('depri', 'TODO: error message');
 	}
 	DotMatrixChart(finalDataset, finalChartOptions);
 }
