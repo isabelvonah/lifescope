@@ -57,6 +57,14 @@ input[type=radio] {
 	text-align: center;
 }
 
+.final-content > h1 {
+    font-size: 32px;
+}
+
+.final-content > p, a, li {
+    font-size: 22px;
+}
+
 /*
  * Animations 
  */
@@ -354,6 +362,7 @@ input {
 
 .content {
 	height: 100vh;
+    width: 35vw;
 	display: grid;
 	align-items: center;
 	margin-left: 55px;
