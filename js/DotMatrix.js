@@ -192,7 +192,7 @@ function DotMatrixChart( dataset, options ) {
 
 				tooltip.style('display', 'block');
 				tooltip.style('opacity',2);
-				tooltip.style("font-size", dotRadius*4.5 + "px");
+				tooltip.style("font-size", dotRadius*3 + "px");
                 tooltip.style("font-family", "var(--font-copy)");
 
 			})

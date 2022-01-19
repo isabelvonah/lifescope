@@ -318,19 +318,19 @@ function printFact(category) {
 	switch(category) {
 		case 'sleep':
 			console.log(dataset);
-			setContent('fact-sleep', `Alright, you will sleep for another <span>${catObj[0].count} weeks</span>`);
+			setContent('fact-sleep', `Alright, you will sleep for another <span>${catObj[0].count} weeks</span>.`);
             setColor('fact-sleep', colorSleep);
 			break;
 		case 'work':
-			setContent('fact-work', `You have <span>${catObj[0].count} weeks</span> of work ahead of you`);
+			setContent('fact-work', `You have <span>${catObj[0].count} weeks</span> of work ahead of you.`);
             setColor('fact-work', colorWork);
 			break;
 		case 'media':
-			setContent('fact-media', `Your media consumtion sums up to around <span>${catObj[0].count} weeks</span>`);
+			setContent('fact-media', `Your media consumtion sums up to around <span>${catObj[0].count} weeks</span>.`);
             setColor('fact-media', colorMedia);
 			break;
 		case 'admin':
-			setContent('fact-admin', `These small things will cost you another <span>${catObj[0].count} weeks</span>`);
+			setContent('fact-admin', `These small things will cost you another <span>${catObj[0].count} weeks</span>.`);
             setColor('fact-admin', colorAdmin);
 			break;
 	}
@@ -461,7 +461,7 @@ function constructFinalWaffle() {
 	finalDataset = [];
 	finalDataset.push({category: "free time", count: dataset[dataset.length -1].count, color: colorToLive});
 
-	setContent('fact-summary', `That's it, you are left with <span>${finalDataset[0].count} weeks</span>`)
+	setContent('fact-summary', `That's it, you have <span>${finalDataset[0].count} weeks</span> of free time left.`)
     setColor('fact-summary', colorToLive);
 	DotMatrixChart( finalDataset, finalChartOptions);
 

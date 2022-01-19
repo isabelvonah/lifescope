@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="css/style.css">
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap" rel="stylesheet"> 
-		<title>lifeScope</title>
-	</head>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="#">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap" rel="stylesheet"> 
+  <title>lifeScope</title>
+</head>
 
-	<body>
+<body>
 
-		<div id="mobile-overlay" class="hidden">
-			<p>
+	<div id="mobile-overlay" class="hidden">
+		<p>
 			lifeScope looks best on large screens.<br>
 			Please resize your browser window or switch devices.
 			</p>
@@ -204,11 +205,19 @@
 				<div class="content">
 					<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('summary-page', 'custom-page'); loadWaffle();">
 
+<<<<<<< HEAD
 					<div>
 						<p id="fact-summary" class="fact"></p>
 						<p class="infobox">
 						How does that make you feel? Do you have an idea how you'll spend that time?
 						You can always click the top arrow to go back and change inputs.<br><br>
+=======
+				<div>
+      		<p id="fact-summary" class="fact"></p>
+      		<p class="infobox">
+						How does that make you feel? Do you have any ideas on how to spend that time? <br><br>
+						You can always click the top arrow to go back and change inputs.
+>>>>>>> 63c869a2862aed5a7603a4557dc98a439a78cc0c
 						On the next page you will see how your lifestyle affects your life in a positive or negative way...
 						</p>
 					</div>
@@ -257,11 +266,69 @@
 				</div>
 			</div>
 
+<<<<<<< HEAD
 		</div><!-- .pages -->
 
 		<!-- ------------------------------ dotmatrix ------------------------------ -->
 		<div id="waffle-wrap" class="container-dotmatrix hidden">
 			<div id="dotmatrix"></div> 
+=======
+      	<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('depri-page', 'final-page1'); hideElement('waffle-wrap');">
+    	</div>
+    </div>
+
+	</div><!-- .pages -->
+  
+  <!-- ------------------------------ dotmatrix ------------------------------ -->
+  <div id="waffle-wrap" class="container-dotmatrix hidden">
+		<div id="dotmatrix"></div> 
+  </div>
+
+  
+	<div class="final-pages">
+  <!-- ----------------------------------------------------------------------- -->
+  <!--                                fun-page                                 -->
+  <!-- ----------------------------------------------------------------------- -->
+
+  <div id="final-page1"  class="page content">
+		<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('final-page1', 'depri-page'); showElement('waffle-wrap');">
+        <div class = "dot3"></div>
+        <div class = "dot4"></div>
+		<div class="dot2"></div>
+        <div class="dot1"></div>
+		<div class="final-content">
+			<h1>Life goes on...</h1>
+			<p>Thanks for using lifeScope, we hope you could gain some insights and found inspiration to commit even more to your goals and dreams!</p>
+			<p>
+				If you're still think about your lifestyle choices from the page before, here are some helpfull links:<br>
+				<ul>
+					<li><a target="_blank" href="https://www.stopsmoking.ch/">StopSmoking.ch - Swiss stop smoking campaign</a></li>
+					<li><a target="_blank" href="https://www.mentalhealth.org.uk/publications/how-manage-and-reduce-stress">Mental Health Foundation - Manage and reduce Stress</a></li>
+					<li><a target="_blank" href="">UK National Health Service - Benefits of exercise</a></li>
+				</ul>
+			</p>
+		</div>
+    <img class="arrow down" src="img/arrowDown.svg" onclick="changePage('final-page1', 'final-page2')">
+	</div>
+
+  <!-- ----------------------------------------------------------------------- -->
+  <!--                             references-page                             -->
+  <!-- ----------------------------------------------------------------------- -->
+
+  <div id="final-page2"  class="page content">
+		<img class="arrow up" src="img/arrowUp.svg" onclick="changePage('final-page2', 'final-page1')">
+    <div class="dot1"></div>
+		<div class="final-content">
+			<h1>Sources</h1>
+			<ul>
+				<li>Life expectancy data source: <a target="_blank" href="https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/healthandlifeexpectancies/articles/lifeexpectancycalculator/2019-06-07">UK Office for National Statistics</a></li>
+				<li>Sleep: <a target="_blank" href="https://www.sleepfoundation.org/how-sleep-works/myths-and-facts-about-sleep">sleepfoundation.org</a></li>
+				<li>Average working hours: <a target="_blank" href="https://www.swissinfo.ch/eng/office-time_how-many-hours-do-you-work-a-week-/43716794">swissinfo.ch</a></li>
+				<li>Tabacco-related Mortality: <a target="_blank" href="https://www.cdc.gov/tobacco/data_statistics/fact_sheets/health_effects/tobacco_related_mortality/index.htm">Centers for Disease Control and Prevention</a></li>
+				<li>Stress-related Mortality: <a target="_blank" href="https://www.sciencedaily.com/releases/2020/03/200311100857.htm">Finnish Institute for Health and Welfare</a></li>
+				<li>Effects of exercising on life expectancy: <a target="_blank" href="https://www.livescience.com/36723-exercise-life-expectancy-overweight-obese.html"></a>livescience.com</li>
+			</ul>
+>>>>>>> 63c869a2862aed5a7603a4557dc98a439a78cc0c
 		</div>
 
 

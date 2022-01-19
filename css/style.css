@@ -57,6 +57,14 @@ input[type=radio] {
 	text-align: center;
 }
 
+.final-content > h1 {
+    font-size: 32px;
+}
+
+.final-content > p, a, li {
+    font-size: 22px;
+}
+
 /*
  * Animations 
  */
@@ -182,7 +190,6 @@ input {
 .fact {
 	font-size: 26px;
 	padding: 25px 0px;
-	font-family: var(--font-main);
 }
 
 .fact>span {
@@ -249,27 +256,100 @@ input {
 }
 
 .dot1 {
-	height: 400px;
-	width: 400px;
+	height: 30vw;
+	width: 30vw;
 	background-color: #FEA744;
 	border-radius: 100%;
 	position: absolute;
-	top: -150px;
-	left: 50vw;
     z-index: -5;
+    animation: vertical1 33s, horizontal1 21s;
+    animation-iteration-count: infinite;
+    animation-timing-function:linear
+}
+
+@keyframes vertical1 {
+    0% { top: 0vh }
+    50% { top: 40vh }
+    100% { top: 0vh }
+}
+
+@keyframes horizontal1 {
+    0% { left: 50vw }
+    50% { left: 80vw }
+    100% { left: 50vw }
 }
 
 .dot2 {
-	height: 760px;
-	width: 760px;
+	height: 55vw;
+	width: 55vw;
 	background-color: #2DA4A8;
 	border-radius: 100%;
 	position: absolute;
-	bottom: -260px;
-	right: -12vw;
-    z-index: -5;
+    z-index: -6;
+    animation: vertical2 28s, horizontal2 44s;
+    animation-iteration-count: infinite;
+    animation-timing-function:linear
 }
 
+@keyframes vertical2 {
+    0% { top: 70vh }
+    50% { top: 30vh }
+    100% { top: 70vh }
+}
+
+@keyframes horizontal2 {
+    0% { left: 20vw }
+    50% { left: 65vw }
+    100% { left: 20vw }
+}
+
+.dot3 {
+	height: 20vw;
+	width: 20vw;
+	background-color: #93D360;
+	border-radius: 100%;
+	position: absolute;
+    z-index: -4;
+    animation: vertical3 19s, horizontal3 13s;
+    animation-iteration-count: infinite;
+    animation-timing-function:linear
+}
+
+@keyframes vertical3 {
+    0% { top: 205vh }
+    50% { top: -10vh }
+    100% { top: 205vh }
+}
+
+@keyframes horizontal3 {
+    0% { left: 10vw }
+    50% { left: 90vw }
+    100% { left: 10vw }
+}
+
+.dot4 {
+	height: 15vw;
+	width: 15vw;
+	background-color: #FF3509;
+	border-radius: 100%;
+	position: absolute;
+    z-index: -4;
+    animation: vertical4 23s, horizontal4 29s;
+    animation-iteration-count: infinite;
+    animation-timing-function:linear
+}
+
+@keyframes vertical4 {
+    0% { top: -10vh }
+    50% { top: 210vh }
+    100% { top: -10vh }
+}
+
+@keyframes horizontal4 {
+    0% { left: 90vw }
+    50% { left: 30vw }
+    100% { left: 90vw }
+}
 
 /*
  * Pages 
@@ -282,6 +362,7 @@ input {
 
 .content {
 	height: 100vh;
+    width: 35vw;
 	display: grid;
 	align-items: center;
 	margin-left: 55px;
