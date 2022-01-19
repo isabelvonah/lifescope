@@ -260,9 +260,9 @@ input {
 }
 
 @keyframes vertical1 {
-    0% { top: -20vh }
-    50% { top: 20vh }
-    100% { top: -20vh }
+    0% { top: 0vh }
+    50% { top: 40vh }
+    100% { top: 0vh }
 }
 
 @keyframes horizontal1 {
@@ -295,6 +295,53 @@ input {
     100% { left: 20vw }
 }
 
+.dot3 {
+	height: 20vw;
+	width: 20vw;
+	background-color: #93D360;
+	border-radius: 100%;
+	position: absolute;
+    z-index: -4;
+    animation: vertical3 19s, horizontal3 13s;
+    animation-iteration-count: infinite;
+    animation-timing-function:linear
+}
+
+@keyframes vertical3 {
+    0% { top: 205vh }
+    50% { top: -10vh }
+    100% { top: 205vh }
+}
+
+@keyframes horizontal3 {
+    0% { left: 10vw }
+    50% { left: 90vw }
+    100% { left: 10vw }
+}
+
+.dot4 {
+	height: 15vw;
+	width: 15vw;
+	background-color: #FF3509;
+	border-radius: 100%;
+	position: absolute;
+    z-index: -4;
+    animation: vertical4 23s, horizontal4 29s;
+    animation-iteration-count: infinite;
+    animation-timing-function:linear
+}
+
+@keyframes vertical4 {
+    0% { top: -10vh }
+    50% { top: 210vh }
+    100% { top: -10vh }
+}
+
+@keyframes horizontal4 {
+    0% { left: 90vw }
+    50% { left: 30vw }
+    100% { left: 90vw }
+}
 
 /*
  * Pages 
