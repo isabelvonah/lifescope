@@ -4,7 +4,7 @@
  *
  * Eigene Anpassungen:
  * - Optionaler Tooltip welcher anzahl Wochen anzeigt
- * - aktualisieren des Scripts
+ * - update von veralteten Standards
  * - dynamischer Chart-Titel
  * - Möglichkeit, eingene Farben hinzuzufügen
  * - entfernen der Gruppierung mehrerer Charts
@@ -48,7 +48,7 @@ function DotMatrixChart( dataset, options ) {
 	/**
 	 * Sets the dimensions of the canvas.
 	 */ 
-	var	margin = {top: dotRadius*10, right: dotRadius*15, bottom: dotRadius*10, left: dotRadius*15};
+	let margin = {top: dotRadius*10, right: dotRadius*15, bottom: dotRadius*10, left: dotRadius*15};
 
 	let height = (numOfLines+1) * (dotRadius * 2 + dotPaddingBottom + dotPaddingTop);
 	let width = (dotRadius * 2 + dotPaddingLeft + dotPaddingRight) * numOfCirclesInARow;
@@ -56,11 +56,11 @@ function DotMatrixChart( dataset, options ) {
 	/**
 	 * Sets the ranges.
 	 */
-	var	xScale = d3.scale.linear().range( [margin.left, width] );
-	var	yScale = d3.scale.linear().range( [margin.top, height] );
+	let xScale = d3.scale.linear().range( [margin.left, width] );
+	let yScale = d3.scale.linear().range( [margin.top, height] );
 
 	xScale.domain( [0, numOfCirclesInARow] );
-    yScale.domain([0, totalNumOfCircles/numOfCirclesInARow-1 ]);
+	yScale.domain([0, totalNumOfCircles/numOfCirclesInARow-1 ]);
 
 	/**
 	 * Creates SVG element.
@@ -68,7 +68,7 @@ function DotMatrixChart( dataset, options ) {
 	let div = document.querySelector(divSelector);
 	div.innerHTML = '';
 
-	var svg = d3.select(divSelector)
+	let svg = d3.select(divSelector)
 		.append("svg")
 		.attr("preserveAspectRatio", "xMinYMin meet")
 		.attr("viewBox", "0 0 " + (width + margin.left + margin.right) + " " + (height + margin.bottom))
@@ -84,7 +84,7 @@ function DotMatrixChart( dataset, options ) {
 	 */
 	function generate_array(d) {
 
-		var arr = new Array(d.count);
+		let arr = new Array(d.count);
 
 		for ( let i=0; i<d.count; i++ ) {
 
@@ -109,7 +109,7 @@ function DotMatrixChart( dataset, options ) {
 	/**
 	 * Adds SVG content.
 	 */
-	var groups = svg
+	let groups = svg
 		.selectAll("g.group")
 		.data( dataset )
 		.enter()
@@ -123,7 +123,7 @@ function DotMatrixChart( dataset, options ) {
 		.attr("id", "waffle-title")
 		.text(`${options.chart_title} ${dotToYears} years`);
 
-	var circleArray = groups.selectAll("g.circleArray")
+	let circleArray = groups.selectAll("g.circleArray")
 		.data( function(d) { return generate_array(d); } );
 
 	circleArray.enter()
@@ -140,7 +140,7 @@ function DotMatrixChart( dataset, options ) {
 	/**
 	 * Adds legend.
 	 */
-	var legend = svg
+	let legend = svg
 		.selectAll(".legend")
 		.data(catcol)
 		.enter()
@@ -164,20 +164,21 @@ function DotMatrixChart( dataset, options ) {
 		.text(function(d){return d['cat']});
 
 
-    function countOfCat(cat) {
-        for (i = 0; i < dataset.length; i++) {
-            if (dataset[i].category == cat) {
-                return dataset[i].count;
-            }
-        }
-    }
+	function countOfCat(cat) {
+		for (i = 0; i < dataset.length; i++) {
+			if (dataset[i].category == cat) {
+				return dataset[i].count;
+			}
+		}
+	}
+
 
 	/**
 	 * Adds tooltip (optional).
 	 */
 	if (options.tooltip) {
 		d3.selectAll(".tooltip").remove()
-		var tooltip = d3.select("body")
+		let tooltip = d3.select("body")
 			.append('div')
 			.attr('class', 'tooltip');
 
@@ -192,8 +193,8 @@ function DotMatrixChart( dataset, options ) {
 
 				tooltip.style('display', 'block');
 				tooltip.style('opacity',2);
-				tooltip.style("font-size", dotRadius*3 + "px");
-                tooltip.style("font-family", "var(--font-copy)");
+				tooltip.style("font-size", "16px");
+				tooltip.style("font-family", "var(--font-copy)");
 
 			})
 			.on('mousemove', function(d) {
@@ -205,6 +206,5 @@ function DotMatrixChart( dataset, options ) {
 				tooltip.style('opacity',0);
 			});
 	}
-
 
 }

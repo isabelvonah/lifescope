@@ -11,12 +11,12 @@ let ageOfRetirement = 0;
 
 let dataset = [];
 let chart_options = {
-	dot_radius : 4.5,
+	dot_radius : 5,
 	no_of_circles_in_a_row: 70,
-	dot_padding_left : 2,
-	dot_padding_right : 2,
-	dot_padding_top : 2,
-	dot_padding_bottom : 2,
+	dot_padding_left : 1.5,
+	dot_padding_right : 1.5,
+	dot_padding_top : 1.5,
+	dot_padding_bottom : 1.5,
 	div_selector: '#dotmatrix',
 	chart_title: 'Life expectancy:',
 	tooltip: true 
@@ -45,28 +45,6 @@ let colorCustom7	= "#5DCB8A";
 let colorToLive		= "#167278";
 
 
-
-/**
- * Updates waffle chart options based on viewport width.
- */
-let viewportWidth = window.innerWidth;
-
-function updateWaffleOptions(viewportWidth) {
-	if (viewportWidth < 1550) {
-		chart_options.dot_radius = 3.5;
-		chart_options.dot_padding_left = 1;
-		chart_options.dot_padding_right = 1;
-		chart_options.dot_padding_top = 1;
-		chart_options.dot_padding_bottom = 1;
-	} else {
-		chart_options.dot_radius = 5;
-		chart_options.dot_padding_left = 1.5;
-		chart_options.dot_padding_right = 1.5;
-		chart_options.dot_padding_top = 1.5;
-		chart_options.dot_padding_bottom = 1.5;
-	}
-}
-
 /**
  * Sets reload position to top.
  */
@@ -82,23 +60,10 @@ window.addEventListener('load', () => {
 });
 
 /**
- * Listens to resize event and changes scrolling position and
- * chart setup accordingly.
- */
-window.addEventListener('resize', debounce(function(e) {
-	let viewportWidth = window.innerWidth;
-	let viewportHeight = window.innerHeight;
-	document.getElementsByClassName('active')[0].scrollIntoView( {behavior: 'smooth'} );
-	updateWaffleOptions(viewportWidth);
-	DotMatrixChart(dataset, chart_options);
-	toggleMobileOverlay(viewportWidth, viewportHeight);
-}));
-
-/**
  * Checks if screen is to small.
  */
 function toggleMobileOverlay(vw, vh) {
-	if(vw < 900 || vh < 900) {
+	if(vw < 1060 || vh < 900) {
 		showElement('mobile-overlay');
 	} else {
 		hideElement('mobile-overlay');
@@ -106,7 +71,59 @@ function toggleMobileOverlay(vw, vh) {
 }
 
 /**
- * 
+ * Listens to resize event and changes scrolling position and
+ * chart setup accordingly.
+ */
+window.addEventListener('resize', debounce(function(e) {
+	let viewportWidth = window.innerWidth;
+	let viewportHeight = window.innerHeight;
+	document.getElementsByClassName('active')[0].scrollIntoView( {behavior: 'smooth'} );
+	DotMatrixChart(dataset, chart_options);
+	toggleMobileOverlay(viewportWidth, viewportHeight);
+}));
+
+
+/**
+ * Listens to keydown event and prevent tab key from working (with exceptions ond work page and custom).
+ */
+window.addEventListener("keydown", (e) => {
+    if ((e.shiftKey == false && e.key == "Tab") && event.target.id != "work" && event.target.id != "customCategory") {
+      e.preventDefault();
+    }
+  });
+
+window.addEventListener("keydown", (e) => {
+    if ((e.shiftKey && e.key == "Tab") && event.target.id != "ageOfRetirement" && event.target.id != "custom") {
+      e.preventDefault();
+    }
+  });
+
+
+/**
+ * Enables submitting input data via enter key. 
+ */
+function enableEnterKey (inputId, buttonId) {
+	let input = document.getElementById(inputId);
+
+	input.addEventListener("keyup", function(event) {
+		if (event.key == 'Enter') {
+			document.getElementById(buttonId).click();
+		}    
+	}); 
+}
+
+enableEnterKey("age", "ageButton");
+enableEnterKey("sleep", "sleepButton");
+enableEnterKey("work", "workButton");
+enableEnterKey("ageOfRetirement", "workButton");
+enableEnterKey("media", "mediaButton");
+enableEnterKey("admin", "adminButton");
+enableEnterKey("customCategory", "customButton");
+enableEnterKey("custom", "customButton");
+
+
+/**
+ * Debounces execution of a function. 
  */
 function debounce(func) {
 	let timer;
@@ -160,7 +177,6 @@ function setSex(input) {
 	}
 }
 
-
 const yearsToWeeks = (years) => parseInt(years) * 52;
 const weeksToYears = (weeks) => (weeks / 52).toFixed(1);
 const weeksToPercentage = (weeks) => (weeks / yearsToWeeks(lifeExpectancy) * 100).toFixed(1)
@@ -184,8 +200,9 @@ function validate24(value) {
 	return (getValidFloat(value) > 0 && getValidFloat(value) < 24);
 }
 
+
 /**
- *
+ * Checks if input isn't bigger than life expectancy.
  */
 function validateRange(mode, numOfWeeks, category) {
 	if (mode === 'insert') {
@@ -201,6 +218,7 @@ function validateRange(mode, numOfWeeks, category) {
 		return (numOfWeeks >= dataset[dataset.length - 1].count + existingDots) ? false : true;
 	}
 }
+
 
 /**
  * Prints/resets error messages.
@@ -229,23 +247,6 @@ function resetError(cat, custom) {
 
 
 /**
- * Listens to keydown event and prevent tab key from working (with exceptions ond work page and custom)
- */
-
-window.addEventListener("keydown", (e) => {
-    if ((e.shiftKey == false && e.key == "Tab") && event.target.id != "work" && event.target.id != "customCategory") {
-      e.preventDefault();
-    }
-  });
-
-window.addEventListener("keydown", (e) => {
-    if ((e.shiftKey && e.key == "Tab") && event.target.id != "ageOfRetirement" && event.target.id != "custom") {
-      e.preventDefault();
-    }
-  });
-
-
-/**
  * Builds initial waffle chart based on age and sex input.
  */
 function initWaffle() {
@@ -270,8 +271,6 @@ function initWaffle() {
 				dataset.push( {category: "lived", count: ageInWeeks, color: colorLived} );
 				dataset.push( {category: "to live", count: weeksToLive, color: colorToLive} );
 
-				updateWaffleOptions(viewportWidth);
-
 				DotMatrixChart( dataset, chart_options );
 
 				changePage('landing-page', 'introduction-page');
@@ -281,7 +280,7 @@ function initWaffle() {
 
 				setContent('fact-intro', 
 					`<span id='fact1'> ${ageInWeeks} weeks </span> of your life have already passed. 
-										Yet, according to statistics, there are <span id='fact2'> ${weeksToLive} more weeks </span> awaiting you.`
+					Yet, according to statistics, there are <span id='fact2'> ${weeksToLive} more weeks </span> awaiting you.`
 				);
 				setColor('fact1', colorLived);
 				setColor('fact2', colorToLive);
@@ -289,15 +288,10 @@ function initWaffle() {
 			});
 
 		} else {
-
 			printError('start', 'Please select female or male');
-
 		}
-
 	} else {
-
 		printError('start', 'Please enter your age in years...');
-
 	}
 }
 
@@ -319,19 +313,23 @@ function printFact(category) {
 		case 'sleep':
 			console.log(dataset);
 			setContent('fact-sleep', `Alright, you will sleep for another <span>${catObj[0].count} weeks</span>.`);
-            setColor('fact-sleep', colorSleep);
+      setColor('fact-sleep', colorSleep);
+			fadeIn('fact-sleep');
 			break;
 		case 'work':
 			setContent('fact-work', `You have <span>${catObj[0].count} weeks</span> of work ahead of you.`);
-            setColor('fact-work', colorWork);
+      setColor('fact-work', colorWork);
+			fadeIn('fact-work');
 			break;
 		case 'media':
 			setContent('fact-media', `Your media consumtion sums up to around <span>${catObj[0].count} weeks</span>.`);
-            setColor('fact-media', colorMedia);
+      setColor('fact-media', colorMedia);
+			fadeIn('fact-media');
 			break;
 		case 'admin':
 			setContent('fact-admin', `These small things will cost you another <span>${catObj[0].count} weeks</span>.`);
-            setColor('fact-admin', colorAdmin);
+      setColor('fact-admin', colorAdmin);
+			fadeIn('fact-admin');
 			break;
 	}
 }
@@ -373,7 +371,7 @@ function updateWaffle(category, color, custom=false) {
 
 		} else {
 			printError(category, 'Please enter a valid number of working hours and age of retirement', custom);
-            return;
+      return;
 		}
 
 	} 
@@ -388,16 +386,16 @@ function updateWaffle(category, color, custom=false) {
 			}
 		}
 		printFact(category);
-        if (!custom) {
-            showElement('arrow-' + category);
-        }
+		if (!custom) {
+			showElement('arrow-' + category);
+		}
 	} else if (validateRange("insert", numOfWeeks, category)) {
 		dataset.splice( dataset.length - 1, 0, {category: category, count: numOfWeeks, color: color} );
 		dataset[dataset.length - 1].count -= numOfWeeks;
 		printFact(category);
-        if (!custom) {
-            showElement('arrow-' + category);
-        }
+		if (!custom) {
+			showElement('arrow-' + category);
+		}
 	} else {
 		printError(category, "Please enter a smaller number");
 	}
@@ -405,16 +403,12 @@ function updateWaffle(category, color, custom=false) {
 	DotMatrixChart( dataset, chart_options );
 }
 
-function loadWaffle() {
-	DotMatrixChart( dataset, chart_options );
-	console.log('done');
-}
-
-let colors = [colorCustom7, colorCustom6, colorCustom5, colorCustom4, colorCustom3, colorCustom2, colorCustom1];
 
 /**
  * Handles colors for custom categories before updateWaffle().
  */
+let colors = [colorCustom7, colorCustom6, colorCustom5, colorCustom4, colorCustom3, colorCustom2, colorCustom1];
+
 function updateWaffleCustom() {
 	let customCategory = document.getElementById('customCategory').value;
 
@@ -432,30 +426,7 @@ function updateWaffleCustom() {
 
 
 /**
- * Enables submitting input data via enter key. 
- */
-function enableEnterKey (inputId, buttonId) {
-	let input = document.getElementById(inputId);
-
-	input.addEventListener("keyup", function(event) {
-		if (event.key == 'Enter') {
-			document.getElementById(buttonId).click();
-		}    
-	}); 
-}
-
-enableEnterKey("age", "ageButton");
-enableEnterKey("sleep", "sleepButton");
-enableEnterKey("work", "workButton");
-enableEnterKey("ageOfRetirement", "workButton");
-enableEnterKey("media", "mediaButton");
-enableEnterKey("admin", "adminButton");
-enableEnterKey("customCategory", "customButton");
-enableEnterKey("custom", "customButton");
-
-
-/**
- * constructs a new chart containing just the last category when navigating to final page
+ * Constructs a new chart containing just the last category when navigating to final page.
  */
 function constructFinalWaffle() {
 	finalDataset = [];
@@ -468,12 +439,14 @@ function constructFinalWaffle() {
 }
 
 
-
+/**
+ * Adds or removes weeks based on selected button. 
+ */
 function setDepriButton(selected, id, weeks) {
 	let yes = document.getElementById(id + '-yes');
 	let no = document.getElementById(id + '-no');
 
-	if (weeks <= weeksToLive) {
+	if (weeks + 80 <= weeksToLive) {
 		resetError('depri');
 		if (selected) {
 			if (!yes.classList.contains('selected')) {
@@ -489,8 +462,7 @@ function setDepriButton(selected, id, weeks) {
 			yes.classList.remove('selected');
 		}
 	} else {
-		printError('depri', 'TODO: error message');
+		printError('depri', "Ups, there are less than 0 weeks left. That doesn't seem right, we know... Sorry, but our rough calculations aren't made for edge cases like yours.");
 	}
 	DotMatrixChart(finalDataset, finalChartOptions);
 }
-

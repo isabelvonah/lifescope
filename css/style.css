@@ -12,7 +12,7 @@
 body {
 	margin: 0;
 	background-color: var(--bg-color);
-	/* overflow: hidden; /* to disable scrolling */
+	overflow: hidden; /* to disable scrolling */
 	font-variant-numeric: lining-nums;
 }
 
@@ -28,10 +28,6 @@ input[type=text] {
 	text-align: center;
 }
 
-input[type=radio] {
-    height: 15px;
-}
-
 #customCategory {
 	width: 150px;
 	text-align: left;
@@ -45,25 +41,18 @@ input[type=radio] {
 #mobile-overlay {
 	z-index: 10;
 	position: fixed;
-	width: 94vw;
+	width: calc(100vw - 180px);
 	height: 100vh;
-	padding: 30vh 50px 0 50px;
+	padding: 30vh 100px 0 100px;
 	background-color: var(--bg-color);
 }
 
 #mobile-overlay > p {
-	font-size: 26px;
+	font-size: 20px;
 	font-family: var(--font-main);
 	text-align: center;
 }
 
-.final-content > h1 {
-    font-size: 32px;
-}
-
-.final-content > p, a, li {
-    font-size: 22px;
-}
 
 /*
  * Animations 
@@ -74,23 +63,23 @@ input[type=radio] {
 }
 
 .fade {
-  animation-duration: 0.4s;
-  animation-name: animate-fade;
-  animation-delay: 0.4s;
-  animation-fill-mode: forwards;;
+	animation-duration: 0.4s;
+	animation-name: animate-fade;
+	animation-delay: 0.4s;
+	animation-fill-mode: forwards;;
 	opacity: 0;
 }
 
 .fade-onload {
-  animation-duration: 1.5s;
-  animation-name: animate-fade;
-  animation-delay: 0.5s;
-  animation-fill-mode: backwards;;
+	animation-duration: 1.5s;
+	animation-name: animate-fade;
+	animation-delay: 0.5s;
+	animation-fill-mode: backwards;;
 }
 
 @keyframes animate-fade {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+	0% { opacity: 0; }
+	100% { opacity: 1; }
 }
 
 
@@ -177,14 +166,22 @@ input {
 	text-decoration: none;
 	color: var(--color-black);
 	background-image: linear-gradient(0deg, #FEA744 0%, #FEA744 100%);
-  background-repeat: no-repeat;
-  background-size: 100% 0.2em;
-  background-position: 0 110%;
-  transition: background-size 0.25s ease-in;
+	background-repeat: no-repeat;
+	background-size: 100% 0.2em;
+	background-position: 0 110%;
+	transition: background-size 0.25s ease-in;
 }
 
 .final-content a:hover {
 	background-size: 100% 100%;
+}
+
+.final-content > h1 {
+	font-size: 32px;
+}
+
+.final-content > p, a, li {
+	font-size: 22px;
 }
 
 .fact {
@@ -195,7 +192,7 @@ input {
 .fact>span {
 	display: inline-block;
 	position: relative;
-  padding: 0 3px 0 3px;
+	padding: 0 3px 0 3px;
 	color: white;
 	white-space: nowrap;
 }
@@ -203,15 +200,15 @@ input {
 .fact>span:after {
 	content: '';
 	position: absolute;
-  height: 32px;
+	height: 32px;
 	width: 100%;
 	bottom: 0;
 	left: 0;
 	background: transparent;
 	transition: all ease 0.5s;
 	background: var(--span-bg);
-  z-index: -5;
-  transform: rotate(-1deg);
+	z-index: -5;
+	transform: rotate(-1deg);
 }
 
 .input-error {
@@ -224,12 +221,13 @@ input {
 }
 
 #error-start {
-    width: fit-content;
+	width: fit-content;
 }
 
 #waffle-title {
 	font-family: var(--font-main);
 }
+
 
 /*
  * Landing page.
@@ -255,28 +253,33 @@ input {
 	line-height: inherit;
 }
 
+
+/*
+ * Dots
+ */
+
 .dot1 {
 	height: 30vw;
 	width: 30vw;
 	background-color: #FEA744;
 	border-radius: 100%;
 	position: absolute;
-    z-index: -5;
-    animation: vertical1 33s, horizontal1 21s;
-    animation-iteration-count: infinite;
-    animation-timing-function:linear
+	z-index: -5;
+	animation: vertical1 33s, horizontal1 21s;
+	animation-iteration-count: infinite;
+	animation-timing-function:linear
 }
 
 @keyframes vertical1 {
-    0% { top: 0vh }
-    50% { top: 40vh }
-    100% { top: 0vh }
+	0% { top: 0vh }
+	50% { top: 40vh }
+	100% { top: 0vh }
 }
 
 @keyframes horizontal1 {
-    0% { left: 50vw }
-    50% { left: 80vw }
-    100% { left: 50vw }
+	0% { left: 50vw }
+	50% { left: 80vw }
+	100% { left: 50vw }
 }
 
 .dot2 {
@@ -285,22 +288,22 @@ input {
 	background-color: #2DA4A8;
 	border-radius: 100%;
 	position: absolute;
-    z-index: -6;
-    animation: vertical2 28s, horizontal2 44s;
-    animation-iteration-count: infinite;
-    animation-timing-function:linear
+	z-index: -6;
+	animation: vertical2 28s, horizontal2 44s;
+	animation-iteration-count: infinite;
+	animation-timing-function:linear
 }
 
 @keyframes vertical2 {
-    0% { top: 70vh }
-    50% { top: 30vh }
-    100% { top: 70vh }
+	0% { top: 70vh }
+	50% { top: 30vh }
+	100% { top: 70vh }
 }
 
 @keyframes horizontal2 {
-    0% { left: 20vw }
-    50% { left: 65vw }
-    100% { left: 20vw }
+	0% { left: 20vw }
+	50% { left: 65vw }
+	100% { left: 20vw }
 }
 
 .dot3 {
@@ -309,22 +312,22 @@ input {
 	background-color: #93D360;
 	border-radius: 100%;
 	position: absolute;
-    z-index: -4;
-    animation: vertical3 19s, horizontal3 13s;
-    animation-iteration-count: infinite;
-    animation-timing-function:linear
+	z-index: -4;
+	animation: vertical3 19s, horizontal3 13s;
+	animation-iteration-count: infinite;
+	animation-timing-function:linear
 }
 
 @keyframes vertical3 {
-    0% { top: 205vh }
-    50% { top: -10vh }
-    100% { top: 205vh }
+	0% { top: 205vh }
+	50% { top: -10vh }
+	100% { top: 205vh }
 }
 
 @keyframes horizontal3 {
-    0% { left: 10vw }
-    50% { left: 90vw }
-    100% { left: 10vw }
+	0% { left: 10vw }
+	50% { left: 90vw }
+	100% { left: 10vw }
 }
 
 .dot4 {
@@ -333,23 +336,24 @@ input {
 	background-color: #FF3509;
 	border-radius: 100%;
 	position: absolute;
-    z-index: -4;
-    animation: vertical4 23s, horizontal4 29s;
-    animation-iteration-count: infinite;
-    animation-timing-function:linear
+	z-index: -4;
+	animation: vertical4 23s, horizontal4 29s;
+	animation-iteration-count: infinite;
+	animation-timing-function:linear
 }
 
 @keyframes vertical4 {
-    0% { top: -10vh }
-    50% { top: 210vh }
-    100% { top: -10vh }
+	0% { top: -10vh }
+	50% { top: 210vh }
+	100% { top: -10vh }
 }
 
 @keyframes horizontal4 {
-    0% { left: 90vw }
-    50% { left: 30vw }
-    100% { left: 90vw }
+	0% { left: 90vw }
+	50% { left: 30vw }
+	100% { left: 90vw }
 }
+
 
 /*
  * Pages 
@@ -362,7 +366,6 @@ input {
 
 .content {
 	height: 100vh;
-    width: 35vw;
 	display: grid;
 	align-items: center;
 	margin-left: 55px;
@@ -374,6 +377,10 @@ input {
 
 .final-pages {
 	overflow: hidden;
+}
+
+.final-content {
+	width: 50vw;
 }
 
 .final-content > h1 {
@@ -388,6 +395,7 @@ input {
 	border-radius: 4px;
 	padding: 15px 19px;
 	margin-top: 45px;
+	font-size: 16px;
 }
 
 
@@ -418,7 +426,7 @@ input {
 	border: 1px solid var(--color-black);
 	border-radius: 4px;
 	padding: 15px 19px;
-  position: fixed;
+	position: fixed;
 	z-index: 5;
 	display: block;
 	opacity: 0;
