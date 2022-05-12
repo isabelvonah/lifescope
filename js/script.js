@@ -29,10 +29,10 @@ let finalDataset = [];
 
 /* Color palette */
 let colorBlack		= "#333333";
-let bgColor				= "#F8F1E5";
+let bgColor			= "#F8F1E5";
 let colorLived		= "#FFA237";
 let colorSleep		= "#93D360";
-let colorWork			= "#FF3509";
+let colorWork		= "#FF3509";
 let colorMedia		= "#50D1A3";
 let colorAdmin		= "#AC2941";
 let colorCustom1	= "#64C6C9";
@@ -118,8 +118,6 @@ enableEnterKey("work", "workButton");
 enableEnterKey("ageOfRetirement", "workButton");
 enableEnterKey("media", "mediaButton");
 enableEnterKey("admin", "adminButton");
-enableEnterKey("customCategory", "customButton");
-enableEnterKey("custom", "customButton");
 
 
 /**
@@ -405,23 +403,11 @@ function updateWaffle(category, color, custom=false) {
 
 
 /**
- * Handles colors for custom categories before updateWaffle().
+ * Loads waffle with full dataset.
  */
-let colors = [colorCustom7, colorCustom6, colorCustom5, colorCustom4, colorCustom3, colorCustom2, colorCustom1];
-
-function updateWaffleCustom() {
-	let customCategory = document.getElementById('customCategory').value;
-
-	// Checks if category exists and updates or inserts category.
-	if ( JSON.stringify(dataset).indexOf(customCategory) > -1) {
-		for ( let i=0; i<dataset.length; i++ ) {
-			if ( dataset[i].category == customCategory ) {
-				updateWaffle(customCategory, dataset[i].color, true);
-			}
-		}
-	} else {        
-		updateWaffle(customCategory,colors.pop(), true);
-	}
+function loadWaffle() {
+	DotMatrixChart( dataset, chart_options );
+	console.log('done');
 }
 
 
