@@ -12,7 +12,7 @@ let testreview  = {
  * @param {String} endpoint Lifescope api endpoint.
  * @param {Object} data Data object which should be posted.
  */
-const lifescope_poster = (endpoint, data) => {
+const lifescope_poster = async (endpoint, data) => {
 	
 	// Define options for request. 
 	let options = {
@@ -25,11 +25,14 @@ const lifescope_poster = (endpoint, data) => {
 
 	// Build api endpoint url based on function args.
 	let url = `https://343505-26.web.fhgr.ch/api/lifescope/${endpoint}`;
-	
-	// Make lifescope api call using fetch api.
-	fetch(url, options)
-		.then(response => response.json())
-		.then(data => console.log(data));
+
+	const response = await fetch(url, options);
+
+	if (response.ok) {
+			return response.json();
+	} else {
+			return response.status;
+	}
 
 }
 
@@ -40,14 +43,18 @@ const lifescope_poster = (endpoint, data) => {
  * @param {String} endpoint Lifescope api endpoint.
  * @param {Integer} id Optional parmeter used for get request.
  */
-const lifescope_getter = (endpoint, id = '') => {
+const lifescope_getter = async (endpoint, id = '') => {
 
 	// Build api endpoint url based on function args.
-	let url = `https://343505-26.web.fhgr.ch/api/lifescope/${endpoint}/${id}`;
+	const url = `https://343505-26.web.fhgr.ch/api/lifescope/${endpoint}/${id}`;
 
-	fetch(url)
- 		.then(response => response.json())
-		.then(data => console.log(data));
+	const response = await fetch(url);
+
+	if (response.ok) {
+			return response.json();
+	} else {
+			return response.status;
+	}
 
 }
 
@@ -59,7 +66,7 @@ const lifescope_getter = (endpoint, id = '') => {
  * @param {Integer} id ID of the object to be updated.
  * @param {Object} data Data object which contains updated data.
  */
-const lifescope_putter = (endpoint, id, data) => {
+const lifescope_putter = async (endpoint, id, data) => {
 
 	// Define options for request. 
 	let options = {
@@ -73,9 +80,14 @@ const lifescope_putter = (endpoint, id, data) => {
 	// Build api endpoint url based on function args.
 	let url = `https://343505-26.web.fhgr.ch/api/lifescope/${endpoint}/${id}`;
 
-	fetch(url, options)
-		.then(response => response.json())
-		.then(data => console.log(data));
+	const response = await fetch(url, options);
+
+	if (response.ok) {
+			return response.json();
+	} else {
+			return response.status;
+	}
+
 }
 
 
@@ -85,7 +97,7 @@ const lifescope_putter = (endpoint, id, data) => {
  * @param {String} endpoint Lifescope api endpoint.
  * @param {Integer} id ID of the object to be deleted.
  */
-const lifescope_deleter = (endpoint, id) => {
+const lifescope_deleter = async (endpoint, id) => {
 
 	// Define options for request. 
 	let options = {
@@ -98,9 +110,13 @@ const lifescope_deleter = (endpoint, id) => {
 	// Build api endpoint url based on function args.
 	let url = `https://343505-26.web.fhgr.ch/api/lifescope/${endpoint}/${id}`;
 
-	fetch(url, options)
-		.then(response => response.json())
-		.then(data => console.log(data));
+	const response = await fetch(url, options);
+
+	if (response.ok) {
+			return response.json();
+	} else {
+			return response.status;
+	}
 
 }
 
