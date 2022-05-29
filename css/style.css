@@ -465,10 +465,48 @@ input {
  * Reviews 
  */
 
-.container-review {
+.review-body {
+	overflow: unset;
+}
+
+.review-body h1 {
+	font-size: 4.2em;
+}
+
+#container-review {
 	max-width: 800px;
 	margin: 150px auto;
 	padding: 0 20px;
-	background-color: red;
-	height: 300px;
+}
+
+#container-review {
+	font-family: var(--font-main);
+}
+
+.reviewbox span {
+	font-weight: 700;
+	display: block;
+	text-align: right;
+	font-size: 14px;
+}
+
+.reviewbox>p:nth-child(2) {
+	margin-top: 0px;
+	text-decoration: underline;
+}
+
+#delete-review-input {
+	width: 250px;
+}
+
+#delete-review {
+	background-color: #f4adad;
+}
+
+#delete-review:hover {
+	background-color: #ea6b6b;
+}
+
+#delete-review-success {
+	background-color: #7caa68;
 }

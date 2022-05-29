@@ -9,13 +9,21 @@
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap" rel="stylesheet"> 
+		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@400;700&display=swap" rel="stylesheet"> 
 		<title>lifeScope</title>
 	</head>
 
-	<body>
-		<div class="container-review">
-			hshshshshshs
+	<body class="review-body">
+		<div id="container-review">
+			<h1>Reviews</h1>
+			<p>Check out reviews and experiences from other lifescope users around the world...</p>
+			<p>To delete your review, enter your lifescope-key in the field below.</p>
+			<br>
+			<input type="text" id="delete-review-input" onClick="this.select();">
+			<p class="button" id="delete-review" onClick="deleteReview()">Delete Review</p>
+			<p class="input-error hidden" id="delete-review-error">No review with that lifescope-key found...</p>
+			<p class="input-error hidden" id="delete-review-success">Review deleted</p>
+			<br>
 		</div>
 
 		<script>
