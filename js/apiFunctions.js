@@ -80,7 +80,7 @@ const lifescope_putter = (endpoint, id, data) => {
 
 
 /**
- * Sends GET request to lifescope api.
+ * Sends DELETE request to lifescope api.
  * 
  * @param {String} endpoint Lifescope api endpoint.
  * @param {Integer} id ID of the object to be deleted.
