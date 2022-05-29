@@ -33,34 +33,44 @@ let testPerson = {
     }
 }
 
+function checkId() {
+    if (document.getElementById("login").value != "") {return true; }
+    else { return false; }
+}
+
 function restorePerson() {
 
     // check if id (parameter) exists
-    // ...
-    // yes: replace testPerson
-    // no: throw error-msg
+    if (checkId() == true) {
 
-    document.getElementById("nickname").value = testPerson.nickname;
-    document.getElementById("age").value = testPerson.age;
+        document.getElementById("nickname").value = testPerson.nickname;
+        document.getElementById("age").value = testPerson.age;
+        
+        if (testPerson.sex == "female") {
+            document.getElementById("female").classList.add('selected');
+            document.getElementById("male").classList.remove('selected');
+            setSex("female");
+        } else if (testPerson.sex == "male") {
+            document.getElementById("male").classList.add('selected');
+            document.getElementById("female").classList.remove('selected');
+            setSex("male")
+        } else {
+            document.getElementById("male").classList.remove('selected');
+            document.getElementById("female").classList.remove('selected');
+        }
+
+        document.getElementById("sleep").value = testPerson.data.sleep;
+        document.getElementById("work").value = testPerson.data.work;
+        document.getElementById("ageOfRetirement").value = testPerson.data.ageOfRetirement;
+        document.getElementById("media").value = testPerson.data.media;
+        document.getElementById("admin").value = testPerson.data.admin;
+
+        resetError('login');
+        document.getElementById("login-instruction").classList.remove('hidden');
     
-    if (testPerson.sex == "female") {
-        document.getElementById("female").classList.add('selected');
-        document.getElementById("male").classList.remove('selected');
-        setSex("female");
-    } else if (testPerson.sex == "male") {
-        document.getElementById("male").classList.add('selected');
-        document.getElementById("female").classList.remove('selected');
-        setSex("male")
     } else {
-        document.getElementById("male").classList.remove('selected');
-        document.getElementById("female").classList.remove('selected');
+        printError('login', 'Please provide a valid key!');
     }
-
-    document.getElementById("sleep").value = testPerson.data.sleep;
-    document.getElementById("work").value = testPerson.data.work;
-    document.getElementById("ageOfRetirement").value = testPerson.data.ageOfRetirement;
-    document.getElementById("media").value = testPerson.data.media;
-    document.getElementById("admin").value = testPerson.data.admin
 
 }
 

@@ -28,7 +28,7 @@ input[type=text] {
 	text-align: center;
 }
 
-#customCategory, #nickname {
+#customCategory, #nickname, #login {
 	width: 150px;
 	text-align: left;
 	padding: 4px 6px 6px 14px;

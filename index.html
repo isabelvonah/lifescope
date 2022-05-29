@@ -45,8 +45,10 @@
 			</div>
 			<div class="login input-block">
 				Already been here? Enter your lifescope key to access your previous results: <br>
-				<input type="text" id="nickname" onClick="this.select();"> 
+				<input type="text" id="login" onClick="this.select();"> 
 				<img class="enter-button" id="loginButton" src="img/inputArrow.svg" alt="Enter" onclick="restorePerson()">
+				<p class="input-error hidden" id="error-login"></p>
+				<p class ="hidden" id="login-instruction">Alright, your values have been filled in. Click you through!</p>
 			</div>
 		</div>
 
