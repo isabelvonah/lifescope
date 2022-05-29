@@ -2,6 +2,7 @@ enableEnterKey("login", "loginButton");
 enableEnterKey("review", "reviewButton");
 
 let person = {};
+let loggedIn = false;
 
 function createPerson() {
     person.id = uuid();
@@ -24,6 +25,12 @@ function createDataObject() {
 
 function setKey() {
     document.getElementById("key").innerHTML = person.id;
+}
+
+function clickButtonIfLoggedIn(button) {
+    if (loggedIn) {
+        document.getElementById(button).click();
+    }
 }
 
 let testPerson = {
@@ -80,6 +87,8 @@ function restorePerson() {
 
         resetError('login');
         document.getElementById("login-instruction").classList.remove('hidden');
+
+        loggedIn = true;
     
     } else {
         printError('login', 'Please provide a valid key!');

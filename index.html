@@ -32,7 +32,7 @@
 				<p>Scope</p>	
 			</div>
 			<div class="dot1">
-				<p><span>45 people</span> with an <span>average age of 36</span> have already taken the lifescope quiz.</p>
+				<p><span>45 people</span> with an <span>average age of 36</span> have already taken the lifeScope quiz.</p>
 			</div>
 			<div class="dot2">
 			</div>
@@ -44,7 +44,7 @@
 				<p class="input-error hidden" id="error-start"></p>
 			</div>
 			<div class="login input-block">
-				Already been here? Enter your lifescope key to access your previous results: <br>
+				Already been here? Enter your lifeScope key to access your previous results: <br>
 				<input type="text" id="login" onClick="this.select();"> 
 				<img class="enter-button" id="loginButton" src="img/inputArrow.svg" alt="Enter" onclick="restorePerson()">
 				<p class="input-error hidden" id="error-login"></p>
@@ -72,7 +72,7 @@
 						</p>
 					</div>
 
-					<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('introduction-page', 'page1')">
+					<img id="introductionButton" class="arrow down" src="img/arrowDown.svg" onclick="changePage('introduction-page', 'page1'); clickButtonIfLoggedIn('sleepButton');">
 				</div>
 			</div>
 
@@ -101,7 +101,7 @@
 						</p>
 					</div>
 
-					<img id="arrow-sleep" class="arrow down hidden" src="img/arrowDown.svg" onclick="changePage('page1', 'page2')">
+					<img id="arrow-sleep" class="arrow down hidden" src="img/arrowDown.svg" onclick="changePage('page1', 'page2'); clickButtonIfLoggedIn('workButton');">
 				</div>
 			</div>
 
@@ -125,7 +125,7 @@
 						</p>
 					</div>
 
-					<img id="arrow-work" class="arrow down hidden" src="img/arrowDown.svg" onclick="changePage('page2', 'page3')">
+					<img id="arrow-work" class="arrow down hidden" src="img/arrowDown.svg" onclick="changePage('page2', 'page3'); clickButtonIfLoggedIn('mediaButton');">
 				</div>
 			</div>
 
@@ -149,7 +149,7 @@
 						</p>
 					</div> 
 
-					<img id="arrow-media" class="arrow down hidden" src="img/arrowDown.svg" onclick="changePage('page3', 'page4')">
+					<img id="arrow-media" class="arrow down hidden" src="img/arrowDown.svg" onclick="changePage('page3', 'page4'); clickButtonIfLoggedIn('adminButton');">
 				</div>
 			</div>
 
