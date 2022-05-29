@@ -12,13 +12,12 @@ const loadStats = async () => {
 loadStats();
 
 const updateStats = async () => {
-    stat = await lifescope_getter("stats", 1);
-    ageSum = stat.numOfPeople * stat.avgAge;
-    console.log(ageSum);
-    stat.numOfPeople += 1;
-    stat.avgAge = (ageSum + person.age) / stat.numOfPeople;
-    console.log(stat.avgAge);
-    await lifescope_putter("stats", 1, stat);
+    stats = await lifescope_getter("stats", 1);
+		ageSum = stats.numOfPeople * stats.avgAge;
+		newStats = {"id": 1,} 
+    newStats.numOfPeople = stats.numOfPeople + 1;
+    newStats.avgAge = (ageSum + parseInt(person.age))/newStats.numOfPeople;
+    await lifescope_putter("stats", 1, newStats);
 }
 
 function createPerson() {
