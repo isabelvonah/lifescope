@@ -12,7 +12,9 @@ const updateStats = async () => {
 updateStats();
 
 function createPerson() {
-    person.id = uuid();
+    if(!loggedIn) {
+        person.id = uuid();
+    }
     person.nickname = document.getElementById("nickname").value;
     person.age = document.getElementById("age").value;
     person.sex = sex; // from front1.js..
@@ -62,7 +64,7 @@ const restorePerson = async () => {
     // check if id (parameter) exists
     if (received != "404" && document.getElementById("login").value != "") {
 
-        console.log(received);
+        person.id = received.id;
 
         document.getElementById("nickname").value = received.nickname;
         document.getElementById("age").value = received.age;
