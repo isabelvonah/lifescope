@@ -19,3 +19,7 @@ function createDataObject() {
     
 }
 
+function restorePerson() {
+    console.log("restored");
+}
+

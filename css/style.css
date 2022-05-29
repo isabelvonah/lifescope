@@ -259,8 +259,8 @@ input {
  */
 
 .dot1 {
-	height: 30vw;
-	width: 30vw;
+	height: 400px;
+	width: 400px;
 	background-color: #FEA744;
 	border-radius: 100%;
 	position: absolute;
@@ -431,3 +431,31 @@ input {
 	display: block;
 	opacity: 0;
 }
+
+/*
+ * Front 2
+ */
+
+ .login {
+	 position: absolute;
+	 top: 20px;
+	 right: 30px;
+	 width: 400px;
+	 line-height:30px;
+ }
+
+ .dot1 p{
+	 text-align: center;
+	 padding: 152px 100px;
+	 color: var(--color-black);
+ }
+
+
+ .dot1 p>span {
+	display: inline-block;
+	position: relative;
+	padding: 0 3px 0 3px;
+	color: var(--bg-color);
+	white-space: nowrap;
+}
+
