@@ -99,6 +99,20 @@ const restorePerson = async () => {
 
 }
 
-function postReview() {
-    console.log("post review");
+const postReview = async () => {
+    
+    review = {
+        id: person.id,
+        content: document.getElementById("review").value,
+        nickname: person.nickname,
+        date: new Date().toISOString().split('T')[0]
+    };
+
+    received = await lifescope_getter("review", person.id);
+
+    if (received != "404" && review != "") {
+        await lifescope_putter("review", person.id, review);
+    } else {
+        await lifescope_poster("review", review);
+    }
 }
