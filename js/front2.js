@@ -4,6 +4,13 @@ enableEnterKey("review", "reviewButton");
 let person = {};
 let loggedIn = false;
 
+const updateStats = async () => {
+    stat = await lifescope_getter("stats", 1111);
+    document.getElementById("numOfPeople").innerHTML = `${stat.numOfPeople} people`;
+    document.getElementById("avgAge").innerHTML = `average age of ${stat.avgAge} years`;
+}
+updateStats();
+
 function createPerson() {
     person.id = uuid();
     person.nickname = document.getElementById("nickname").value;

@@ -32,7 +32,7 @@
 				<p>Scope</p>	
 			</div>
 			<div class="dot1">
-				<p><span>45 people</span> with an <span>average age of 36</span> have already taken the lifeScope quiz.</p>
+				<p><span id="numOfPeople"></span> with an <span id="avgAge"></span> have already taken the lifeScope quiz.</p>
 			</div>
 			<div class="dot2">
 			</div>
@@ -48,7 +48,7 @@
 				<input type="text" id="login" onClick="this.select();"> 
 				<img class="enter-button" id="loginButton" src="img/inputArrow.svg" alt="Enter" onclick="restorePerson()">
 				<p class="input-error hidden" id="error-login"></p>
-				<p class ="hidden" id="login-instruction">Alright, your values have been filled in. Click through!</p>
+				<p class ="hidden" id="login-instruction">Alright, your values have been filled in. Click through the pages!</p>
 			</div>
 		</div>
 
@@ -261,7 +261,7 @@
 					<h1>Life goes on...</h1>
 					<p>Thanks for using lifeScope, we hope you could gain some insights and found inspiration to commit even more to your goals and dreams!</p>
 					<p>
-						Do you want to leave a short review? Or read <a target="_blank" href="#">other reviews</a>?
+						Do you want to leave a short review? Or read <a target="_blank" href="reviews.html">other reviews</a>?
 						<input type="text" id="review">
 						<img class="enter-button" id="reviewButton" src="img/inputArrow.svg" alt="Enter" onclick="postReview();">
 

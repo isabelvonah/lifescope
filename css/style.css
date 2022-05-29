@@ -450,14 +450,6 @@ input {
 	 color: var(--color-black);
  }
 
- .dot1 p>span {
-	display: inline-block;
-	position: relative;
-	padding: 0 3px 0 3px;
-	color: var(--bg-color);
-	white-space: nowrap;
-}
-
 #review {
 	width: 80%;
 	margin-top: 10px;
