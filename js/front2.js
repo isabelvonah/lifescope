@@ -4,12 +4,22 @@ enableEnterKey("review", "reviewButton");
 let person = {};
 let loggedIn = false;
 
-const updateStats = async () => {
-    stat = await lifescope_getter("stats", 1111);
+const loadStats = async () => {
+    stat = await lifescope_getter("stats", 1);
     document.getElementById("numOfPeople").innerHTML = `${stat.numOfPeople} people`;
     document.getElementById("avgAge").innerHTML = `average age of ${stat.avgAge} years`;
 }
-updateStats();
+loadStats();
+
+const updateStats = async () => {
+    stat = await lifescope_getter("stats", 1);
+    ageSum = stat.numOfPeople * stat.avgAge;
+    console.log(ageSum);
+    stat.numOfPeople += 1;
+    stat.avgAge = (ageSum + person.age) / stat.numOfPeople;
+    console.log(stat.avgAge);
+    await lifescope_putter("stats", 1, stat);
+}
 
 function createPerson() {
     if(!loggedIn) {
@@ -35,6 +45,7 @@ const createDataObject = async () => {
     // check if id exists
     if (received == "404") {
         await lifescope_poster("person", person);
+        updateStats();
     } else {
         await lifescope_putter("person", received.id, person);
     }
@@ -100,7 +111,7 @@ const restorePerson = async () => {
 }
 
 const postReview = async () => {
-    
+
     review = {
         id: person.id,
         content: document.getElementById("review").value,
