@@ -11,7 +11,7 @@ function createPerson() {
     person.sex = sex; // from front1.js..
 }
 
-function createDataObject() {
+const createDataObject = async () => {
     person.data = {};
     person.data.sleep = document.getElementById("sleep").value;
     person.data.work = document.getElementById("work").value;
@@ -19,12 +19,25 @@ function createDataObject() {
     person.data.media = document.getElementById("media").value;
     person.data.admin = document.getElementById("admin").value;
 
-    // should post or put person, depending on existance of id
+    let received = await lifescope_getter("person", person.id);
+
+    // working key example: 62935ba5299817d925c42aec
+
+    // check if id exists
+    if (received == "404") {
+        await lifescope_poster("person", person);
+    } else {
+        await lifescope_putter("person", received.id, person);
+    }
     
 }
 
 function setKey() {
-    document.getElementById("key").innerHTML = person.id;
+    if (loggedIn) {
+        document.getElementById("key").innerHTML = document.getElementById("login").value;
+    } else {
+        document.getElementById("key").innerHTML = person.id;
+    }
 }
 
 function clickButtonIfLoggedIn(button) {
@@ -33,44 +46,25 @@ function clickButtonIfLoggedIn(button) {
     }
 }
 
-let testPerson = {
-    id: "aösdkfjaösdfjk",
-    nickname: "test",
-    age: "25",
-    sex: "female",
-    data: {
-        sleep: "6",
-        work: "30",
-        ageOfRetirement: "70",
-        media: "0.5",
-        admin: "0.5"
-    }
-}
+const restorePerson = async () => {
 
-function checkId() {
-    if (document.getElementById("login").value != "") {
+    let received = await lifescope_getter("person", document.getElementById("login").value);
 
-        // replace testPerson...!
-
-        return true; 
-    } else { 
-        return false; 
-    }
-}
-
-function restorePerson() {
+    // working key example: 62935ba5299817d925c42aec
 
     // check if id (parameter) exists
-    if (checkId() == true) {
+    if (received != "404" && document.getElementById("login").value != "") {
 
-        document.getElementById("nickname").value = testPerson.nickname;
-        document.getElementById("age").value = testPerson.age;
+        console.log(received);
+
+        document.getElementById("nickname").value = received.nickname;
+        document.getElementById("age").value = received.age;
         
-        if (testPerson.sex == "female") {
+        if (received.sex == "female") {
             document.getElementById("female").classList.add('selected');
             document.getElementById("male").classList.remove('selected');
             setSex("female");
-        } else if (testPerson.sex == "male") {
+        } else if (received.sex == "male") {
             document.getElementById("male").classList.add('selected');
             document.getElementById("female").classList.remove('selected');
             setSex("male")
@@ -79,11 +73,11 @@ function restorePerson() {
             document.getElementById("female").classList.remove('selected');
         }
 
-        document.getElementById("sleep").value = testPerson.data.sleep;
-        document.getElementById("work").value = testPerson.data.work;
-        document.getElementById("ageOfRetirement").value = testPerson.data.ageOfRetirement;
-        document.getElementById("media").value = testPerson.data.media;
-        document.getElementById("admin").value = testPerson.data.admin;
+        document.getElementById("sleep").value = received.data.sleep;
+        document.getElementById("work").value = received.data.work;
+        document.getElementById("ageOfRetirement").value = received.data.ageOfRetirement;
+        document.getElementById("media").value = received.data.media;
+        document.getElementById("admin").value = received.data.admin;
 
         resetError('login');
         document.getElementById("login-instruction").classList.remove('hidden');
