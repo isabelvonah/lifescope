@@ -458,3 +458,13 @@ input {
 	white-space: nowrap;
 }
 
+#review {
+	width: 80%;
+	margin-top: 10px;
+	text-align: left;
+}
+
+#key {
+	font-size: 30px;
+	font-style: italic;
+}

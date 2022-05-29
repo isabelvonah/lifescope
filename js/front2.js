@@ -1,3 +1,6 @@
+enableEnterKey("login", "loginButton");
+enableEnterKey("review", "reviewButton");
+
 let person = {};
 
 function createPerson() {
@@ -19,6 +22,10 @@ function createDataObject() {
     
 }
 
+function setKey() {
+    document.getElementById("key").innerHTML = person.id;
+}
+
 let testPerson = {
     id: "aösdkfjaösdfjk",
     nickname: "test",
@@ -34,8 +41,14 @@ let testPerson = {
 }
 
 function checkId() {
-    if (document.getElementById("login").value != "") {return true; }
-    else { return false; }
+    if (document.getElementById("login").value != "") {
+
+        // replace testPerson...!
+
+        return true; 
+    } else { 
+        return false; 
+    }
 }
 
 function restorePerson() {
@@ -74,3 +87,6 @@ function restorePerson() {
 
 }
 
+function postReview() {
+    console.log("post review");
+}

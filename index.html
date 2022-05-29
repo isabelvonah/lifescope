@@ -48,7 +48,7 @@
 				<input type="text" id="login" onClick="this.select();"> 
 				<img class="enter-button" id="loginButton" src="img/inputArrow.svg" alt="Enter" onclick="restorePerson()">
 				<p class="input-error hidden" id="error-login"></p>
-				<p class ="hidden" id="login-instruction">Alright, your values have been filled in. Click you through!</p>
+				<p class ="hidden" id="login-instruction">Alright, your values have been filled in. Click through!</p>
 			</div>
 		</div>
 
@@ -234,7 +234,7 @@
 
 					</div>
 
-					<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('depri-page', 'final-page1'); hideElement('waffle-wrap');">
+					<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('depri-page', 'final-page1'); hideElement('waffle-wrap'); setKey();">
 				</div>
 			</div>
 
@@ -261,13 +261,12 @@
 					<h1>Life goes on...</h1>
 					<p>Thanks for using lifeScope, we hope you could gain some insights and found inspiration to commit even more to your goals and dreams!</p>
 					<p>
-					If you're still thinking about your lifestyle choices from the previous page, here are some helpfull links:<br>
-					<ul>
-						<li><a target="_blank" href="https://www.stopsmoking.ch/">StopSmoking.ch - Swiss stop smoking campaign</a></li>
-						<li><a target="_blank" href="https://www.mentalhealth.org.uk/publications/how-manage-and-reduce-stress">Mental Health Foundation - Manage and reduce Stress</a></li>
-						<li><a target="_blank" href="https://www.nhs.uk/live-well/exercise/exercise-health-benefits/">UK National Health Service - Benefits of exercise</a></li>
-					</ul>
+						Do you want to leave a short review?
+						<input type="text" id="review">
+						<img class="enter-button" id="reviewButton" src="img/inputArrow.svg" alt="Enter" onclick="postReview();">
+
 					</p>
+					<p> If you want to come back at some point and get your results, copy and save your lifeScope key: <br><br> <span id="key"></span></p>
 				</div>
 				<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('final-page1', 'final-page2')">
 			</div>
