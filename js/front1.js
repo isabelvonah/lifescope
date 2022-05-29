@@ -309,7 +309,6 @@ function printFact(category) {
 	let catObj = getCatObj(category);
 	switch(category) {
 		case 'sleep':
-			console.log(dataset);
 			setContent('fact-sleep', `Alright, you will sleep for another <span>${catObj[0].count} weeks</span>.`);
       setColor('fact-sleep', colorSleep);
 			fadeIn('fact-sleep');
