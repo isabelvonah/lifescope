@@ -125,4 +125,6 @@ const postReview = async () => {
     } else {
         await lifescope_poster("review", review);
     }
+
+    document.getElementById("review-posted").classList.remove('hidden');
 }

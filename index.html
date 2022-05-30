@@ -48,7 +48,7 @@
 				<input type="text" id="login" onClick="this.select();"> 
 				<img class="enter-button" id="loginButton" src="img/inputArrow.svg" alt="Enter" onclick="restorePerson()">
 				<p class="input-error hidden" id="error-login"></p>
-				<p class ="hidden" id="login-instruction">Alright, your values have been filled in. Click through the pages!</p>
+				<p class ="input-error hidden" id="login-instruction">Alright, your values have been filled in. Click through the pages!</p>
 			</div>
 		</div>
 
@@ -264,8 +264,8 @@
 						Do you want to leave a short review? Or read <a target="_blank" href="reviews.html">other reviews</a>?
 						<input type="text" id="review">
 						<img class="enter-button" id="reviewButton" src="img/inputArrow.svg" alt="Enter" onclick="postReview();">
-
 					</p>
+					<p class ="input-error hidden" id="review-posted">Thank you!!!</p>
 					<p> If you want to come back at some point and get your results, copy and save your lifeScope key: <br><br> <span id="key"></span></p>
 				</div>
 				<img class="arrow down" src="img/arrowDown.svg" onclick="changePage('final-page1', 'final-page2')">
