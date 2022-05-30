@@ -6,8 +6,10 @@ let loggedIn = false;
 
 const loadStats = async () => {
     stat = await lifescope_getter("stats", 1);
+    reviews = await lifescope_getter("review");
     document.getElementById("numOfPeople").innerHTML = `${stat.numOfPeople} people`;
-    document.getElementById("avgAge").innerHTML = `average age of ${stat.avgAge} years`;
+    document.getElementById("avgAge").innerHTML = `average age of ${stat.avgAge.toFixed(2)} years`;
+    document.getElementById("numOfReviews").innerHTML = `${reviews.length} reviews`;
 }
 loadStats();
 
