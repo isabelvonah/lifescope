@@ -1,9 +1,16 @@
+// function of front1.js that makes clicking via enter key (while input key is focused) possible.
 enableEnterKey("login", "loginButton");
 enableEnterKey("review", "reviewButton");
 
+// new object for storing values for api functions
 let person = {};
+// tracker if user is new on website or "logged in" with the lifeScope key
 let loggedIn = false;
 
+
+/**
+ * Loads the stats for the landing-page (on every reload).
+ */
 const loadStats = async () => {
     stat = await lifescope_getter("stats", 1);
     reviews = await lifescope_getter("review");
@@ -13,6 +20,9 @@ const loadStats = async () => {
 }
 loadStats();
 
+/**
+ * Updates the stats after adding a new person.
+ */
 const updateStats = async () => {
     stats = await lifescope_getter("stats", 1);
 		ageSum = stats.numOfPeople * stats.avgAge;
@@ -22,6 +32,9 @@ const updateStats = async () => {
     await lifescope_putter("stats", 1, newStats);
 }
 
+/**
+ * Creates new person entry (without an API-Call).
+ */
 function createPerson() {
     if(!loggedIn) {
         person.id = uuid();
@@ -31,7 +44,12 @@ function createPerson() {
     person.sex = sex; // from front1.js..
 }
 
-const createDataObject = async () => {
+/**
+ * Adds or updates data object of person entry and updates database accordingly.
+ */
+const updateDataObject = async () => {
+
+    // update person
     person.data = {};
     person.data.sleep = document.getElementById("sleep").value;
     person.data.work = document.getElementById("work").value;
@@ -39,45 +57,32 @@ const createDataObject = async () => {
     person.data.media = document.getElementById("media").value;
     person.data.admin = document.getElementById("admin").value;
 
+    // get-call of person table
     let received = await lifescope_getter("person", person.id);
 
-    // working key example: 62935ba5299817d925c42aec
-
-    // check if id exists
+    // check if id doesn't exist yet
     if (received == "404") {
         await lifescope_poster("person", person);
         updateStats();
-    } else {
+    } // if it does
+    else {
         await lifescope_putter("person", received.id, person);
     }
-    
 }
 
-function setKey() {
-    if (loggedIn) {
-        document.getElementById("key").innerHTML = document.getElementById("login").value;
-    } else {
-        document.getElementById("key").innerHTML = person.id;
-    }
-}
-
-function clickButtonIfLoggedIn(button) {
-    if (loggedIn) {
-        document.getElementById(button).click();
-    }
-}
-
+/**
+ * Refills values after lifeScope Key entry and sets loggedIn to True.
+ */
 const restorePerson = async () => {
 
     let received = await lifescope_getter("person", document.getElementById("login").value);
 
-    // working key example: 62935ba5299817d925c42aec
-
-    // check if id (parameter) exists
+    // check if id exists
     if (received != "404" && document.getElementById("login").value != "") {
 
         person.id = received.id;
 
+        // fills in the received data
         document.getElementById("nickname").value = received.nickname;
         document.getElementById("age").value = received.age;
         
@@ -100,7 +105,9 @@ const restorePerson = async () => {
         document.getElementById("media").value = received.data.media;
         document.getElementById("admin").value = received.data.admin;
 
+        // hides error-msg (in case)
         resetError('login');
+        // adds confirmation msg and instruction to click through pages
         document.getElementById("login-instruction").classList.remove('hidden');
 
         loggedIn = true;
@@ -111,6 +118,31 @@ const restorePerson = async () => {
 
 }
 
+/**
+ * Clicks given butten if logged in.
+ * Is positioned on every Down-Arrow before an input-field.
+ */
+function clickButtonIfLoggedIn(button) {
+    if (loggedIn) {
+        document.getElementById(button).click();
+    }
+}
+
+/**
+ * Sets the key on the finalPage1.
+ * If the values are restored, it can be found in the login-field, else it's the newly created person.id.
+ */
+function setKey() {
+    if (loggedIn) {
+        document.getElementById("key").innerHTML = document.getElementById("login").value;
+    } else {
+        document.getElementById("key").innerHTML = person.id;
+    }
+}
+
+/**
+ * Posts or puts review, depending if there's already a review of that id.
+ */
 const postReview = async () => {
 
     review = {
