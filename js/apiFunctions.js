@@ -1,11 +1,3 @@
-// Example review object
-let testreview  = {
-	id: 22342,
-	content: "changed a review",
-	nickname: "testuser22",
-	date: "2022-12-12"
-}
-
 /**
  * Sends POST request to lifescope api.
  * 
@@ -119,13 +111,3 @@ const lifescope_deleter = async (endpoint, id) => {
 	}
 
 }
-
-
-
-// Call functions
-
-// lifescope_poster('review', testreview);
-// lifescope_getter('review')
-// lifescope_getter('review', 22)
-// lifescope_putter('review', 22, testreview)
-// lifescope_deleter('review', 22)
